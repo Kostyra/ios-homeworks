@@ -8,22 +8,32 @@
 import UIKit
 
 class FeedViewController: UIViewController {
-
+    
+ 
+    
+    var post = Post(title:"PostView")
+    
+    private lazy var button: UIButton = {
+        let button = UIButton()
+        button.setTitle("Button", for: .normal)
+        button.frame = CGRect(x: 100, y: 100, width: 200, height: 50)
+        button.backgroundColor = .green
+        button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
+        return button
+    }()
+      
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+
+        view.addSubview(button)
+   }
+    @objc func buttonAction(sender: UIButton!) {
+        let postViewController = PostViewController()
+        self.navigationController?.pushViewController(postViewController, animated: true)
+        postViewController.titlePost = post.title
     }
-    
 
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+   
 }
