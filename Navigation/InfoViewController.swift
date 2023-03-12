@@ -6,12 +6,13 @@ class InfoViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         title = "Info"
         view.backgroundColor = .darkGray
         
-
-        DispatchQueue.main.async {
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
             let alertButton = UIAlertController(title: "Title", message: "Messsage", preferredStyle: .alert)
             let actionOk = UIAlertAction(title: "Ok", style: .default) {
                 (actionOk) in
@@ -31,7 +32,7 @@ class InfoViewController: UIViewController {
 
             self.present(alertButton, animated: true, completion: nil)
         }
-    }
+    
     
 
 }
