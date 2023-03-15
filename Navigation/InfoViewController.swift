@@ -1,9 +1,4 @@
-//
-//  InfoViewController.swift
-//  Navigation
-//
-//  Created by Юлия Филиппова on 10.03.2023.
-//
+
 
 import UIKit
 
@@ -11,19 +6,33 @@ class InfoViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        title = "Info"
+        view.backgroundColor = .darkGray
+        
     }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+            let alertButton = UIAlertController(title: "Title", message: "Messsage", preferredStyle: .alert)
+            let actionOk = UIAlertAction(title: "Ok", style: .default) {
+                (actionOk) in
+                if actionOk.title == "Ok" {
+                    print("Ok")
+                }
+            }
+            let actionNotOk = UIAlertAction(title: "Not Ok", style: .default) {
+                (actionNotOk) in
+                if actionNotOk.title == "Not Ok" {
+                print("Not Ok")
+                }
+            }
+           
+            alertButton.addAction(actionOk)
+            alertButton.addAction(actionNotOk)
+
+            self.present(alertButton, animated: true, completion: nil)
+        }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+    
 
 }
