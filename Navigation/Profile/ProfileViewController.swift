@@ -31,17 +31,14 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
         view.addSubview(profileHeaderView)
         view.addSubview(buttonProfile)
- //       view.addSubview(label)
     }
    
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
- //       profileHeaderView.frame = CGRect(x: 0, y: 100, width: view.frame.size.width, height: view.frame.size.height-200)
-//      profileHeaderView.frame = view.frame
+        
         NSLayoutConstraint.activate([
             profileHeaderView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-//            profileHeaderView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             profileHeaderView.heightAnchor.constraint(equalToConstant: 220),
             profileHeaderView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             profileHeaderView.trailingAnchor.constraint(equalTo: view.trailingAnchor),

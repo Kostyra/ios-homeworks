@@ -9,22 +9,6 @@ import UIKit
 
 class ProfileHeaderView: UIView {
         
-        //    let myImage = UIImage(name:"images")
-        //    let imageView = UIImageView(myImage: myImage!)
-        //    imageView.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
-        //    self.view.addSubview(imageView)
- 
-//    override func draw(_ rect: CGRect) {
-//        view.translatesAutoresizingMaskIntoConstraints = false
-//        let image = UIImage(named: "images")
-//        let imageView = UIImageView(image: image!)
-//        imageView.frame = CGRect(x: 0, y: 0, width: 100, height: 200)
-//        addSubview(imageView)
-//
-//    }
-
-    
-    
     private lazy var photo: UIImageView = {
         let image = UIImage(named: "images")
         let imageView = UIImageView(image: image!)
@@ -81,7 +65,6 @@ class ProfileHeaderView: UIView {
         button.layer.shadowOpacity = 0.7
         button.layer.shadowColor = UIColor.black.cgColor
         button.translatesAutoresizingMaskIntoConstraints = false
-//        button.clipsToBounds = false
         button.addTarget(self, action: #selector(buttonPress), for: .touchUpInside)
         return button
     }()

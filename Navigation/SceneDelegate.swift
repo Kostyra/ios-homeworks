@@ -26,9 +26,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         profileViewController.title = "Profile"
         profileViewController.view.backgroundColor = .systemYellow
                 
-        
-        //feedViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .contacts, tag: 0)
-        //profileViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .bookmarks, tag: 1)
         feedViewController.tabBarItem = UITabBarItem(title: "Feed", image: imageFeed, tag: 0)
         profileViewController.tabBarItem = UITabBarItem(title: "Profile", image: imageProfile, tag: 1)
         let tabBarController = UITabBarController()

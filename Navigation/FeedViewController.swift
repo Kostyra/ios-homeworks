@@ -16,7 +16,6 @@ class FeedViewController: UIViewController {
     private lazy var buttonGreen: UIButton = {
         let button = UIButton()
         button.setTitle("Button Green", for: .normal)
-//        button.frame = CGRect(x: 100, y: 100, width: 200, height: 50)
         button.backgroundColor = .green
         button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
         return button
@@ -60,13 +59,8 @@ class FeedViewController: UIViewController {
     }
     private func stackViewConstraint() {
         NSLayoutConstraint.activate([
-            
- //           stackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor , constant: 10),
             stackView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-//            stackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor , constant: -100),
-//            stackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
-//            stackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
             stackView.heightAnchor.constraint(equalToConstant: 100),
             stackView.widthAnchor.constraint(equalToConstant: 300)
         ])
