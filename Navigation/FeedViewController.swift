@@ -28,7 +28,7 @@ class FeedViewController: UIViewController {
 
         view.addSubview(button)
    }
-    @objc func buttonAction(sender: UIButton!) {
+    @objc func buttonAction() {
         let postViewController = PostViewController()
         self.navigationController?.pushViewController(postViewController, animated: true)
         postViewController.titlePost = post.title

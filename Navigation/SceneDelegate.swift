@@ -10,8 +10,9 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-
-
+    let imageFeed = UIImage(systemName: "figure.walk")
+    let imageProfile = UIImage(systemName: "brain.head.profile")
+    
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let scene = (scene as? UIWindowScene) else { return }
         
@@ -24,17 +25,20 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let profileViewController = ProfileViewController()
         profileViewController.title = "Profile"
         profileViewController.view.backgroundColor = .systemYellow
+                
         
-        
-        feedViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .contacts, tag: 0)
-        profileViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .bookmarks, tag: 1)
-        
+        //feedViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .contacts, tag: 0)
+        //profileViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .bookmarks, tag: 1)
+        feedViewController.tabBarItem = UITabBarItem(title: "Feed", image: imageFeed, tag: 0)
+        profileViewController.tabBarItem = UITabBarItem(title: "Profile", image: imageProfile, tag: 1)
         let tabBarController = UITabBarController()
-        
+       
         let controllers = [feedViewController, profileViewController]
         tabBarController.viewControllers = controllers.map {
             UINavigationController(rootViewController: $0)
         }
+        
+
         
         window.rootViewController = tabBarController
         window.makeKeyAndVisible()
