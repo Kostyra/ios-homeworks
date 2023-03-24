@@ -8,13 +8,14 @@
 import UIKit
 
 class ProfileHeaderView: UIView {
+    
+    
         
     private lazy var photo: UIImageView = {
         let image = UIImage(named: "images")
         let imageView = UIImageView(image: image!)
         imageView.layer.borderWidth = 3.0
         imageView.layer.borderColor = UIColor.white.cgColor
-        //imageView.layer.cornerRadius = imageView.frame.height/2.5
         imageView.layer.cornerRadius = 75
         imageView.clipsToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -24,7 +25,6 @@ class ProfileHeaderView: UIView {
     private lazy var label: UILabel = {
         let label = UILabel()
         label.text = "Old Castle"
-//        label.font = label.font.withSize(18)
         label.font = UIFont.systemFont(ofSize: 18, weight: .bold)
         label.textColor = .black
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -103,6 +103,7 @@ class ProfileHeaderView: UIView {
             buttonStatus.leftAnchor.constraint(equalTo: leftAnchor , constant: 16),
             buttonStatus.rightAnchor.constraint(equalTo: rightAnchor, constant:-16),
             buttonStatus.heightAnchor.constraint(equalToConstant: 50),
+            buttonStatus.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -16),
             
             labelGrey.bottomAnchor.constraint(equalTo: textField.topAnchor, constant: -10),
             labelGrey.leftAnchor.constraint(equalTo: photo.rightAnchor,constant: 20),

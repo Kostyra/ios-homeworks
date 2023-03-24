@@ -9,7 +9,7 @@ import UIKit
 
 class ProfileViewController: UIViewController {
     
-    private var profileHeaderView: ProfileHeaderView = {
+     var profileHeaderView: ProfileHeaderView = {
         let profileHeaderView = ProfileHeaderView()
         profileHeaderView.backgroundColor = .lightGray
         profileHeaderView.translatesAutoresizingMaskIntoConstraints = false
@@ -39,7 +39,7 @@ class ProfileViewController: UIViewController {
         
         NSLayoutConstraint.activate([
             profileHeaderView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            profileHeaderView.heightAnchor.constraint(equalToConstant: 220),
+            //profileHeaderView.heightAnchor.constraint(equalToConstant: 220),
             profileHeaderView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             profileHeaderView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             
