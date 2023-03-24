@@ -22,10 +22,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         feedViewController.title = "Feed"
         feedViewController.view.backgroundColor = .systemOrange
         
-//        let profileViewController = ProfileViewController()
-//        profileViewController.title = "Profile"
-//        profileViewController.view.backgroundColor = .systemYellow
-        
         let logInViewController = LogInViewController()
         logInViewController.title = "Log"
         logInViewController.view.backgroundColor = .white

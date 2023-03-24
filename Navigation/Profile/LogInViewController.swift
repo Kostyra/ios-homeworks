@@ -28,10 +28,10 @@ class LogInViewController: UIViewController  {
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.clipsToBounds = true
         textField.autocorrectionType = UITextAutocorrectionType.no
-        //        textField.keyboardType = UIKeyboardType.default
-        //        textField.returnKeyType = UIReturnKeyType.done
-        //        textField.clearButtonMode = UITextField.ViewMode.whileEditing
-        //        textField.contentVerticalAlignment = UIControl.ContentVerticalAlignment.center
+        textField.keyboardType = UIKeyboardType.default
+        textField.returnKeyType = UIReturnKeyType.done
+        textField.clearButtonMode = UITextField.ViewMode.whileEditing
+        textField.contentVerticalAlignment = UIControl.ContentVerticalAlignment.center
         textField.delegate = self
         return textField
     }()
@@ -53,10 +53,10 @@ class LogInViewController: UIViewController  {
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.clipsToBounds = true
         textField.autocorrectionType = UITextAutocorrectionType.no
-        //        textField.keyboardType = UIKeyboardType.default
-        //        textField.returnKeyType = UIReturnKeyType.done
-        //        textField.clearButtonMode = UITextField.ViewMode.whileEditing
-        //        textField.contentVerticalAlignment = UIControl.ContentVerticalAlignment.center
+        textField.keyboardType = UIKeyboardType.default
+        textField.returnKeyType = UIReturnKeyType.done
+        textField.clearButtonMode = UITextField.ViewMode.whileEditing
+        textField.contentVerticalAlignment = UIControl.ContentVerticalAlignment.center
         textField.delegate = self
         return textField
     }()
@@ -88,24 +88,6 @@ class LogInViewController: UIViewController  {
         contantView.backgroundColor = .systemBackground
         return contantView
     }()
-    
-    //    private func scrollContent() {
-    //        view.addSubview(scrollView)
-    //        scrollView.addSubview(contantView)
-    //        NSLayoutConstraint.activate([
-    //            scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-    //            scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-    //            scrollView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor),
-    //            scrollView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor),
-    //
-    //            contantView.topAnchor.constraint(equalTo: scrollView.topAnchor),
-    //            contantView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
-    //            contantView.leftAnchor.constraint(equalTo: scrollView.leftAnchor),
-    //            contantView.rightAnchor.constraint(equalTo: scrollView.rightAnchor),
-    //            contantView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
-    //        ])
-    //    }
-    
     
     private func viewLogin() {
         view.addSubview(scrollView)
@@ -185,7 +167,7 @@ class LogInViewController: UIViewController  {
     @objc func willShowKeyboard(_ notification: NSNotification) {
         guard let keyboardHeight = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue.height
         else { return }
-        let buttonEnterBottomPointY = (buttonEnter.frame.origin.y + buttonEnter.frame.size.height + scrollView.frame.origin.y)
+        let buttonEnterBottomPointY = (buttonEnter.frame.maxY + scrollView.frame.origin.y)
         let keyboardHeightPointY = view.frame.height - keyboardHeight
         let yOffSet = keyboardHeightPointY < buttonEnterBottomPointY ? buttonEnterBottomPointY - keyboardHeightPointY + 10 : 0
         scrollView.setContentOffset(CGPoint(x: 0, y: yOffSet), animated: true)
@@ -193,7 +175,6 @@ class LogInViewController: UIViewController  {
         
     
     @objc func willHideKeyboard(_ notification: NSNotification) {
-        //scrollView.contentInset.bottom = 0.0
         scrollView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
     }
     
@@ -207,8 +188,6 @@ class LogInViewController: UIViewController  {
         super.viewDidLoad()
         viewLogin()
         setupView()
-//        scrollContent()
-        
     }
 
     override func viewWillAppear(_ animated: Bool)  {
