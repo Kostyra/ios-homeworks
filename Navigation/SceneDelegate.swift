@@ -22,24 +22,22 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         feedViewController.title = "Feed"
         feedViewController.view.backgroundColor = .systemOrange
         
-        let profileViewController = ProfileViewController()
-        profileViewController.title = "Profile"
-        profileViewController.view.backgroundColor = .systemYellow
-                
+        let logInViewController = LogInViewController()
+        logInViewController.title = "Log"
+        logInViewController.view.backgroundColor = .white
         
-        //feedViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .contacts, tag: 0)
-        //profileViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .bookmarks, tag: 1)
+                
         feedViewController.tabBarItem = UITabBarItem(title: "Feed", image: imageFeed, tag: 0)
-        profileViewController.tabBarItem = UITabBarItem(title: "Profile", image: imageProfile, tag: 1)
+        logInViewController.tabBarItem = UITabBarItem(title: "Log", image: imageProfile, tag: 1)
         let tabBarController = UITabBarController()
        
-        let controllers = [feedViewController, profileViewController]
+        let controllers = [feedViewController, logInViewController]
         tabBarController.viewControllers = controllers.map {
             UINavigationController(rootViewController: $0)
         }
         
 
-        
+       
         window.rootViewController = tabBarController
         window.makeKeyAndVisible()
               
