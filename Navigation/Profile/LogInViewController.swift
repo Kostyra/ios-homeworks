@@ -5,6 +5,13 @@ import UIKit
 class LogInViewController: UIViewController  {
     
     
+//    private lazy var delimiter:DelimiterView = {
+//        let delimiter = DelimiterView()
+//        delimiter.translatesAutoresizingMaskIntoConstraints = false
+//        delimiter.backgroundColor = .systemBlue
+//        return delimiter
+//    }()
+    
     private lazy var imageVK: UIImageView = {
         let image  = UIImage(named: "logo")
         let imageView = UIImageView(image: image!)
@@ -89,13 +96,32 @@ class LogInViewController: UIViewController  {
         return contantView
     }()
     
+    private lazy var stackViewLoginPass: UIStackView = { [unowned self] in
+        let stackView = UIStackView()
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.clipsToBounds = true
+        stackView.axis = .vertical
+        stackView.distribution = .fillEqually
+        stackView.alignment = .fill
+        stackView.spacing = 0.2
+        
+        stackView.addArrangedSubview(self.login)
+//        stackView.addArrangedSubview(delimiter)
+        stackView.addArrangedSubview(self.pass)
+        
+        return stackView
+    }()
+    
+    
     private func viewLogin() {
         view.addSubview(scrollView)
         scrollView.addSubview(contantView)
         contantView.addSubview(imageVK)
-        contantView.addSubview(login)
-        contantView.addSubview(pass)
+        contantView.addSubview(stackViewLoginPass)
+//        contantView.addSubview(login)
+//        contantView.addSubview(pass)
         contantView.addSubview(buttonEnter)
+        
         NSLayoutConstraint.activate([
             scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
@@ -107,22 +133,26 @@ class LogInViewController: UIViewController  {
             contantView.leftAnchor.constraint(equalTo: scrollView.leftAnchor),
             contantView.rightAnchor.constraint(equalTo: scrollView.rightAnchor),
             contantView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
-            //contantView.heightAnchor.constraint(equalTo: scrollView.heightAnchor),
             
             imageVK.topAnchor.constraint(equalTo: contantView.topAnchor, constant: 120),
             imageVK.heightAnchor.constraint(equalToConstant: 100),
             imageVK.widthAnchor.constraint(equalToConstant: 100),
             imageVK.centerXAnchor.constraint(equalTo: contantView.centerXAnchor),
             
-            login.topAnchor.constraint(equalTo: imageVK.bottomAnchor ,constant: 120),
-            login.leftAnchor.constraint(equalTo: contantView.leftAnchor, constant: 16),
-            login.rightAnchor.constraint(equalTo: contantView.rightAnchor , constant:-16),
-            login.heightAnchor.constraint(equalToConstant: 50),
+            stackViewLoginPass.topAnchor.constraint(equalTo: imageVK.bottomAnchor ,constant: 120),
+            stackViewLoginPass.leftAnchor.constraint(equalTo: contantView.leftAnchor, constant: 16),
+            stackViewLoginPass.rightAnchor.constraint(equalTo: contantView.rightAnchor , constant:-16),
+            stackViewLoginPass.heightAnchor.constraint(equalToConstant: 100.5),
             
-            pass.topAnchor.constraint(equalTo: login.bottomAnchor, constant: 0),
-            pass.leftAnchor.constraint(equalTo: contantView.leftAnchor, constant: 16),
-            pass.rightAnchor.constraint(equalTo: contantView.rightAnchor, constant: -16),
-            pass.heightAnchor.constraint(equalToConstant: 50),
+//            login.topAnchor.constraint(equalTo: imageVK.bottomAnchor ,constant: 120),
+//            login.leftAnchor.constraint(equalTo: contantView.leftAnchor, constant: 16),
+//            login.rightAnchor.constraint(equalTo: contantView.rightAnchor , constant:-16),
+//            login.heightAnchor.constraint(equalToConstant: 50),
+//
+//            pass.topAnchor.constraint(equalTo: login.bottomAnchor, constant: 0),
+//            pass.leftAnchor.constraint(equalTo: contantView.leftAnchor, constant: 16),
+//            pass.rightAnchor.constraint(equalTo: contantView.rightAnchor, constant: -16),
+//            pass.heightAnchor.constraint(equalToConstant: 50),
             
             buttonEnter.topAnchor.constraint(equalTo: pass.bottomAnchor, constant: 16),
             buttonEnter.leftAnchor.constraint(equalTo: contantView.leftAnchor, constant: 16),
@@ -132,6 +162,8 @@ class LogInViewController: UIViewController  {
         ])
         
     }
+    
+    
     
 
     private func setupView() {
@@ -188,6 +220,7 @@ class LogInViewController: UIViewController  {
         super.viewDidLoad()
         viewLogin()
         setupView()
+//        delimitreFunk()
     }
 
     override func viewWillAppear(_ animated: Bool)  {
