@@ -1,23 +1,9 @@
-//
-//  ProfileViewController.swift
-//  Navigation
-//
-//  Created by  Konstantin Filippov on 08.03.2023.
-//
+
 
 import UIKit
 
 class ProfileViewController: UIViewController {
 
-    
-    
-//     var profileHeaderView: ProfileHeaderView = {
-//        let profileHeaderView = ProfileHeaderView()
-//        profileHeaderView.backgroundColor = .lightGray
-//        profileHeaderView.translatesAutoresizingMaskIntoConstraints = false
-//
-//        return profileHeaderView
-//    }()
     private let tableView: UITableView = {
         let tableView = UITableView.init(
             frame: .zero,
@@ -49,8 +35,6 @@ class ProfileViewController: UIViewController {
         view.addSubview(tableView)
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(equalTo:view.topAnchor),
-           // tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-           // tableView.topAnchor.constraint(equalTo: profileHeaderView.bottomAnchor),
             tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
@@ -60,24 +44,12 @@ class ProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
- //       view.addSubview(profileHeaderView)
         table()
         tableViewCell()
         headerView()
         view.backgroundColor = UIColor(named: "Color")
     }
    
-//    override func viewWillLayoutSubviews() {
-//        super.viewWillLayoutSubviews()
-//
-//        NSLayoutConstraint.activate([
-//            profileHeaderView.topAnchor.constraint(equalTo:view.topAnchor),
-//            profileHeaderView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-//            profileHeaderView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-//
-//        ])
-//
-//    }
 }
 
 

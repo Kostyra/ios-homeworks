@@ -118,8 +118,6 @@ class LogInViewController: UIViewController  {
         scrollView.addSubview(contantView)
         contantView.addSubview(imageVK)
         contantView.addSubview(stackViewLoginPass)
-//        contantView.addSubview(login)
-//        contantView.addSubview(pass)
         contantView.addSubview(buttonEnter)
         
         NSLayoutConstraint.activate([
@@ -144,16 +142,6 @@ class LogInViewController: UIViewController  {
             stackViewLoginPass.rightAnchor.constraint(equalTo: contantView.rightAnchor , constant:-16),
             stackViewLoginPass.heightAnchor.constraint(equalToConstant: 100.5),
             
-//            login.topAnchor.constraint(equalTo: imageVK.bottomAnchor ,constant: 120),
-//            login.leftAnchor.constraint(equalTo: contantView.leftAnchor, constant: 16),
-//            login.rightAnchor.constraint(equalTo: contantView.rightAnchor , constant:-16),
-//            login.heightAnchor.constraint(equalToConstant: 50),
-//
-//            pass.topAnchor.constraint(equalTo: login.bottomAnchor, constant: 0),
-//            pass.leftAnchor.constraint(equalTo: contantView.leftAnchor, constant: 16),
-//            pass.rightAnchor.constraint(equalTo: contantView.rightAnchor, constant: -16),
-//            pass.heightAnchor.constraint(equalToConstant: 50),
-            
             buttonEnter.topAnchor.constraint(equalTo: pass.bottomAnchor, constant: 16),
             buttonEnter.leftAnchor.constraint(equalTo: contantView.leftAnchor, constant: 16),
             buttonEnter.rightAnchor.constraint(equalTo: contantView.rightAnchor, constant: -16),
@@ -163,9 +151,6 @@ class LogInViewController: UIViewController  {
         
     }
     
-    
-    
-
     private func setupView() {
         view.backgroundColor = .systemPink
         navigationItem.title = ""
@@ -234,9 +219,7 @@ class LogInViewController: UIViewController  {
         
         removeKeyboardObservers()
     }
-    
- 
-
+   
 }
 
 extension LogInViewController: UITextFieldDelegate {
