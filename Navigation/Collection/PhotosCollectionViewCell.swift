@@ -24,8 +24,6 @@ private func imageCell() {
         imagePeople.bottomAnchor.constraint(equalTo:  contentView.bottomAnchor),
         imagePeople.leadingAnchor.constraint(equalTo:  contentView.leadingAnchor),
         imagePeople.trailingAnchor.constraint(equalTo:  contentView.trailingAnchor),
-//       imagePeople.heightAnchor.constraint(equalToConstant: 60),
-//        imagePeople.widthAnchor.constraint(equalToConstant: 60)
     ])
 
 }

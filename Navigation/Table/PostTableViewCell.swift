@@ -72,16 +72,10 @@ class PostTableViewCell: UITableViewCell {
         addSubview(descriptionText)
         addSubview(likesLabel)
         addSubview(viewsLabel)
-        
-//        addSubview(profileHeaderView)
         NSLayoutConstraint.activate([
-            
-//            profileHeaderView.topAnchor.constraint(equalTo: topAnchor, constant: 16),
-//            profileHeaderView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
-//            profileHeaderView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+
             
             authorLabel.topAnchor.constraint(equalTo: topAnchor, constant: 16),
-            //authorLabel.topAnchor.constraint(equalTo: profileHeaderView.bottomAnchor, constant: 16),
             authorLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
             authorLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
             

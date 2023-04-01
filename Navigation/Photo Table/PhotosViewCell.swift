@@ -78,33 +78,16 @@ class PhotosViewCell: UIView  {
         let button = UIButton()
         button.setBackgroundImage(imageArrow, for: UIControl.State.normal)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
+//        button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
         
         return button
     }()
     
     
-    @objc private  func buttonAction(sender: UIButton){
-//        let photosViewController = PhotosViewController()
-//        navigationController?.pushViewController(photosViewController, animated: true)
-        print("My image button tapped")
-    }
-    
-    
-//
-//    private lazy var barButtonItem:UIBarButtonItem = {
-//        let barButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(buttonItemPhoto))
-//
-//        navigationItem.rightBarButtonItem = barButtonItem
-//        return barButtonItem
-//    }()
-//
-//
-//    @objc func buttonItemPhoto() {
-//        let infoViewController = InfoViewController()
-//        infoViewController.modalTransitionStyle = .crossDissolve
-//        infoViewController.modalPresentationStyle = .formSheet
-//        present(infoViewController, animated:true)
+//    @objc private  func buttonAction(sender: UIButton){
+////        let photosViewController = PhotosViewController()
+////        navigationController?.pushViewController(photosViewController, animated: true)
+//        print("My image button tapped")
 //    }
     
     func imageS() {
@@ -125,31 +108,9 @@ class PhotosViewCell: UIView  {
             stackViewPhoto.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -12),
             stackViewPhoto.heightAnchor.constraint(equalToConstant: 60),
             stackViewPhoto.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -12),
-            
-            
-//            photo.topAnchor.constraint(equalTo: labelPhoto.bottomAnchor, constant: 12),
-//            photo.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 16),
-//            photo.heightAnchor.constraint(equalToConstant: 100),
-//            photo.widthAnchor.constraint(equalToConstant: 60),
-//            photo.bottomAnchor.constraint(equalTo: bottomAnchor, constant:12),
-//
-//
-//            photo1.topAnchor.constraint(equalTo: labelPhoto.bottomAnchor, constant: 12),
-//            photo1.leadingAnchor.constraint(equalTo: photo.trailingAnchor,constant: 16),
-//            photo1.heightAnchor.constraint(equalToConstant: 100),
-//            photo1.widthAnchor.constraint(equalToConstant: 60),
-//            photo1.bottomAnchor.constraint(equalTo: bottomAnchor, constant:12)
-            
         ])
     }
-    
-    
-    
-    
-    
-    
-    
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         imageS()
@@ -158,10 +119,7 @@ class PhotosViewCell: UIView  {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    
-    
-    
+  
 }
 
 

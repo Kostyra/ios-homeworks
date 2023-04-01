@@ -57,8 +57,6 @@ class ProfileViewController: UIViewController {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = true
     }
-
-   
 }
 
 
@@ -74,7 +72,6 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         } else {
             return arrayTable.count
         }
-        
     }
     
     
@@ -84,10 +81,6 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         if indexPath.section == 0 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: PhotosTableViewCell.id1, for: indexPath)
                     as? PhotosTableViewCell else { return UITableViewCell() }
-            
-            //        let arrayNew = arrayStark[indexPath.row]
-            //        cell.textLabel?.text = "dfds"
-            //        cell.tableCell(with: arrayNew)
             return cell
         } else {
             
@@ -118,7 +111,7 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
            
         }
     }
-    
+  
 //     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
 //        if section == 0 {
 //            return 20

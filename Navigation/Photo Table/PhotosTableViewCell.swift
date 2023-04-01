@@ -3,13 +3,6 @@ import UIKit
 class PhotosTableViewCell: UITableViewCell {
 
     static let id1 = "PhotosTableViewCell"
-
-//    var photosCollectionViewCell: PhotosCollectionViewCell = {
-//         let photosCollectionViewCell = PhotosCollectionViewCell()
-//        photosCollectionViewCell.backgroundColor = .lightGray
-//        photosCollectionViewCell.translatesAutoresizingMaskIntoConstraints = false
-//         return photosCollectionViewCell
-//     }()
     
     var photosViewCell: PhotosViewCell = {
          let photosViewCell = PhotosViewCell()
@@ -21,23 +14,17 @@ class PhotosTableViewCell: UITableViewCell {
         private var imagePeople: UIImageView = {
         let image = UIImageView()
         image.translatesAutoresizingMaskIntoConstraints = false
-        image.backgroundColor = .blue //.systemBackground
+        image.backgroundColor = .blue
         image.contentMode = .scaleAspectFit
         return image
     }()
 
 
     private func imageCell() {
-//        addSubview(imagePeople)
+
         addSubview(photosViewCell)
         NSLayoutConstraint.activate ([
-//            imagePeople.topAnchor.constraint(equalTo:  topAnchor),
-//            imagePeople.bottomAnchor.constraint(equalTo:  safeAreaLayoutGuide.bottomAnchor),
-//            imagePeople.leadingAnchor.constraint(equalTo:  safeAreaLayoutGuide.leadingAnchor),
-//            imagePeople.trailingAnchor.constraint(equalTo:  trailingAnchor),
-            
             photosViewCell.topAnchor.constraint(equalTo:  topAnchor),
-//            photosCollectionViewCell.topAnchor.constraint(equalTo:  imagePeople.bottomAnchor),
             photosViewCell.bottomAnchor.constraint(equalTo:  bottomAnchor),
             photosViewCell.leadingAnchor.constraint(equalTo:  safeAreaLayoutGuide.leadingAnchor),
             photosViewCell.trailingAnchor.constraint(equalTo:  safeAreaLayoutGuide.trailingAnchor)

@@ -31,7 +31,6 @@ class PhotosViewController:  UIViewController {
         collectionView.dataSource = self
     }
     
-    
     private func collectionViewLayOut() {
         view.addSubview(collectionView)
         NSLayoutConstraint.activate([
@@ -39,10 +38,8 @@ class PhotosViewController:  UIViewController {
             collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             collectionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            
         ])
     }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,17 +48,13 @@ class PhotosViewController:  UIViewController {
         title = "Photos Gallery"
        view.backgroundColor = UIColor(named: "TabBar")
         navigationController?.navigationBar.isHidden = false
-        
     }
        
     private enum LayoutConstant {
         static let spacing: CGFloat = 8.0
         static let itemHeight: CGFloat = 100.0
     }
-
- 
 }
-
 
 extension PhotosViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -78,10 +71,7 @@ extension PhotosViewController: UICollectionViewDataSource {
 
 extension PhotosViewController:UICollectionViewDelegateFlowLayout {
     
-    private func itemWidth(
-        for width: CGFloat,
-        spacing: CGFloat
-    ) -> CGFloat {
+    private func itemWidth(for width: CGFloat, spacing: CGFloat) -> CGFloat {
         let itemsInRow: CGFloat = 3
         
         let totalSpacing: CGFloat = 2 * spacing + (itemsInRow - 1) * spacing
@@ -90,24 +80,14 @@ extension PhotosViewController:UICollectionViewDelegateFlowLayout {
         return floor(finalWidth)
     }
     
-    func collectionView(
-        _ collectionView: UICollectionView,
-        layout collectionViewLayout: UICollectionViewLayout,
-        sizeForItemAt indexPath: IndexPath
-    ) -> CGSize {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = itemWidth(
             for: view.frame.width,
-            spacing: LayoutConstant.spacing
-        )
-        
+            spacing: LayoutConstant.spacing)
         return CGSize(width: width, height: LayoutConstant.itemHeight)
     }
 
-    func collectionView(
-        _ collectionView: UICollectionView,
-        layout collectionViewLayout: UICollectionViewLayout,
-        insetForSectionAt section: Int
-    ) -> UIEdgeInsets {
+    func collectionView(_ collectionView: UICollectionView,layout collectionViewLayout: UICollectionViewLayout,insetForSectionAt section: Int) -> UIEdgeInsets {
         UIEdgeInsets(
             top: LayoutConstant.spacing,
             left: LayoutConstant.spacing,
@@ -139,20 +119,5 @@ extension PhotosViewController:UICollectionViewDelegateFlowLayout {
     ) {
         cell.contentView.backgroundColor = .green
     }
-    
-//    func collectionView(
-//        _ collectionView: UICollectionView,
-//        didSelectItemAt indexPath: IndexPath
-//    ) {
-//        print("Did select cell at \(indexPath.row)")
-//
-//        let profile = arrayStark[indexPath.row]
-//
-//        let viewController = UIViewController()
-////        viewController.title = profile.name
-////        viewController.view.backgroundColor = .random()
-//
-//        navigationController?.pushViewController(viewController, animated: true)
-//    }
-    
+        
 }
