@@ -39,3 +39,21 @@ var arrayTable = [
              likes: 4000,
              view: 6_432_423)
 ]
+
+
+struct imageStark {
+    var imageStarks: String
+}
+
+var arrayStark = [imageStark (imageStarks:"stark"),
+                  imageStark (imageStarks:"stark1"),
+                  imageStark (imageStarks:"stark2"),
+                  imageStark (imageStarks:"stark3"),
+                  imageStark (imageStarks:"stark4"),
+                  imageStark (imageStarks:"stark5"),
+                  imageStark (imageStarks:"stark6"),
+                  imageStark (imageStarks:"stark7"),
+                  imageStark (imageStarks:"stark8"),
+                  imageStark (imageStarks:"stark9"),
+
+]

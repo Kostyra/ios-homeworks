@@ -9,7 +9,9 @@ import UIKit
 
 class ProfileHeaderView: UIView {
     
-
+    
+    
+    
     private lazy var photo: UIImageView = {
         let image = UIImage(named: "images")
         let imageView = UIImageView(image: image!)
