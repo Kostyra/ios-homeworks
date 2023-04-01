@@ -30,7 +30,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         feedViewController.tabBarItem = UITabBarItem(title: "Feed", image: imageFeed, tag: 0)
         logInViewController.tabBarItem = UITabBarItem(title: "Log", image: imageProfile, tag: 1)
         let tabBarController = UITabBarController()
-       
+        UITabBar.appearance().tintColor = UIColor(named: "Color")
+        tabBarController.tabBar.backgroundColor = UIColor(named: "TabBar")
+        
         let controllers = [feedViewController, logInViewController]
         tabBarController.viewControllers = controllers.map {
             UINavigationController(rootViewController: $0)

@@ -9,8 +9,7 @@ import UIKit
 
 class ProfileHeaderView: UIView {
     
-    
-        
+
     private lazy var photo: UIImageView = {
         let image = UIImage(named: "images")
         let imageView = UIImageView(image: image!)
@@ -89,13 +88,14 @@ class ProfileHeaderView: UIView {
         addSubview(buttonStatus)
         addSubview(labelGrey)
         addSubview(textField)
+        
         NSLayoutConstraint.activate([
-            photo.topAnchor.constraint(equalTo: topAnchor, constant: 16),
+            photo.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 16),
             photo.leftAnchor.constraint(equalTo: leftAnchor, constant: 16),
             photo.widthAnchor.constraint(equalToConstant: 150),
             photo.heightAnchor.constraint(equalToConstant: 150),
             
-            label.topAnchor.constraint(equalTo: topAnchor, constant: 27),
+            label.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 27),
             label.leftAnchor.constraint(equalTo: photo.rightAnchor, constant: 20),
             label.rightAnchor.constraint(equalTo: rightAnchor , constant: -20),
     
@@ -124,5 +124,8 @@ class ProfileHeaderView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+
+
     
 }
