@@ -11,7 +11,14 @@ class PostTableViewCell: UITableViewCell {
     
     static let id = "PostTableViewCell"
     
-
+    
+    var profileHeaderView: ProfileHeaderView = {
+         let profileHeaderView = ProfileHeaderView()
+         profileHeaderView.backgroundColor = .lightGray
+         profileHeaderView.translatesAutoresizingMaskIntoConstraints = false
+         return profileHeaderView
+     }()
+    
     private let authorLabel: UILabel = {
        let author = UILabel()
         author.font = UIFont.systemFont(ofSize: 20, weight: .bold)
@@ -65,8 +72,9 @@ class PostTableViewCell: UITableViewCell {
         addSubview(descriptionText)
         addSubview(likesLabel)
         addSubview(viewsLabel)
-        
         NSLayoutConstraint.activate([
+
+            
             authorLabel.topAnchor.constraint(equalTo: topAnchor, constant: 16),
             authorLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
             authorLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
@@ -91,7 +99,7 @@ class PostTableViewCell: UITableViewCell {
     
     func tableItem(with news:PostView)  {
         authorLabel.text = news.author
-        imageEvil.image = UIImage(named:news.image)!
+        imageEvil.image = UIImage(named: news.image)
         descriptionText.text = news.description
         likesLabel.text = "Likes: " + String(news.likes)
         viewsLabel.text = "Views: " + String(news.view)
