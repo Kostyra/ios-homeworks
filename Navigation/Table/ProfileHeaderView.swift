@@ -1,16 +1,9 @@
-//
-//  Profile.swift
-//  Navigation
-//
-//  Created by Юлия Филиппова on 14.03.2023.
-//
-
 import UIKit
 
 class ProfileHeaderView: UIView {
     
-    
-    
+    static let id2  = "ProfileHeaderView"
+    private var animatePhoto = CGPoint()
     
     private lazy var photo: UIImageView = {
         let image = UIImage(named: "images")
@@ -20,6 +13,10 @@ class ProfileHeaderView: UIView {
         imageView.layer.cornerRadius = 75
         imageView.clipsToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
+        
+        let pressPhoto = UITapGestureRecognizer(target: self, action:#selector(pressImage))
+        imageView.isUserInteractionEnabled = true
+        imageView.addGestureRecognizer(pressPhoto)
         
         return imageView
     }()
@@ -70,6 +67,23 @@ class ProfileHeaderView: UIView {
         return button
     }()
     
+    private lazy var uiview: UIView = {
+        let uiview = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
+        uiview.alpha = 0
+        uiview.isHidden = true
+        uiview.backgroundColor = .systemGray
+        return uiview
+    }()
+    
+    private lazy var buttonX: UIButton = {
+       let button = UIButton()
+        button.alpha = 0
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setImage(.remove, for: .normal)
+        button.addTarget(self, action: #selector(buttonX(_:)), for: .touchUpInside)
+        return button
+    }()
+    
     private var statusText:  String { return textField.text ?? ""}
     
     @objc private  func buttonPress(sender: UIButton) {
@@ -84,18 +98,69 @@ class ProfileHeaderView: UIView {
         print(textField.text ?? "")
     }
     
+    @objc private func pressImage(gesture: UIGestureRecognizer){
+        if gesture.state == .ended {
+            print("Press end")
+        }
+        photo.isUserInteractionEnabled = false
+        
+        animatePhoto = photo.center
+        print(animatePhoto)
+        let screen = UIScreen.main.bounds.width / photo.bounds.width
+        UIImageView.animate(withDuration: 0.5, delay: 0.3, options: .curveLinear){
+            self.photo.transform = CGAffineTransform(scaleX: screen, y: screen)
+            self.photo.layer.cornerRadius = 0
+            self.photo.layer.borderColor = UIColor.green.cgColor
+            self.photo.center =  CGPoint(x: UIScreen.main.bounds.midX, y: UIScreen.main.bounds.midY )
+            self.uiview.isHidden = false
+            self.uiview.alpha = 0.7
+        } completion: { finished in UIImageView.animate(withDuration: 0.3) {
+                print("finish_1")
+                self.buttonX.alpha = 1
+            }
+        }
+    }
+        
+    @objc private func buttonX(_ sender:UIButton) {
+        print("press")
+        photo.isUserInteractionEnabled = true
+               UIImageView.animate(withDuration: 0.5){
+                   print(self.animatePhoto)
+                   self.photo.center = self.animatePhoto
+                   self.photo.transform = CGAffineTransform(scaleX: 1, y: 1)
+                   self.photo.layer.cornerRadius = 75
+                   self.photo.layer.borderColor = UIColor.white.cgColor
+                   self.uiview.isHidden = true
+                   self.uiview.alpha = 0
+                   self.buttonX.alpha = 0
+               } completion: { finished in UIImageView.animate(withDuration: 0.3) {
+                   print("finish_2")
+               }
+           }
+    }
+
     private func size() {
+        
+        addSubview(uiview)
         addSubview(photo)
+        addSubview(buttonX)
+        
         addSubview(label)
         addSubview(buttonStatus)
         addSubview(labelGrey)
         addSubview(textField)
+        
         
         NSLayoutConstraint.activate([
             photo.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 16),
             photo.leftAnchor.constraint(equalTo: leftAnchor, constant: 16),
             photo.widthAnchor.constraint(equalToConstant: 150),
             photo.heightAnchor.constraint(equalToConstant: 150),
+            
+            buttonX.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 16),
+            buttonX.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+            buttonX.widthAnchor.constraint(equalToConstant: 30),
+            buttonX.heightAnchor.constraint(equalToConstant: 30),
             
             label.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 27),
             label.leftAnchor.constraint(equalTo: photo.rightAnchor, constant: 20),
@@ -121,13 +186,14 @@ class ProfileHeaderView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         size()
+        
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-
+    
 
     
 }

@@ -4,9 +4,9 @@ import UIKit
 
 class ProfileViewController: UIViewController {
 
+   
     
-    
-    private let tableView: UITableView = {
+     private let tableView: UITableView = {
         let tableView = UITableView.init(
             frame: .zero,
             style: .plain
@@ -17,7 +17,7 @@ class ProfileViewController: UIViewController {
         
     }()
 
-    private func tableViewCell() {
+     private func tableViewCell() {
         
         tableView.register(PostTableViewCell.self, forCellReuseIdentifier: PostTableViewCell.id)
         tableView.register(PhotosTableViewCell.self, forCellReuseIdentifier: PhotosTableViewCell.id1)
@@ -31,7 +31,9 @@ class ProfileViewController: UIViewController {
     private func headerView() {
         let headerView = ProfileHeaderView()
         tableView.setAndLayout(headerView: headerView)
-        tableView.tableFooterView = UIView()
+        //tableView.tableFooterView = UIView()//UIView(frame: CGRect(x: 0, y: 0, width: 200, height: 50))
+        tableView.backgroundColor = UIColor(named: "TabBar")
+        
     }
     
     
@@ -73,9 +75,7 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
             return arrayTable.count
         }
     }
-    
-    
-    
+        
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if indexPath.section == 0 {
@@ -93,6 +93,31 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
             return cell
         }
     }
+//    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+//       if section == 0 {
+//           return 10
+//       } else {
+//           return 0
+//       }
+//   }
+//
+//     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//        nil
+//    }
+
+     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        nil
+    }
+    
+     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+         if section == 0 {
+             return 10
+         } else {
+             return 0
+         }
+        
+    }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 
         return UITableView.automaticDimension
@@ -129,9 +154,9 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
 //     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
 //        nil
 //    }
-//
+
 //     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-//        CGFloat.leastNormalMagnitude
+//        500
 //    }
     
 }
