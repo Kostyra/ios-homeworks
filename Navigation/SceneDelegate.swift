@@ -25,9 +25,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let logInViewController = LogInViewController()
         logInViewController.title = "Log"
         logInViewController.view.backgroundColor = .white
-       
-
-
+        
                 
         feedViewController.tabBarItem = UITabBarItem(title: "Feed", image: imageFeed, tag: 0)
         logInViewController.tabBarItem = UITabBarItem(title: "Log", image: imageProfile, tag: 1)
@@ -39,7 +37,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         tabBarController.viewControllers = controllers.map {
             UINavigationController(rootViewController: $0)
         }
-    
+        
+
+       
         window.rootViewController = tabBarController
         window.makeKeyAndVisible()
               
