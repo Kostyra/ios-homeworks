@@ -2,16 +2,17 @@
 //  ProfileViewController.swift
 //  Navigation
 //
-//  Created by  Konstantin Filippov on 08.03.2023.
+//  Created by Юлия Филиппова on 14.03.2023.
 //
 
 import UIKit
 
-class ProfileViewController: UIViewController {
+class ProfileViewController1: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        view.backgroundColor = .lightGray
+        var profileHeaderView
         // Do any additional setup after loading the view.
     }
     

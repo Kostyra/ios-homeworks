@@ -10,13 +10,41 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-
-
+    let imageFeed = UIImage(systemName: "figure.walk")
+    let imageProfile = UIImage(systemName: "brain.head.profile")
+    
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
-        // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
-        // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-        guard let _ = (scene as? UIWindowScene) else { return }
+        guard let scene = (scene as? UIWindowScene) else { return }
+        
+        let window = UIWindow(windowScene: scene)
+        
+        let feedViewController = FeedViewController()
+        feedViewController.title = "Feed"
+        feedViewController.view.backgroundColor = .systemOrange
+        
+        let logInViewController = LogInViewController()
+        logInViewController.title = "Log"
+        logInViewController.view.backgroundColor = .white
+       
+
+
+                
+        feedViewController.tabBarItem = UITabBarItem(title: "Feed", image: imageFeed, tag: 0)
+        logInViewController.tabBarItem = UITabBarItem(title: "Log", image: imageProfile, tag: 1)
+        let tabBarController = UITabBarController()
+        UITabBar.appearance().tintColor = UIColor(named: "Color")
+        tabBarController.tabBar.backgroundColor = UIColor(named: "TabBar")
+        
+        let controllers = [feedViewController, logInViewController]
+        tabBarController.viewControllers = controllers.map {
+            UINavigationController(rootViewController: $0)
+        }
+    
+        window.rootViewController = tabBarController
+        window.makeKeyAndVisible()
+              
+        self.window = window
+        
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
