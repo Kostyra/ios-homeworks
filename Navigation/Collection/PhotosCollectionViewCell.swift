@@ -38,6 +38,7 @@ func tableCell(with news:imageStark) {
     override init(frame: CGRect) {
         super.init(frame: .zero)
         imageCell()
+        contentView.backgroundColor = .green
     }
 }
 

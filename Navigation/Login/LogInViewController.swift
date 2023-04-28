@@ -142,7 +142,7 @@ class LogInViewController: UIViewController  {
             stackViewLoginPass.rightAnchor.constraint(equalTo: contantView.rightAnchor , constant:-16),
             stackViewLoginPass.heightAnchor.constraint(equalToConstant: 100.5),
             
-            buttonEnter.topAnchor.constraint(equalTo: pass.bottomAnchor, constant: 16),
+            buttonEnter.topAnchor.constraint(equalTo: stackViewLoginPass.bottomAnchor, constant: 16),
             buttonEnter.leftAnchor.constraint(equalTo: contantView.leftAnchor, constant: 16),
             buttonEnter.rightAnchor.constraint(equalTo: contantView.rightAnchor, constant: -16),
             buttonEnter.heightAnchor.constraint(equalToConstant: 50),
