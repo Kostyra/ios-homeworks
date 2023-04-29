@@ -1,23 +1,7 @@
 
 
-import UIKit
+import Foundation
 
-struct Post {
-    var title:String
-}
-
-struct LikesViews {
-    var Likes = "Likes "
-    var Views = "Views "
-}
-
-struct PostView {
-    var author:String
-    var description: String
-    var image: String
-    var likes: Int
-    var view: Int
-}
 
 var arrayTable = [
     PostView(author: "Jeck",
@@ -40,11 +24,6 @@ var arrayTable = [
              view: 6_432_423)
 ]
 
-
-struct imageStark {
-    var imageStarks: String
-}
-
 var arrayStark = [imageStark (imageStarks:"stark"),
                   imageStark (imageStarks:"stark1"),
                   imageStark (imageStarks:"stark2"),
@@ -55,5 +34,4 @@ var arrayStark = [imageStark (imageStarks:"stark"),
                   imageStark (imageStarks:"stark7"),
                   imageStark (imageStarks:"stark8"),
                   imageStark (imageStarks:"stark9"),
-
 ]

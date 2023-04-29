@@ -1,9 +1,3 @@
-//
-//  PostTableViewCell.swift
-//  Navigation
-//
-//  Created by Юлия Филиппова on 26.03.2023.
-//
 
 import UIKit
 
@@ -97,7 +91,7 @@ class PostTableViewCell: UITableViewCell {
         ])
     }
     
-    func tableItem(with news:PostView)  {
+    func tableItem(with news: PostView)  {
         authorLabel.text = news.author
         imageEvil.image = UIImage(named: news.image)
         descriptionText.text = news.description
