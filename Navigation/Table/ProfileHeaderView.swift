@@ -121,7 +121,7 @@ class ProfileHeaderView: UIView {
         }
     }
         
-    @objc private func buttonX(_ sender:UIButton) {
+    @objc private func buttonX(_ sender: UIButton) {
         print("press")
         photo.isUserInteractionEnabled = true
                UIImageView.animate(withDuration: 0.5){
@@ -141,15 +141,16 @@ class ProfileHeaderView: UIView {
 
     private func size() {
         
-        addSubview(uiview)
-        addSubview(photo)
-        addSubview(buttonX)
+       
         
         addSubview(label)
         addSubview(buttonStatus)
         addSubview(labelGrey)
         addSubview(textField)
         
+        addSubview(uiview)
+        addSubview(photo)
+        addSubview(buttonX)
         
         NSLayoutConstraint.activate([
             photo.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 16),

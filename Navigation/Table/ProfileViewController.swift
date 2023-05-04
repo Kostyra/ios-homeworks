@@ -40,7 +40,7 @@ class ProfileViewController: UIViewController {
     private func table() {
         view.addSubview(tableView)
         NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo:view.topAnchor),
+            tableView.topAnchor.constraint(equalTo:view.safeAreaLayoutGuide.topAnchor),
             tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
@@ -53,11 +53,16 @@ class ProfileViewController: UIViewController {
         table()
         tableViewCell()
         headerView()
-        view.backgroundColor = UIColor(named: "Color")
+        #if DEBUG
+        view.backgroundColor = UIColor(named: "TabBar")
+        #else
+        view.backgroundColor = .green
+        #endif
     }
     override func viewWillAppear(_ animated: Bool)  {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = true
+        
     }
 }
 

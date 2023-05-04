@@ -2,6 +2,7 @@
 
 import UIKit
 
+
 class PhotosViewCell: UIView  {
     
     

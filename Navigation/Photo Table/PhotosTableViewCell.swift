@@ -1,5 +1,6 @@
 import UIKit
 
+
 class PhotosTableViewCell: UITableViewCell {
 
     static let id1 = "PhotosTableViewCell"
