@@ -189,7 +189,7 @@ class ProfileHeaderView: UIView {
             make.left.equalTo(photo.snp.right).inset(-20)
             make.right.equalToSuperview().inset(20)
         }
-        
+
         labelGrey.snp.makeConstraints{ make in
             make.bottom.equalTo(textField.snp.top).inset(-10)
             make.left.equalTo(photo.snp.right).inset(-20)
