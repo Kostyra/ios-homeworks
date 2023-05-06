@@ -158,6 +158,7 @@ class LogInViewController: UIViewController  {
         
     }
     
+    
     private func setupKeyboardObservers() {
         let notificationCenter = NotificationCenter.default
         
@@ -195,10 +196,22 @@ class LogInViewController: UIViewController  {
         scrollView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
     }
     
-    @objc func buttonActionProfile() {
-        let profileViewController = ProfileViewController()
-        self.navigationController?.pushViewController(profileViewController, animated: true)
+     var textLogin:String { return login.text ?? ""}
+    
+     @objc func buttonActionProfile() {
+         
+        if let userIndefication =  myLogin.pass(login: textLogin), myLogin.pass(login: textLogin) != nil {
+            let profileViewController = ProfileViewController()
+            self.navigationController?.pushViewController(profileViewController, animated: true)
+            print(userIndefication.name)
+        } else {
+            // Вывод сообщения об ошибке, если пользователь не найден
+            let alert = UIAlertController(title: "Ошибка", message: "Проверьте введенный логин.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default))
+            present(alert, animated: true)
+        }
     }
+    
     
     
     override func viewDidLoad() {

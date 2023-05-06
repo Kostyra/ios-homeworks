@@ -5,25 +5,28 @@ class ProfileHeaderView: UIView {
     
     static let id2  = "ProfileHeaderView"
     private var animatePhoto = CGPoint()
+//    private let myPhoto = userInfo.avatar
+//    private let myInfo = userInfo.name
     
-    private lazy var photo: UIImageView = {
-        let image = UIImage(named: "images")
-        let imageView = UIImageView(image: image!)
+     lazy var photo: UIImageView = {
+//        let image = myPhoto                              //UIImage(named: "images")
+//        let imageView = UIImageView(image: image)
+        let imageView = UIImageView()
         imageView.layer.borderWidth = 3.0
         imageView.layer.borderColor = UIColor.white.cgColor
         imageView.layer.cornerRadius = 75
         imageView.clipsToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        
+//        imageView.contentMode = .scaleAspectFit
         let pressPhoto = UITapGestureRecognizer(target: self, action:#selector(pressImage))
         imageView.isUserInteractionEnabled = true
         imageView.addGestureRecognizer(pressPhoto)
         
         return imageView
     }()
-    private lazy var label: UILabel = {
+     lazy var label: UILabel = {
         let label = UILabel()
-        label.text = "Old Castle"
+        //label.text = myInfo                                       //"Old Castle"
         label.font = UIFont.systemFont(ofSize: 18, weight: .bold)
         label.textColor = .black
         label.translatesAutoresizingMaskIntoConstraints = false

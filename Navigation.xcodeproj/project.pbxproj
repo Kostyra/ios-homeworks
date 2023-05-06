@@ -26,6 +26,10 @@
 		CB3C51B729D5A99700257E79 /* PhotosCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3C51B629D5A99700257E79 /* PhotosCollectionViewCell.swift */; };
 		CB3C51B929D6235600257E79 /* PhotosViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3C51B829D6235600257E79 /* PhotosViewCell.swift */; };
 		CB4F95B629C0598200979B55 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4F95B529C0598100979B55 /* ProfileHeaderView.swift */; };
+		CB50BB682A05162000E1158A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB50BB672A05162000E1158A /* User.swift */; };
+		CB50BB6A2A0516DF00E1158A /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB50BB692A0516DF00E1158A /* UserService.swift */; };
+		CB50BB6C2A05195200E1158A /* CurrentUserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB50BB6B2A05195200E1158A /* CurrentUserService.swift */; };
+		CB50BB712A06A1C200E1158A /* TestUserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB50BB702A06A1C100E1158A /* TestUserService.swift */; };
 		CB725F3B29FBB486006334EB /* StorageService.docc in Sources */ = {isa = PBXBuildFile; fileRef = CB725F3A29FBB486006334EB /* StorageService.docc */; };
 		CB725F4129FBB486006334EB /* StorageService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB725F3729FBB486006334EB /* StorageService.framework */; };
 		CB725F4829FBB487006334EB /* StorageServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB725F4729FBB487006334EB /* StorageServiceTests.swift */; };
@@ -110,6 +114,10 @@
 		CB3C51B629D5A99700257E79 /* PhotosCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosCollectionViewCell.swift; sourceTree = "<group>"; };
 		CB3C51B829D6235600257E79 /* PhotosViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosViewCell.swift; sourceTree = "<group>"; };
 		CB4F95B529C0598100979B55 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
+		CB50BB672A05162000E1158A /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		CB50BB692A0516DF00E1158A /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		CB50BB6B2A05195200E1158A /* CurrentUserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUserService.swift; sourceTree = "<group>"; };
+		CB50BB702A06A1C100E1158A /* TestUserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUserService.swift; sourceTree = "<group>"; };
 		CB725F3729FBB486006334EB /* StorageService.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = StorageService.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB725F3929FBB486006334EB /* StorageService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StorageService.h; sourceTree = "<group>"; };
 		CB725F3A29FBB486006334EB /* StorageService.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = StorageService.docc; sourceTree = "<group>"; };
@@ -179,6 +187,7 @@
 		1214F41129B8B25A00E525F4 /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
+				CB50BB662A0515D400E1158A /* DI */,
 				CB725F6329FD6537006334EB /* Struct and Data */,
 				CB3C51B529D5A95D00257E79 /* Photo Table */,
 				CB3C51B229D472FF00257E79 /* Collection */,
@@ -272,6 +281,17 @@
 			children = (
 			);
 			path = Profile;
+			sourceTree = "<group>";
+		};
+		CB50BB662A0515D400E1158A /* DI */ = {
+			isa = PBXGroup;
+			children = (
+				CB50BB672A05162000E1158A /* User.swift */,
+				CB50BB692A0516DF00E1158A /* UserService.swift */,
+				CB50BB6B2A05195200E1158A /* CurrentUserService.swift */,
+				CB50BB702A06A1C100E1158A /* TestUserService.swift */,
+			);
+			path = DI;
 			sourceTree = "<group>";
 		};
 		CB725F3829FBB486006334EB /* StorageService */ = {
@@ -548,7 +568,9 @@
 				CB1924C529C987E8002EB421 /* LogInViewController.swift in Sources */,
 				CB3C51B729D5A99700257E79 /* PhotosCollectionViewCell.swift in Sources */,
 				CB3C51B929D6235600257E79 /* PhotosViewCell.swift in Sources */,
+				CB50BB6A2A0516DF00E1158A /* UserService.swift in Sources */,
 				1214F41329B8B25A00E525F4 /* AppDelegate.swift in Sources */,
+				CB50BB712A06A1C200E1158A /* TestUserService.swift in Sources */,
 				1214F42929B91A8C00E525F4 /* ProfileViewController.swift in Sources */,
 				CB1924C729CAF36A002EB421 /* LoginButton.swift in Sources */,
 				CBCA919C29BB6DDB00D11098 /* InfoViewController.swift in Sources */,
@@ -558,10 +580,12 @@
 				CB725F6729FD6572006334EB /* LikesViews.swift in Sources */,
 				CB725F6B29FD65CB006334EB /* Data.swift in Sources */,
 				1214F42729B91A7300E525F4 /* FeedViewController.swift in Sources */,
+				CB50BB6C2A05195200E1158A /* CurrentUserService.swift in Sources */,
 				CB3C51B429D4738D00257E79 /* PhotosViewController.swift in Sources */,
 				CB3C51AD29D32A7A00257E79 /* DelimiterView.swift in Sources */,
 				CB725F6529FD6560006334EB /* Post.swift in Sources */,
 				1214F41529B8B25A00E525F4 /* SceneDelegate.swift in Sources */,
+				CB50BB682A05162000E1158A /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
