@@ -1,6 +1,7 @@
 
 
 import UIKit
+import StorageService
 
 class ProfileViewController: UIViewController {
 
@@ -28,8 +29,12 @@ class ProfileViewController: UIViewController {
         
     }
     
-    private func headerView() {
+     func headerView() {
         let headerView = ProfileHeaderView()
+         headerView.label.text = userInfo.name
+         headerView.photo.image = userInfo.avatar
+//         let a = LogInViewController()
+//         headerView.label.text =  a.temp
         tableView.setAndLayout(headerView: headerView)
         //tableView.tableFooterView = UIView()//UIView(frame: CGRect(x: 0, y: 0, width: 200, height: 50))
         tableView.backgroundColor = UIColor(named: "TabBar")

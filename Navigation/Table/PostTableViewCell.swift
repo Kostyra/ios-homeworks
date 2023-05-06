@@ -1,10 +1,14 @@
 
 import UIKit
+import StorageService
+import iOSIntPackage
 
 class PostTableViewCell: UITableViewCell {
     
     static let id = "PostTableViewCell"
-    
+     let filterImage = ImageProcessor()
+ //   filterImage.processImage(sourceImage: T##UIImage, filter: T##ColorFilter, completion: T##(UIImage?) -> Void)
+//    filterImage.processImage(sourceImage: UIImage, filter: ColorFilter, completion: (UIImage?) -> Void)
     
     var profileHeaderView: ProfileHeaderView = {
          let profileHeaderView = ProfileHeaderView()
@@ -53,7 +57,9 @@ class PostTableViewCell: UITableViewCell {
         imageView.contentMode = .scaleAspectFit
         imageView.backgroundColor = .black
         imageView.translatesAutoresizingMaskIntoConstraints = false
+        
         return imageView
+        
     }()
     
   
@@ -94,6 +100,13 @@ class PostTableViewCell: UITableViewCell {
     func tableItem(with news: PostView)  {
         authorLabel.text = news.author
         imageEvil.image = UIImage(named: news.image)
+        let images  = imageEvil.image
+        filterImage.processImage(sourceImage:images!, filter: .noir) {(processedImage) in
+            if let images = processedImage {
+                imageEvil.image = images
+            }
+        }
+        //filterImage.processImage(sourceImage: test!, filter: .colorInvert, completion: (UIImage?) -> Void) in
         descriptionText.text = news.description
         likesLabel.text = "Likes: " + String(news.likes)
         viewsLabel.text = "Views: " + String(news.view)

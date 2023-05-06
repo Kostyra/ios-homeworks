@@ -1,9 +1,8 @@
 
+import StorageService
+ 
 
-import Foundation
-
-
-var arrayTable = [
+ var arrayTable = [
     PostView(author: "Jeck",
              description: "All tasks are required to complete to receive credit, except for tasks with an asterisk. You can send each detection mask or all tasks together for verification. During the Partial Review, your homework will have the status In Progress. Ask any questions about the tasks in the study group chat. Homework to be completed in the same project where you are doing part of the first task. Task number 1 Your application must be fully compliant with the samples. Do not do anything extra, it will complicate the verification of your work.",
              image: "veidor",

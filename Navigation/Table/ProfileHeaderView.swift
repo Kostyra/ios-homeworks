@@ -1,28 +1,32 @@
 import UIKit
+import SnapKit
 
 class ProfileHeaderView: UIView {
     
     static let id2  = "ProfileHeaderView"
     private var animatePhoto = CGPoint()
+//    private let myPhoto = userInfo.avatar
+//    private let myInfo = userInfo.name
     
-    private lazy var photo: UIImageView = {
-        let image = UIImage(named: "images")
-        let imageView = UIImageView(image: image!)
+     lazy var photo: UIImageView = {
+//        let image = myPhoto                              //UIImage(named: "images")
+//        let imageView = UIImageView(image: image)
+        let imageView = UIImageView()
         imageView.layer.borderWidth = 3.0
         imageView.layer.borderColor = UIColor.white.cgColor
         imageView.layer.cornerRadius = 75
         imageView.clipsToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        
+//        imageView.contentMode = .scaleAspectFit
         let pressPhoto = UITapGestureRecognizer(target: self, action:#selector(pressImage))
         imageView.isUserInteractionEnabled = true
         imageView.addGestureRecognizer(pressPhoto)
         
         return imageView
     }()
-    private lazy var label: UILabel = {
+     lazy var label: UILabel = {
         let label = UILabel()
-        label.text = "Old Castle"
+        //label.text = myInfo                                       //"Old Castle"
         label.font = UIFont.systemFont(ofSize: 18, weight: .bold)
         label.textColor = .black
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -139,10 +143,15 @@ class ProfileHeaderView: UIView {
            }
     }
 
+    private lazy var box: UIView = {
+       let box = UIView()
+        return box
+    }()
+    
     private func size() {
         
        
-        
+        addSubview(box)
         addSubview(label)
         addSubview(buttonStatus)
         addSubview(labelGrey)
@@ -152,36 +161,78 @@ class ProfileHeaderView: UIView {
         addSubview(photo)
         addSubview(buttonX)
         
-        NSLayoutConstraint.activate([
-            photo.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 16),
-            photo.leftAnchor.constraint(equalTo: leftAnchor, constant: 16),
-            photo.widthAnchor.constraint(equalToConstant: 150),
-            photo.heightAnchor.constraint(equalToConstant: 150),
+     
+        box.snp.makeConstraints{ make in
+            make.height.equalToSuperview().inset(130)
+        }
+
+        photo.snp.makeConstraints{ make in
+            make.top.equalToSuperview().inset(16)
+            make.left.equalToSuperview().inset(16)
+            make.height.width.equalTo(150)
+        }
+
+        buttonStatus.snp.makeConstraints{ make in
+            make.top.equalTo(photo.snp.bottom).inset(-27)
+            make.left.right.equalToSuperview().inset(16)
+            make.height.equalTo(50)
+        }
+
+        buttonX.snp.makeConstraints{ make in
+            make.top.equalToSuperview().inset(16)
+            make.right.equalToSuperview().inset(16)
+            make.width.height.equalTo(30)
+        }
+
+        label.snp.makeConstraints { make in
+            make.top.equalTo(27)
+            make.left.equalTo(photo.snp.right).inset(-20)
+            make.right.equalToSuperview().inset(20)
+        }
+
+        labelGrey.snp.makeConstraints{ make in
+            make.bottom.equalTo(textField.snp.top).inset(-10)
+            make.left.equalTo(photo.snp.right).inset(-20)
+            make.right.equalToSuperview().inset(20)
+        }
+
+        textField.snp.makeConstraints{ make in
+            make.bottom.equalTo(buttonStatus.snp.top).inset(-10)
+            make.left.equalTo(photo.snp.right).inset(-20)
+            make.right.equalToSuperview().inset(20)
+            make.height.equalTo(40)
+        }
             
-            buttonX.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 16),
-            buttonX.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
-            buttonX.widthAnchor.constraint(equalToConstant: 30),
-            buttonX.heightAnchor.constraint(equalToConstant: 30),
-            
-            label.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 27),
-            label.leftAnchor.constraint(equalTo: photo.rightAnchor, constant: 20),
-            label.rightAnchor.constraint(equalTo: rightAnchor , constant: -20),
-    
-            buttonStatus.topAnchor.constraint(equalTo: photo.bottomAnchor,constant:16),
-            buttonStatus.leftAnchor.constraint(equalTo: leftAnchor , constant: 16),
-            buttonStatus.rightAnchor.constraint(equalTo: rightAnchor, constant:-16),
-            buttonStatus.heightAnchor.constraint(equalToConstant: 50),
-            buttonStatus.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -16),
-            
-            labelGrey.bottomAnchor.constraint(equalTo: textField.topAnchor, constant: -10),
-            labelGrey.leftAnchor.constraint(equalTo: photo.rightAnchor,constant: 20),
-            labelGrey.rightAnchor.constraint(equalTo: rightAnchor, constant: -20),
-        
-            textField.bottomAnchor.constraint(equalTo: buttonStatus.topAnchor, constant: -10),
-            textField.leftAnchor.constraint(equalTo: photo.rightAnchor, constant: 20),
-            textField.rightAnchor.constraint(equalTo: rightAnchor, constant: -20),
-            textField.heightAnchor.constraint(equalToConstant: 40)
-        ])
+//        NSLayoutConstraint.activate([
+//            photo.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 16),
+//            photo.leftAnchor.constraint(equalTo: leftAnchor, constant: 16),
+//            photo.widthAnchor.constraint(equalToConstant: 150),
+//            photo.heightAnchor.constraint(equalToConstant: 150),
+//
+//            buttonX.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 16),
+//            buttonX.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+//            buttonX.widthAnchor.constraint(equalToConstant: 30),
+//            buttonX.heightAnchor.constraint(equalToConstant: 30),
+//
+//            label.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 27),
+//            label.leftAnchor.constraint(equalTo: photo.rightAnchor, constant: 20),
+//            label.rightAnchor.constraint(equalTo: rightAnchor , constant: -20),
+//
+//            buttonStatus.topAnchor.constraint(equalTo: photo.bottomAnchor,constant:16),
+//            buttonStatus.leftAnchor.constraint(equalTo: leftAnchor , constant: 16),
+//            buttonStatus.rightAnchor.constraint(equalTo: rightAnchor, constant:-16),
+//            buttonStatus.heightAnchor.constraint(equalToConstant: 50),
+//            buttonStatus.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -16),
+//
+//            labelGrey.bottomAnchor.constraint(equalTo: textField.topAnchor, constant: -10),
+//            labelGrey.leftAnchor.constraint(equalTo: photo.rightAnchor,constant: 20),
+//            labelGrey.rightAnchor.constraint(equalTo: rightAnchor, constant: -20),
+//
+//            textField.bottomAnchor.constraint(equalTo: buttonStatus.topAnchor, constant: -10),
+//            textField.leftAnchor.constraint(equalTo: photo.rightAnchor, constant: 20),
+//            textField.rightAnchor.constraint(equalTo: rightAnchor, constant: -20),
+//            textField.heightAnchor.constraint(equalToConstant: 40)
+//        ])
     }
     
     override init(frame: CGRect) {
