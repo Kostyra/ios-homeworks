@@ -23,6 +23,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         feedViewController.view.backgroundColor = .systemOrange
         
         let logInViewController = LogInViewController()
+//        var loginInspector = LoginInspector()
+        let loginFactory = MyLoginFactory()
+        let loginInspector = loginFactory.makeLoginInspector()
+        logInViewController.loginDelegate = loginInspector
+        
         logInViewController.title = "Log"
         logInViewController.view.backgroundColor = .white
        
