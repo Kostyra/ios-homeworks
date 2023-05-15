@@ -24,8 +24,6 @@ class TestUserService: UserService {
 
 #if DEBUG
 let userInfo  = User(login: "123", name: "Den" , avatar: UIImage(named: "doctor")!, status: "active")
-let myLogin = TestUserService(user: userInfo)
 #else
 let userInfo  = User(login: "123", name: "Max" , avatar: UIImage(named: "veidor")!, status: "active")
-let myLogin = CurrentUserService(user: userInfo)
 #endif

@@ -4,6 +4,7 @@ import UIKit
 
 class LogInViewController: UIViewController  {
     
+    var loginDelegate:LoginViewControllerDelegate?
     
 //    private lazy var delimiter:DelimiterView = {
 //        let delimiter = DelimiterView()
@@ -199,17 +200,29 @@ class LogInViewController: UIViewController  {
      var textLogin:String { return login.text ?? ""}
     
      @objc func buttonActionProfile() {
+        #if DEBUG
+         let myLogin = TestUserService(user: userInfo)
+        #else
+         let myLogin = CurrentUserService(user: userInfo)
+        #endif
          
-        if let userIndefication =  myLogin.pass(login: textLogin), myLogin.pass(login: textLogin) != nil {
+         guard let userName = login.text , let password = pass.text else {return}
+         
+//         let inspector = LoginInspector()
+//         let valid = inspector.validate(userName: userName, password: password)
+         let valid = loginDelegate?.check(userName: userName, password: password)
+         if valid == true {
             let profileViewController = ProfileViewController()
             self.navigationController?.pushViewController(profileViewController, animated: true)
-            print(userIndefication.name)
-        } else {
-            // Вывод сообщения об ошибке, если пользователь не найден
-            let alert = UIAlertController(title: "Ошибка", message: "Проверьте введенный логин.", preferredStyle: .alert)
+         } else if let userIndefication =  myLogin.pass(login: textLogin), myLogin.pass(login: textLogin) != nil {
+            let profileViewController = ProfileViewController()
+            self.navigationController?.pushViewController(profileViewController, animated: true)
+             print(userIndefication.name)
+         } else {
+             let alert = UIAlertController(title: "Ошибка", message: "Проверьте введенный логин и пароль", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default))
             present(alert, animated: true)
-        }
+         }
     }
     
     
