@@ -1,11 +1,12 @@
 
 import UIKit
+import iOSIntPackage
 
 
 
 class PhotosViewController:  UIViewController {
 
-    
+    let imagePublisherFacade = ImagePublisherFacade()
     
     
     private let collectionView: UICollectionView = {
@@ -120,4 +121,13 @@ extension PhotosViewController:UICollectionViewDelegateFlowLayout {
         cell.contentView.backgroundColor = .green
     }
         
+}
+
+
+extension PhotosViewController: ImageLibrarySubscriber {
+    func receive(images: [UIImage]) {
+        "not done"
+    }
+    
+    
 }

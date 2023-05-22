@@ -31,7 +31,7 @@ class LogInViewController: UIViewController  {
         textField.tintColor = UIColor(named: "Color")
         textField.autocapitalizationType = .none
         textField.backgroundColor = .systemGray6
-        textField.placeholder = "Email of phone"
+        textField.placeholder = "Pop"
         textField.borderStyle = UITextField.BorderStyle.roundedRect
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.clipsToBounds = true
@@ -56,7 +56,7 @@ class LogInViewController: UIViewController  {
         textField.autocapitalizationType = .none
         textField.isSecureTextEntry = true
         textField.backgroundColor = .systemGray6
-        textField.placeholder = "Password"
+        textField.placeholder = "123"
         textField.borderStyle = UITextField.BorderStyle.roundedRect
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.clipsToBounds = true
@@ -71,12 +71,15 @@ class LogInViewController: UIViewController  {
     
     
     private lazy var buttonEnter: CustomButton = {
-        let button = CustomButton()
-        button.setTitle("Log in", for: .normal)
+        let button = CustomButton(title: "Log in",
+                                  titleColor: .white,
+                                  backgroundColor: UIColor(named: "Color") ,
+                                  action: buttonActionProfile)
         button.layer.cornerRadius = 10
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.backgroundColor = UIColor(named: "Color")
-        button.addTarget(self, action: #selector(buttonActionProfile), for: .touchUpInside)
+        //button.setTitle("Log in", for: .normal)
+        //button.backgroundColor = UIColor(named: "Color")
+        //button.addTarget(self, action: #selector(buttonActionProfile), for: .touchUpInside)
         return button
         
     }()
