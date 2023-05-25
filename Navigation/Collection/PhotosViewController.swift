@@ -7,7 +7,7 @@ import iOSIntPackage
 class PhotosViewController:  UIViewController {
 
     let imagePublisherFacade = ImagePublisherFacade()
-    
+    lazy var arrayOfImages = [UIImage]()
     
     private let collectionView: UICollectionView = {
        let viewLayOut = UICollectionViewFlowLayout()
@@ -49,8 +49,18 @@ class PhotosViewController:  UIViewController {
         title = "Photos Gallery"
        view.backgroundColor = UIColor(named: "TabBar")
         navigationController?.navigationBar.isHidden = false
+        imagePublisherFacade.subscribe(self)
+        imagePublisherFacade.addImagesWithTimer(time: 0.5, repeat: 10, userImages: newImageLibrary)
+        
     }
        
+    
+    override func viewWillDisappear(_ animated: Bool) {
+            super.viewWillDisappear(true)
+            imagePublisherFacade.rechargeImageLibrary()
+            imagePublisherFacade.removeSubscription(for: self)
+        }
+    
     private enum LayoutConstant {
         static let spacing: CGFloat = 8.0
         static let itemHeight: CGFloat = 100.0
@@ -59,12 +69,12 @@ class PhotosViewController:  UIViewController {
 
 extension PhotosViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        arrayStark.count
+        arrayOfImages.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotosCollectionViewCell.id1, for: indexPath) as! PhotosCollectionViewCell
-        let arrayCollection = arrayStark[indexPath.row]
+        let arrayCollection = arrayOfImages[indexPath.item]
         cell.tableCell(with: arrayCollection)
         return cell
     }
@@ -126,7 +136,8 @@ extension PhotosViewController:UICollectionViewDelegateFlowLayout {
 
 extension PhotosViewController: ImageLibrarySubscriber {
     func receive(images: [UIImage]) {
-        "not done"
+        arrayOfImages = images
+        collectionView.reloadData()
     }
     
     

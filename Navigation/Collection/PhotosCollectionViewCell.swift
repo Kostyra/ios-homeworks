@@ -27,8 +27,9 @@ private func imageCell() {
     ])
 
 }
-func tableCell(with news:imageStark) {
-    imagePeople.image = UIImage(named: news.imageStarks)
+func tableCell(with news:UIImage) {
+    imagePeople.image = news
+    
 }
 
     required init?(coder: NSCoder) {

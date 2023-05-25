@@ -7,3 +7,5 @@ final class FeedModel {
         return passFeed.lowercased() == passFeedModel.lowercased()
     }
 }
+
+
