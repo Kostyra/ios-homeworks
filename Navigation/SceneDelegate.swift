@@ -18,7 +18,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let window = UIWindow(windowScene: scene)
         
-        let feedViewController = FeedViewController()
+        var feedModel = FeedModel()
+        let feedViewModel = FeedViewModel(feedModel: feedModel)
+        let feedViewController = FeedViewController(feedViewModel: feedViewModel)
         feedViewController.title = "Feed"
         feedViewController.view.backgroundColor = .systemOrange
         
