@@ -37,6 +37,12 @@
 		CB50BB8A2A135BF000E1158A /* iOSIntPackage in Frameworks */ = {isa = PBXBuildFile; productRef = CB50BB892A135BF000E1158A /* iOSIntPackage */; };
 		CB50BB902A1A7C4800E1158A /* FeedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB50BB8F2A1A7C4800E1158A /* FeedModel.swift */; };
 		CB50BB932A1F903200E1158A /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB50BB922A1F903100E1158A /* FeedViewModel.swift */; };
+		CB50BB972A24C18200E1158A /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB50BB962A24C18200E1158A /* MainCoordinator.swift */; };
+		CB50BB992A24C2C300E1158A /* MainTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB50BB982A24C2C300E1158A /* MainTabBar.swift */; };
+		CB50BB9D2A24C3BD00E1158A /* FactoryTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB50BB9C2A24C3BD00E1158A /* FactoryTabBar.swift */; };
+		CB50BB9F2A24EE0200E1158A /* FeedCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB50BB9E2A24EE0200E1158A /* FeedCoordinator.swift */; };
+		CB50BBA12A24F0A500E1158A /* PostCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB50BBA02A24F0A500E1158A /* PostCoordinator.swift */; };
+		CB50BBA32A264A7000E1158A /* CoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB50BBA22A264A6F00E1158A /* CoordinatorProtocol.swift */; };
 		CB725F3B29FBB486006334EB /* StorageService.docc in Sources */ = {isa = PBXBuildFile; fileRef = CB725F3A29FBB486006334EB /* StorageService.docc */; };
 		CB725F4129FBB486006334EB /* StorageService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB725F3729FBB486006334EB /* StorageService.framework */; };
 		CB725F4829FBB487006334EB /* StorageServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB725F4729FBB487006334EB /* StorageServiceTests.swift */; };
@@ -121,6 +127,12 @@
 		CB50BB832A12125E00E1158A /* MyLoginFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLoginFactory.swift; sourceTree = "<group>"; };
 		CB50BB8F2A1A7C4800E1158A /* FeedModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedModel.swift; sourceTree = "<group>"; };
 		CB50BB922A1F903100E1158A /* FeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModel.swift; sourceTree = "<group>"; };
+		CB50BB962A24C18200E1158A /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
+		CB50BB982A24C2C300E1158A /* MainTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBar.swift; sourceTree = "<group>"; };
+		CB50BB9C2A24C3BD00E1158A /* FactoryTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactoryTabBar.swift; sourceTree = "<group>"; };
+		CB50BB9E2A24EE0200E1158A /* FeedCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCoordinator.swift; sourceTree = "<group>"; };
+		CB50BBA02A24F0A500E1158A /* PostCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCoordinator.swift; sourceTree = "<group>"; };
+		CB50BBA22A264A6F00E1158A /* CoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorProtocol.swift; sourceTree = "<group>"; };
 		CB725F3729FBB486006334EB /* StorageService.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = StorageService.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB725F3929FBB486006334EB /* StorageService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StorageService.h; sourceTree = "<group>"; };
 		CB725F3A29FBB486006334EB /* StorageService.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = StorageService.docc; sourceTree = "<group>"; };
@@ -186,6 +198,9 @@
 		1214F41129B8B25A00E525F4 /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
+				CB50BB9B2A24C3A800E1158A /* FactoryTabBar */,
+				CB50BB9A2A24C2DB00E1158A /* MainTabBar */,
+				CB50BB952A24C16600E1158A /* Coordinator */,
 				CB50BB912A1F901F00E1158A /* FEEDFLOW */,
 				CB50BB8B2A19FAD800E1158A /* MVC */,
 				CB50BB7A2A10B78600E1158A /* Singalton&Delegate&Factory */,
@@ -307,6 +322,33 @@
 				CB50BB8F2A1A7C4800E1158A /* FeedModel.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		CB50BB952A24C16600E1158A /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				CB50BB962A24C18200E1158A /* MainCoordinator.swift */,
+				CB50BB9E2A24EE0200E1158A /* FeedCoordinator.swift */,
+				CB50BBA02A24F0A500E1158A /* PostCoordinator.swift */,
+				CB50BBA22A264A6F00E1158A /* CoordinatorProtocol.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		CB50BB9A2A24C2DB00E1158A /* MainTabBar */ = {
+			isa = PBXGroup;
+			children = (
+				CB50BB982A24C2C300E1158A /* MainTabBar.swift */,
+			);
+			path = MainTabBar;
+			sourceTree = "<group>";
+		};
+		CB50BB9B2A24C3A800E1158A /* FactoryTabBar */ = {
+			isa = PBXGroup;
+			children = (
+				CB50BB9C2A24C3BD00E1158A /* FactoryTabBar.swift */,
+			);
+			path = FactoryTabBar;
 			sourceTree = "<group>";
 		};
 		CB725F3829FBB486006334EB /* StorageService */ = {
@@ -489,6 +531,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB50BB9D2A24C3BD00E1158A /* FactoryTabBar.swift in Sources */,
 				CB3C51A429D07F6400257E79 /* PostTableViewCell.swift in Sources */,
 				1214F42B29B9B75000E525F4 /* PostViewController.swift in Sources */,
 				CB4F95B629C0598200979B55 /* ProfileHeaderView.swift in Sources */,
@@ -498,22 +541,27 @@
 				CB50BB6A2A0516DF00E1158A /* UserService.swift in Sources */,
 				CB50BB932A1F903200E1158A /* FeedViewModel.swift in Sources */,
 				CB50BB902A1A7C4800E1158A /* FeedModel.swift in Sources */,
+				CB50BB9F2A24EE0200E1158A /* FeedCoordinator.swift in Sources */,
 				1214F41329B8B25A00E525F4 /* AppDelegate.swift in Sources */,
 				CB50BB712A06A1C200E1158A /* TestUserService.swift in Sources */,
 				1214F42929B91A8C00E525F4 /* ProfileViewController.swift in Sources */,
 				CB1924C729CAF36A002EB421 /* CustomButton.swift in Sources */,
 				CB50BB7C2A10B7A600E1158A /* Checker.swift in Sources */,
 				CBCA919C29BB6DDB00D11098 /* InfoViewController.swift in Sources */,
+				CB50BB992A24C2C300E1158A /* MainTabBar.swift in Sources */,
 				CB725F6929FD658C006334EB /* imageStark.swift in Sources */,
 				CB3C51AF29D4603C00257E79 /* PhotosTableViewCell.swift in Sources */,
 				CB3C51AA29D3204000257E79 /* ExtationHeader.swift in Sources */,
 				CB725F6729FD6572006334EB /* LikesViews.swift in Sources */,
 				CB725F6B29FD65CB006334EB /* Data.swift in Sources */,
+				CB50BBA32A264A7000E1158A /* CoordinatorProtocol.swift in Sources */,
 				CB50BB802A11292F00E1158A /* LoginInspector.swift in Sources */,
 				1214F42729B91A7300E525F4 /* FeedViewController.swift in Sources */,
 				CB50BB842A12125E00E1158A /* MyLoginFactory.swift in Sources */,
+				CB50BBA12A24F0A500E1158A /* PostCoordinator.swift in Sources */,
 				CB50BB6C2A05195200E1158A /* CurrentUserService.swift in Sources */,
 				CB3C51B429D4738D00257E79 /* PhotosViewController.swift in Sources */,
+				CB50BB972A24C18200E1158A /* MainCoordinator.swift in Sources */,
 				CB50BB822A1211CF00E1158A /* LoginFactory.swift in Sources */,
 				CB50BB7E2A10B9DD00E1158A /* LoginViewControllerDelegate.swift in Sources */,
 				CB3C51AD29D32A7A00257E79 /* DelimiterView.swift in Sources */,

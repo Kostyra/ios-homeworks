@@ -156,7 +156,7 @@ class LogInViewController: UIViewController  {
     }
     
     private func setupView() {
-        view.backgroundColor = .systemPink
+        //view.backgroundColor = .systemPink
         navigationItem.title = ""
         navigationController?.navigationBar.prefersLargeTitles = false
         

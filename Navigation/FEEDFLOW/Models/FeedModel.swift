@@ -1,5 +1,7 @@
 
 import Foundation
+
+//MARK: - enum
 enum FeedModelError:Error {
     case notWorld
     case unnCorrect
@@ -14,16 +16,17 @@ enum FeedModelError:Error {
     }
 }
 
-
+//MARK: - protocol
 protocol FeedModelProtocol {
     func check(_ pass:String?, complition: @escaping(Result<Bool, FeedModelError>) -> Void)
 }
 
+//MARK: - class
 final class FeedModel {
-    //MARK: - 
     private let passFeedModel = "Secret"
 }
 
+//MARK: - extension
 extension FeedModel:FeedModelProtocol {
     func check(_ pass:String?, complition: @escaping(Result<Bool, FeedModelError>) -> Void) {
         guard let pass = pass,

@@ -27,9 +27,11 @@ final class FeedViewModel {
     }
     
     private let feedModel: FeedModel
+    private let feedCoordinator:FeedCoordinator
     
-    init(feedModel: FeedModel) {
+    init(feedModel: FeedModel,feedCoordinator:FeedCoordinator) {
         self.feedModel = feedModel
+        self.feedCoordinator  = feedCoordinator
     }
 
 }

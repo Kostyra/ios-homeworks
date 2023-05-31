@@ -10,47 +10,51 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-    let imageFeed = UIImage(systemName: "figure.walk")
-    let imageProfile = UIImage(systemName: "brain.head.profile")
+//    var mainCoordinator:
+
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let scene = (scene as? UIWindowScene) else { return }
+        window = UIWindow(windowScene: scene)
+        window?.makeKeyAndVisible()
         
-        let window = UIWindow(windowScene: scene)
+        let mainCoordinator = MainCoordinator()
+        window?.rootViewController = mainCoordinator.startAplication()
         
-        var feedModel = FeedModel()
-        let feedViewModel = FeedViewModel(feedModel: feedModel)
-        let feedViewController = FeedViewController(feedViewModel: feedViewModel)
-        feedViewController.title = "Feed"
-        feedViewController.view.backgroundColor = .systemOrange
-        
-        let logInViewController = LogInViewController()
-//        var loginInspector = LoginInspector()
-        let loginFactory = MyLoginFactory()
-        let loginInspector = loginFactory.makeLoginInspector()
-        logInViewController.loginDelegate = loginInspector
-        logInViewController.title = "Log"
-        logInViewController.view.backgroundColor = .white
        
+//        let feedModel = FeedModel()
+//        let feedViewModel = FeedViewModel(feedModel: feedModel)
+//        let feedViewController = FeedViewController(feedViewModel: feedViewModel)
+//        feedViewController.title = "Feed"
+//        feedViewController.view.backgroundColor = .systemOrange
+        
+//        let logInViewController = LogInViewController()
+////        var loginInspector = LoginInspector()
+//        let loginFactory = MyLoginFactory()
+//        let loginInspector = loginFactory.makeLoginInspector()
+//        logInViewController.loginDelegate = loginInspector
+//        logInViewController.title = "Log"
+//        logInViewController.view.backgroundColor = .white
+        
 
 
                 
-        feedViewController.tabBarItem = UITabBarItem(title: "Feed", image: imageFeed, tag: 0)
-        logInViewController.tabBarItem = UITabBarItem(title: "Log", image: imageProfile, tag: 1)
-        let tabBarController = UITabBarController()
-        UITabBar.appearance().tintColor = UIColor(named: "Color")
-        tabBarController.tabBar.backgroundColor = UIColor(named: "TabBar")
-        
-        let controllers = [feedViewController, logInViewController]
-        tabBarController.viewControllers = controllers.map {
-            UINavigationController(rootViewController: $0)
-        }
+//        feedViewController.tabBarItem = UITabBarItem(title: "Feed", image: imageFeed, tag: 0)
+//        logInViewController.tabBarItem = UITabBarItem(title: "Log", image: imageProfile, tag: 1)
+//        let tabBarController = UITabBarController()
+//        UITabBar.appearance().tintColor = UIColor(named: "Color")
+//        tabBarController.tabBar.backgroundColor = UIColor(named: "TabBar")
+//
+//        let controllers = [feedViewController, logInViewController]
+//        tabBarController.viewControllers = controllers.map {
+//            UINavigationController(rootViewController: $0)
+//        }
     
-        window.rootViewController = tabBarController
-        window.makeKeyAndVisible()
-        createArray()
-        
-        self.window = window
+//        window.rootViewController = tabBarController
+//        window.makeKeyAndVisible()
+//        createArray()
+//
+//        self.window = window
         
     }
 

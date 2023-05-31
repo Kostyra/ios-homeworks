@@ -118,7 +118,7 @@ class FeedViewController: UIViewController {
                 print(2)
                 self?.labelCheck.backgroundColor = .green
             case .uncorrect:
-                print(3)
+    
                 self?.labelCheck.backgroundColor = .red
 
             }
