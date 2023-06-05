@@ -34,7 +34,6 @@
 		CB50BB802A11292F00E1158A /* LoginInspector.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB50BB7F2A11292F00E1158A /* LoginInspector.swift */; };
 		CB50BB822A1211CF00E1158A /* LoginFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB50BB812A1211CF00E1158A /* LoginFactory.swift */; };
 		CB50BB842A12125E00E1158A /* MyLoginFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB50BB832A12125E00E1158A /* MyLoginFactory.swift */; };
-		CB50BB8A2A135BF000E1158A /* iOSIntPackage in Frameworks */ = {isa = PBXBuildFile; productRef = CB50BB892A135BF000E1158A /* iOSIntPackage */; };
 		CB50BB902A1A7C4800E1158A /* FeedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB50BB8F2A1A7C4800E1158A /* FeedModel.swift */; };
 		CB50BB932A1F903200E1158A /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB50BB922A1F903100E1158A /* FeedViewModel.swift */; };
 		CB50BB972A24C18200E1158A /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB50BB962A24C18200E1158A /* MainCoordinator.swift */; };
@@ -43,6 +42,7 @@
 		CB50BB9F2A24EE0200E1158A /* FeedCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB50BB9E2A24EE0200E1158A /* FeedCoordinator.swift */; };
 		CB50BBA12A24F0A500E1158A /* PostCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB50BBA02A24F0A500E1158A /* PostCoordinator.swift */; };
 		CB50BBA32A264A7000E1158A /* CoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB50BBA22A264A6F00E1158A /* CoordinatorProtocol.swift */; };
+		CB50BBA62A277A0800E1158A /* iOSIntPackage in Frameworks */ = {isa = PBXBuildFile; productRef = CB50BBA52A277A0800E1158A /* iOSIntPackage */; };
 		CB725F3B29FBB486006334EB /* StorageService.docc in Sources */ = {isa = PBXBuildFile; fileRef = CB725F3A29FBB486006334EB /* StorageService.docc */; };
 		CB725F4129FBB486006334EB /* StorageService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB725F3729FBB486006334EB /* StorageService.framework */; };
 		CB725F4829FBB487006334EB /* StorageServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB725F4729FBB487006334EB /* StorageServiceTests.swift */; };
@@ -151,7 +151,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CB50BB8A2A135BF000E1158A /* iOSIntPackage in Frameworks */,
+				CB50BBA62A277A0800E1158A /* iOSIntPackage in Frameworks */,
 				CB50BB792A06AC4A00E1158A /* SnapKit in Frameworks */,
 				CB725F4C29FBB487006334EB /* StorageService.framework in Frameworks */,
 			);
@@ -411,7 +411,7 @@
 			name = Navigation;
 			packageProductDependencies = (
 				CB50BB782A06AC4A00E1158A /* SnapKit */,
-				CB50BB892A135BF000E1158A /* iOSIntPackage */,
+				CB50BBA52A277A0800E1158A /* iOSIntPackage */,
 			);
 			productName = Navigation;
 			productReference = 1214F40F29B8B25A00E525F4 /* Navigation.app */;
@@ -487,7 +487,7 @@
 			mainGroup = 1214F40629B8B25A00E525F4;
 			packageReferences = (
 				CB50BB772A06AC4A00E1158A /* XCRemoteSwiftPackageReference "SnapKit" */,
-				CB50BB882A135BF000E1158A /* XCRemoteSwiftPackageReference "iOSIntPackage" */,
+				CB50BBA42A277A0800E1158A /* XCRemoteSwiftPackageReference "iOSIntPackage" */,
 			);
 			productRefGroup = 1214F41029B8B25A00E525F4 /* Products */;
 			projectDirPath = "";
@@ -943,12 +943,12 @@
 				minimumVersion = 5.6.0;
 			};
 		};
-		CB50BB882A135BF000E1158A /* XCRemoteSwiftPackageReference "iOSIntPackage" */ = {
+		CB50BBA42A277A0800E1158A /* XCRemoteSwiftPackageReference "iOSIntPackage" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/TrueMax/iOSIntPackage.git";
 			requirement = {
-				branch = imagepublisher;
-				kind = branch;
+				kind = exactVersion;
+				version = 3.2.3;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -959,9 +959,9 @@
 			package = CB50BB772A06AC4A00E1158A /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
 		};
-		CB50BB892A135BF000E1158A /* iOSIntPackage */ = {
+		CB50BBA52A277A0800E1158A /* iOSIntPackage */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = CB50BB882A135BF000E1158A /* XCRemoteSwiftPackageReference "iOSIntPackage" */;
+			package = CB50BBA42A277A0800E1158A /* XCRemoteSwiftPackageReference "iOSIntPackage" */;
 			productName = iOSIntPackage;
 		};
 /* End XCSwiftPackageProductDependency section */

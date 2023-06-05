@@ -146,27 +146,5 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
            
         }
     }
-  
-//     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-//        if section == 0 {
-//            return 20
-//        } else if section == 1 {
-//            return 0
-//        } else {
-//            return 40
-//        }
-//    }
-//
-//     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        nil
-//    }
-//
-//     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-//        nil
-//    }
-
-//     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-//        500
-//    }
-    
+      
 }

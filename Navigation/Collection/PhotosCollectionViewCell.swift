@@ -17,21 +17,9 @@ class PhotosCollectionViewCell: UICollectionViewCell {
 }()
 
 
-private func imageCell() {
-    contentView.addSubview(imagePeople)
-    NSLayoutConstraint.activate ([
-        imagePeople.topAnchor.constraint(equalTo:  contentView.topAnchor),
-        imagePeople.bottomAnchor.constraint(equalTo:  contentView.bottomAnchor),
-        imagePeople.leadingAnchor.constraint(equalTo:  contentView.leadingAnchor),
-        imagePeople.trailingAnchor.constraint(equalTo:  contentView.trailingAnchor),
-    ])
 
-}
-func tableCell(with news:UIImage) {
-    imagePeople.image = news
     
-}
-
+//MARK: - lifecycle
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -40,6 +28,26 @@ func tableCell(with news:UIImage) {
         super.init(frame: .zero)
         imageCell()
         contentView.backgroundColor = .green
+    }
+    
+
+    //MARK: - method
+    private func imageCell() {
+        contentView.addSubview(imagePeople)
+        NSLayoutConstraint.activate ([
+            imagePeople.topAnchor.constraint(equalTo:  contentView.topAnchor),
+            imagePeople.bottomAnchor.constraint(equalTo:  contentView.bottomAnchor),
+            imagePeople.leadingAnchor.constraint(equalTo:  contentView.leadingAnchor),
+            imagePeople.trailingAnchor.constraint(equalTo:  contentView.trailingAnchor),
+        ])
+    }
+    
+    //    func tableCell(with news:UIImage) {
+    //        imagePeople.image = news
+    //    }
+    
+    func tableCell(with news:UIImage) {
+        imagePeople.image = news
     }
 }
 
