@@ -84,14 +84,14 @@ class LogInViewController: UIViewController  {
         
     }()
     
-    private lazy var buttonBrutForce: UIButton = {
-        let button = UIButton()
-        button.tintColor = .white
-        button.setTitle("Brut", for: .normal)
-        button.backgroundColor = UIColor(named: "Color")
+    private lazy var buttonBrutForce: CustomButton = {
+        let button = CustomButton(title: "Brut",
+                                  titleColor: .white,
+                                  backgroundColor: UIColor(named: "Color") ,
+                                  action: buttonActionBrutForce)
         button.layer.cornerRadius = 10
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(buttonActionBrutForce), for: .touchUpInside)
+        //button.addTarget(self, action: #selector(buttonActionBrutForce), for: .touchUpInside)
         return button
         
     }()
