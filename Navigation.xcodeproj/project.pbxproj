@@ -43,6 +43,7 @@
 		CB50BBA12A24F0A500E1158A /* PostCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB50BBA02A24F0A500E1158A /* PostCoordinator.swift */; };
 		CB50BBA32A264A7000E1158A /* CoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB50BBA22A264A6F00E1158A /* CoordinatorProtocol.swift */; };
 		CB50BBA62A277A0800E1158A /* iOSIntPackage in Frameworks */ = {isa = PBXBuildFile; productRef = CB50BBA52A277A0800E1158A /* iOSIntPackage */; };
+		CB50BBAB2A30B17E00E1158A /* BrutForce.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB50BBAA2A30B17E00E1158A /* BrutForce.swift */; };
 		CB725F3B29FBB486006334EB /* StorageService.docc in Sources */ = {isa = PBXBuildFile; fileRef = CB725F3A29FBB486006334EB /* StorageService.docc */; };
 		CB725F4129FBB486006334EB /* StorageService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB725F3729FBB486006334EB /* StorageService.framework */; };
 		CB725F4829FBB487006334EB /* StorageServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB725F4729FBB487006334EB /* StorageServiceTests.swift */; };
@@ -133,6 +134,7 @@
 		CB50BB9E2A24EE0200E1158A /* FeedCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCoordinator.swift; sourceTree = "<group>"; };
 		CB50BBA02A24F0A500E1158A /* PostCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCoordinator.swift; sourceTree = "<group>"; };
 		CB50BBA22A264A6F00E1158A /* CoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorProtocol.swift; sourceTree = "<group>"; };
+		CB50BBAA2A30B17E00E1158A /* BrutForce.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrutForce.swift; sourceTree = "<group>"; };
 		CB725F3729FBB486006334EB /* StorageService.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = StorageService.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB725F3929FBB486006334EB /* StorageService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StorageService.h; sourceTree = "<group>"; };
 		CB725F3A29FBB486006334EB /* StorageService.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = StorageService.docc; sourceTree = "<group>"; };
@@ -198,6 +200,7 @@
 		1214F41129B8B25A00E525F4 /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
+				CB50BBA92A30B15D00E1158A /* Brut Force */,
 				CB50BB9B2A24C3A800E1158A /* FactoryTabBar */,
 				CB50BB9A2A24C2DB00E1158A /* MainTabBar */,
 				CB50BB952A24C16600E1158A /* Coordinator */,
@@ -349,6 +352,14 @@
 				CB50BB9C2A24C3BD00E1158A /* FactoryTabBar.swift */,
 			);
 			path = FactoryTabBar;
+			sourceTree = "<group>";
+		};
+		CB50BBA92A30B15D00E1158A /* Brut Force */ = {
+			isa = PBXGroup;
+			children = (
+				CB50BBAA2A30B17E00E1158A /* BrutForce.swift */,
+			);
+			path = "Brut Force";
 			sourceTree = "<group>";
 		};
 		CB725F3829FBB486006334EB /* StorageService */ = {
@@ -537,6 +548,7 @@
 				CB4F95B629C0598200979B55 /* ProfileHeaderView.swift in Sources */,
 				CB1924C529C987E8002EB421 /* LogInViewController.swift in Sources */,
 				CB3C51B729D5A99700257E79 /* PhotosCollectionViewCell.swift in Sources */,
+				CB50BBAB2A30B17E00E1158A /* BrutForce.swift in Sources */,
 				CB3C51B929D6235600257E79 /* PhotosViewCell.swift in Sources */,
 				CB50BB6A2A0516DF00E1158A /* UserService.swift in Sources */,
 				CB50BB932A1F903200E1158A /* FeedViewModel.swift in Sources */,

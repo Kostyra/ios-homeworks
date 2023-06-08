@@ -84,6 +84,18 @@ class LogInViewController: UIViewController  {
         
     }()
     
+    private lazy var buttonBrutForce: UIButton = {
+        let button = UIButton()
+        button.tintColor = .white
+        button.setTitle("Brut", for: .normal)
+        button.backgroundColor = UIColor(named: "Color")
+        button.layer.cornerRadius = 10
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(buttonActionBrutForce), for: .touchUpInside)
+        return button
+        
+    }()
+    
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.showsVerticalScrollIndicator = true
@@ -107,13 +119,19 @@ class LogInViewController: UIViewController  {
         stackView.axis = .vertical
         stackView.distribution = .fillEqually
         stackView.alignment = .fill
-        stackView.spacing = 0.2
+//        stackView.spacing = 0.2
         
         stackView.addArrangedSubview(self.login)
 //        stackView.addArrangedSubview(delimiter)
         stackView.addArrangedSubview(self.pass)
         
         return stackView
+    }()
+    
+    private lazy var activityIndicator: UIActivityIndicatorView = {
+        let indicator = UIActivityIndicatorView(style: .medium)
+        indicator.translatesAutoresizingMaskIntoConstraints = false
+        return indicator
     }()
     
     
@@ -123,6 +141,8 @@ class LogInViewController: UIViewController  {
         contantView.addSubview(imageVK)
         contantView.addSubview(stackViewLoginPass)
         contantView.addSubview(buttonEnter)
+        contantView.addSubview(buttonBrutForce)
+        contantView.addSubview(activityIndicator)
         
         NSLayoutConstraint.activate([
             scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
@@ -150,7 +170,16 @@ class LogInViewController: UIViewController  {
             buttonEnter.leftAnchor.constraint(equalTo: contantView.leftAnchor, constant: 16),
             buttonEnter.rightAnchor.constraint(equalTo: contantView.rightAnchor, constant: -16),
             buttonEnter.heightAnchor.constraint(equalToConstant: 50),
-            buttonEnter.bottomAnchor.constraint(equalTo: contantView.safeAreaLayoutGuide.bottomAnchor),
+//            buttonEnter.bottomAnchor.constraint(equalTo: contantView.safeAreaLayoutGuide.bottomAnchor),
+            
+            buttonBrutForce.topAnchor.constraint(equalTo: buttonEnter.bottomAnchor, constant: 16),
+            buttonBrutForce.leftAnchor.constraint(equalTo: contantView.leftAnchor, constant: 16),
+            buttonBrutForce.rightAnchor.constraint(equalTo: contantView.rightAnchor, constant: -16),
+            buttonBrutForce.heightAnchor.constraint(equalToConstant: 50),
+            buttonBrutForce.bottomAnchor.constraint(equalTo: contantView.safeAreaLayoutGuide.bottomAnchor),
+            
+            activityIndicator.centerXAnchor.constraint(equalTo: contantView.centerXAnchor),
+            activityIndicator.bottomAnchor.constraint(equalTo: stackViewLoginPass.topAnchor,constant: -16)
         ])
         
     }
@@ -227,6 +256,26 @@ class LogInViewController: UIViewController  {
             present(alert, animated: true)
          }
     }
+    
+   @objc private func buttonActionBrutForce(){
+        self.activityIndicator.startAnimating()
+        let bruteForce = BruteForce()
+        let randomPassword = bruteForce.getRandomPassword(lenght: 4)
+       // let randomPassword = "123" //original pass
+       print(randomPassword)
+       DispatchQueue(label: "BrutForce", qos: .userInteractive).async {
+           let stolenPassword = bruteForce.bruteForce(passwordToUnlock: randomPassword)
+           DispatchQueue.main.async {
+               self.activityIndicator.stopAnimating()
+               self.succesHacking(stolenPassword: stolenPassword)
+           }
+       }
+    }
+    
+    private func succesHacking(stolenPassword: String){
+         self.pass.text = stolenPassword
+         self.pass.isSecureTextEntry = false
+     }
     
     
     
