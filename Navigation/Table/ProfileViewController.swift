@@ -5,7 +5,8 @@ import StorageService
 
 class ProfileViewController: UIViewController {
 
-   
+    var seconds = 0
+    var timer = Timer()
     
      private let tableView: UITableView = {
         let tableView = UITableView.init(
@@ -63,11 +64,32 @@ class ProfileViewController: UIViewController {
         #else
         view.backgroundColor = .green
         #endif
+        
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(timerCancel), userInfo: nil, repeats: true)
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(resetTimer))
+        view.addGestureRecognizer(tap)
     }
     override func viewWillAppear(_ animated: Bool)  {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = true
         
+    }
+    
+    @objc func timerCancel() {
+        seconds += 1
+        if seconds == 10 {
+            let alert = UIAlertController(title: "Вниманиe", message: "Вы бездействовали больше 10 секунд, вы вернетесь на начадьный экран", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .destructive))
+            present(alert, animated: true)
+        } else if seconds >= 10 {
+            timer.invalidate()
+            navigationController?.popViewController(animated: true)
+        }
+    }
+    
+    @objc func resetTimer() {
+        seconds = 0
     }
 }
 
