@@ -66,7 +66,7 @@ class ProfileViewController: UIViewController {
         #endif
         
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(timerCancel), userInfo: nil, repeats: true)
-//
+
         let tap = UITapGestureRecognizer(target: self, action: #selector(resetTimer))
         view.addGestureRecognizer(tap)
     }
@@ -78,18 +78,19 @@ class ProfileViewController: UIViewController {
     
     @objc func timerCancel() {
         seconds += 1
-        if seconds == 5 {
+        if seconds == 10 {
             let alert = UIAlertController(title: "Вниманиe", message: "Вы бездействовали больше 10 секунд, вы вернетесь на начадьный экран", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Ok", style: .destructive))
             present(alert, animated: true)
-        } else if seconds >= 5 {
+        } else if seconds >= 10 {
             timer.invalidate()
-            navigationController?.popViewController(animated: true)
+            navigationController?.popToRootViewController(animated: true)
+
         }
     }
 
     @objc func resetTimer() {
-        navigationController?.pushViewController(PhotosViewController(), animated: true)
+        navigationController?.pushViewController(PhotosViewController(), animated: true) //не совсем правильно работает
         seconds = 0
     }
 }
