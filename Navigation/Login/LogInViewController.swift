@@ -96,6 +96,18 @@ class LogInViewController: UIViewController  {
         
     }()
     
+    private lazy var buttonLogResult: CustomButton = {
+        let button = CustomButton(title: "LogResult",
+                                  titleColor: .white,
+                                  backgroundColor: UIColor(named: "Color") ,
+                                  action: buttonActionLogResult)
+        button.layer.cornerRadius = 10
+        button.translatesAutoresizingMaskIntoConstraints = false
+        //button.addTarget(self, action: #selector(buttonActionBrutForce), for: .touchUpInside)
+        return button
+        
+    }()
+    
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.showsVerticalScrollIndicator = true
@@ -143,6 +155,7 @@ class LogInViewController: UIViewController  {
         contantView.addSubview(buttonEnter)
         contantView.addSubview(buttonBrutForce)
         contantView.addSubview(activityIndicator)
+        contantView.addSubview(buttonLogResult)
         
         NSLayoutConstraint.activate([
             scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
@@ -176,7 +189,13 @@ class LogInViewController: UIViewController  {
             buttonBrutForce.leftAnchor.constraint(equalTo: contantView.leftAnchor, constant: 16),
             buttonBrutForce.rightAnchor.constraint(equalTo: contantView.rightAnchor, constant: -16),
             buttonBrutForce.heightAnchor.constraint(equalToConstant: 50),
-            buttonBrutForce.bottomAnchor.constraint(equalTo: contantView.safeAreaLayoutGuide.bottomAnchor),
+//            buttonBrutForce.bottomAnchor.constraint(equalTo: contantView.safeAreaLayoutGuide.bottomAnchor),
+            
+            buttonLogResult.topAnchor.constraint(equalTo: buttonBrutForce.bottomAnchor, constant: 16),
+            buttonLogResult.leftAnchor.constraint(equalTo: contantView.leftAnchor, constant: 16),
+            buttonLogResult.rightAnchor.constraint(equalTo: contantView.rightAnchor, constant: -16),
+            buttonLogResult.heightAnchor.constraint(equalToConstant: 50),
+            buttonLogResult.bottomAnchor.constraint(equalTo: contantView.safeAreaLayoutGuide.bottomAnchor),
             
             activityIndicator.centerXAnchor.constraint(equalTo: contantView.centerXAnchor),
             activityIndicator.bottomAnchor.constraint(equalTo: stackViewLoginPass.topAnchor,constant: -16)
@@ -242,6 +261,7 @@ class LogInViewController: UIViewController  {
          
 //         let inspector = LoginInspector()
 //         let valid = inspector.validate(userName: userName, password: password)
+
          let valid = loginDelegate?.check(userName: userName, password: password)
          if valid == true {
             let profileViewController = ProfileViewController()
@@ -256,6 +276,20 @@ class LogInViewController: UIViewController  {
             present(alert, animated: true)
          }
     }
+    
+    @objc private func  buttonActionLogResult() {
+        guard let userName = login.text , let password = pass.text else {return}
+        let inspector = LoginInspector()
+        let valid = inspector.validate(userName: userName, password: password) { result in
+             switch result {
+             case .success(_):
+                 print("good")
+             case .failure(_):
+                 print("bad")
+             }
+         }
+    }
+    
     
    @objc private func buttonActionBrutForce(){
         self.activityIndicator.startAnimating()

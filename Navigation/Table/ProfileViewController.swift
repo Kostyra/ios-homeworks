@@ -77,6 +77,7 @@ class ProfileViewController: UIViewController {
     }
     
     @objc func timerCancel() {
+         
         seconds += 1
         if seconds == 10 {
             let alert = UIAlertController(title: "Вниманиe", message: "Вы бездействовали больше 10 секунд, вы вернетесь на начадьный экран", preferredStyle: .alert)
@@ -152,17 +153,15 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         
     }
     
+    
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 
         return UITableView.automaticDimension
     }
     
-    func tableView(
-        _ tableView: UITableView,
-        didSelectRowAt indexPath: IndexPath
-    )
-    
-    {
+    func tableView(_ tableView: UITableView,didSelectRowAt indexPath: IndexPath) {
+
         if indexPath.section == 0 {
             print("Did select cell at \(indexPath)")
             let photosViewController = PhotosViewController()

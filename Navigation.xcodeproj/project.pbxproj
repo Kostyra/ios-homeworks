@@ -44,6 +44,7 @@
 		CB50BBA32A264A7000E1158A /* CoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB50BBA22A264A6F00E1158A /* CoordinatorProtocol.swift */; };
 		CB50BBA62A277A0800E1158A /* iOSIntPackage in Frameworks */ = {isa = PBXBuildFile; productRef = CB50BBA52A277A0800E1158A /* iOSIntPackage */; };
 		CB50BBAB2A30B17E00E1158A /* BrutForce.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB50BBAA2A30B17E00E1158A /* BrutForce.swift */; };
+		CB50BBAE2A3B7A6800E1158A /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB50BBAD2A3B7A6800E1158A /* Error.swift */; };
 		CB725F3B29FBB486006334EB /* StorageService.docc in Sources */ = {isa = PBXBuildFile; fileRef = CB725F3A29FBB486006334EB /* StorageService.docc */; };
 		CB725F4129FBB486006334EB /* StorageService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB725F3729FBB486006334EB /* StorageService.framework */; };
 		CB725F4829FBB487006334EB /* StorageServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB725F4729FBB487006334EB /* StorageServiceTests.swift */; };
@@ -135,6 +136,7 @@
 		CB50BBA02A24F0A500E1158A /* PostCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCoordinator.swift; sourceTree = "<group>"; };
 		CB50BBA22A264A6F00E1158A /* CoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorProtocol.swift; sourceTree = "<group>"; };
 		CB50BBAA2A30B17E00E1158A /* BrutForce.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrutForce.swift; sourceTree = "<group>"; };
+		CB50BBAD2A3B7A6800E1158A /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		CB725F3729FBB486006334EB /* StorageService.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = StorageService.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB725F3929FBB486006334EB /* StorageService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StorageService.h; sourceTree = "<group>"; };
 		CB725F3A29FBB486006334EB /* StorageService.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = StorageService.docc; sourceTree = "<group>"; };
@@ -200,6 +202,7 @@
 		1214F41129B8B25A00E525F4 /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
+				CB50BBAC2A3B7A3A00E1158A /* Work with error */,
 				CB50BBA92A30B15D00E1158A /* Brut Force */,
 				CB50BB9B2A24C3A800E1158A /* FactoryTabBar */,
 				CB50BB9A2A24C2DB00E1158A /* MainTabBar */,
@@ -360,6 +363,14 @@
 				CB50BBAA2A30B17E00E1158A /* BrutForce.swift */,
 			);
 			path = "Brut Force";
+			sourceTree = "<group>";
+		};
+		CB50BBAC2A3B7A3A00E1158A /* Work with error */ = {
+			isa = PBXGroup;
+			children = (
+				CB50BBAD2A3B7A6800E1158A /* Error.swift */,
+			);
+			path = "Work with error";
 			sourceTree = "<group>";
 		};
 		CB725F3829FBB486006334EB /* StorageService */ = {
@@ -558,6 +569,7 @@
 				CB50BB712A06A1C200E1158A /* TestUserService.swift in Sources */,
 				1214F42929B91A8C00E525F4 /* ProfileViewController.swift in Sources */,
 				CB1924C729CAF36A002EB421 /* CustomButton.swift in Sources */,
+				CB50BBAE2A3B7A6800E1158A /* Error.swift in Sources */,
 				CB50BB7C2A10B7A600E1158A /* Checker.swift in Sources */,
 				CBCA919C29BB6DDB00D11098 /* InfoViewController.swift in Sources */,
 				CB50BB992A24C2C300E1158A /* MainTabBar.swift in Sources */,
