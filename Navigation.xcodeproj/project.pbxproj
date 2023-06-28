@@ -16,6 +16,7 @@
 		1214F42B29B9B75000E525F4 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1214F42A29B9B75000E525F4 /* PostViewController.swift */; };
 		CB1924C529C987E8002EB421 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1924C429C987E8002EB421 /* LogInViewController.swift */; };
 		CB1924C729CAF36A002EB421 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1924C629CAF36A002EB421 /* CustomButton.swift */; };
+		CB19C8A32A49B1D30042E33A /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB19C8A22A49B1D30042E33A /* NetworkManager.swift */; };
 		CB3C51A429D07F6400257E79 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3C51A329D07F6300257E79 /* PostTableViewCell.swift */; };
 		CB3C51AA29D3204000257E79 /* ExtationHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3C51A929D3204000257E79 /* ExtationHeader.swift */; };
 		CB3C51AD29D32A7A00257E79 /* DelimiterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3C51AC29D32A7A00257E79 /* DelimiterView.swift */; };
@@ -110,6 +111,7 @@
 		1214F42A29B9B75000E525F4 /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 		CB1924C429C987E8002EB421 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		CB1924C629CAF36A002EB421 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		CB19C8A22A49B1D30042E33A /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		CB3C51A329D07F6300257E79 /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 		CB3C51A929D3204000257E79 /* ExtationHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtationHeader.swift; sourceTree = "<group>"; };
 		CB3C51AC29D32A7A00257E79 /* DelimiterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelimiterView.swift; sourceTree = "<group>"; };
@@ -202,6 +204,7 @@
 		1214F41129B8B25A00E525F4 /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
+				CB19C8A12A49B1BA0042E33A /* DATA */,
 				CB50BBAC2A3B7A3A00E1158A /* Work with error */,
 				CB50BBA92A30B15D00E1158A /* Brut Force */,
 				CB50BB9B2A24C3A800E1158A /* FactoryTabBar */,
@@ -227,6 +230,22 @@
 				1214F42029B8B25E00E525F4 /* Info.plist */,
 			);
 			path = Navigation;
+			sourceTree = "<group>";
+		};
+		CB19C8A02A49B18E0042E33A /* URLSession. URLSessionDataTask */ = {
+			isa = PBXGroup;
+			children = (
+				CB19C8A22A49B1D30042E33A /* NetworkManager.swift */,
+			);
+			path = "URLSession. URLSessionDataTask";
+			sourceTree = "<group>";
+		};
+		CB19C8A12A49B1BA0042E33A /* DATA */ = {
+			isa = PBXGroup;
+			children = (
+				CB19C8A02A49B18E0042E33A /* URLSession. URLSessionDataTask */,
+			);
+			path = DATA;
 			sourceTree = "<group>";
 		};
 		CB3C51AB29D32A3F00257E79 /* delimiter */ = {
@@ -565,6 +584,7 @@
 				CB50BB932A1F903200E1158A /* FeedViewModel.swift in Sources */,
 				CB50BB902A1A7C4800E1158A /* FeedModel.swift in Sources */,
 				CB50BB9F2A24EE0200E1158A /* FeedCoordinator.swift in Sources */,
+				CB19C8A32A49B1D30042E33A /* NetworkManager.swift in Sources */,
 				1214F41329B8B25A00E525F4 /* AppDelegate.swift in Sources */,
 				CB50BB712A06A1C200E1158A /* TestUserService.swift in Sources */,
 				1214F42929B91A8C00E525F4 /* ProfileViewController.swift in Sources */,

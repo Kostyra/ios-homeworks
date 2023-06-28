@@ -6,6 +6,8 @@ class LogInViewController: UIViewController  {
     
     var loginDelegate:LoginViewControllerDelegate?
     
+    var networkManager = NetworkManager()
+    
 //    private lazy var delimiter:DelimiterView = {
 //        let delimiter = DelimiterView()
 //        delimiter.translatesAutoresizingMaskIntoConstraints = false
@@ -280,7 +282,7 @@ class LogInViewController: UIViewController  {
     @objc private func  buttonActionLogResult() {
         guard let userName = login.text , let password = pass.text else {return}
         let inspector = LoginInspector()
-        let valid = inspector.validate(userName: userName, password: password) { result in
+        _ = inspector.validate(userName: userName, password: password) { result in
              switch result {
              case .success(_):
                  print("good")
@@ -292,6 +294,15 @@ class LogInViewController: UIViewController  {
     
     
    @objc private func buttonActionBrutForce(){
+       
+//       NetworkManager.request(for: AppConfiguration.randomConfig(), completion: { massegeText in
+//           DispatchQueue.main.async {
+//               print (massegeText as Any)
+//               
+//           }
+//       })
+           
+
         self.activityIndicator.startAnimating()
         let bruteForce = BruteForce()
         let randomPassword = bruteForce.getRandomPassword(lenght: 4)
