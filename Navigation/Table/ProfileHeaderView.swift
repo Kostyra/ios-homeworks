@@ -3,6 +3,9 @@ import SnapKit
 
 class ProfileHeaderView: UIView {
     
+    let neetworkJSONSerialization = NeetworkJSONSerialization()
+    let networkJSONDecoder = NetworkJSONDecoder()
+    
     static let id2  = "ProfileHeaderView"
     private var animatePhoto = CGPoint()
 //    private let myPhoto = userInfo.avatar
@@ -35,7 +38,16 @@ class ProfileHeaderView: UIView {
     
     private lazy var labelGrey: UILabel = {
         let labelGrey = UILabel()
-        labelGrey.text = "The Castle was buld in 1898. First owner"
+        //labelGrey.text = "The Castle was buld in 1898. First owner"
+        labelGrey.font = UIFont.systemFont(ofSize: 14, weight: .regular)
+        labelGrey.textColor = .gray
+        labelGrey.translatesAutoresizingMaskIntoConstraints = false
+        return labelGrey
+    }()
+    
+    private lazy var labelGreyTwo: UILabel = {
+        let labelGrey = UILabel()
+//        labelGrey.text = "The Castle was buld in 1898. First owner"
         labelGrey.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         labelGrey.textColor = .gray
         labelGrey.translatesAutoresizingMaskIntoConstraints = false
@@ -89,6 +101,23 @@ class ProfileHeaderView: UIView {
     }()
     
     private var statusText:  String { return textField.text ?? ""}
+    
+    private func urlSession() {
+        neetworkJSONSerialization.infoVCLabel { [weak self] textTitle in
+            DispatchQueue.main.async{
+                self?.labelGrey.text = textTitle
+            }
+        }
+    }
+    
+    private func urlSessionDecoder() {
+        networkJSONDecoder.infoPlanetTatuin { [weak self] text, name  in
+            DispatchQueue.main.async {
+                self?.labelGreyTwo.text = "Planet \(String(describing:name ?? "")) \(String(describing: text ?? "")) hour"
+                
+            }
+        }
+    }
     
     @objc private  func buttonPress(sender: UIButton) {
         if statusText != "" {
@@ -155,6 +184,7 @@ class ProfileHeaderView: UIView {
         addSubview(label)
         addSubview(buttonStatus)
         addSubview(labelGrey)
+        addSubview(labelGreyTwo)
         addSubview(textField)
         
         addSubview(uiview)
@@ -192,6 +222,12 @@ class ProfileHeaderView: UIView {
 
         labelGrey.snp.makeConstraints{ make in
             make.bottom.equalTo(textField.snp.top).inset(-10)
+            make.left.equalTo(photo.snp.right).inset(-20)
+            make.right.equalToSuperview().inset(20)
+        }
+        
+        labelGreyTwo.snp.makeConstraints{ make in
+            make.bottom.equalTo(labelGrey.snp.top).inset(-5)
             make.left.equalTo(photo.snp.right).inset(-20)
             make.right.equalToSuperview().inset(20)
         }
@@ -238,6 +274,8 @@ class ProfileHeaderView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         size()
+        urlSession()
+        urlSessionDecoder()
         
     }
     

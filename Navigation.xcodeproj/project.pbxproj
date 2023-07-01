@@ -17,6 +17,8 @@
 		CB1924C529C987E8002EB421 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1924C429C987E8002EB421 /* LogInViewController.swift */; };
 		CB1924C729CAF36A002EB421 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1924C629CAF36A002EB421 /* CustomButton.swift */; };
 		CB19C8A32A49B1D30042E33A /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB19C8A22A49B1D30042E33A /* NetworkManager.swift */; };
+		CB19C8CA2A5003730042E33A /* JSONSerialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB19C8C92A5003730042E33A /* JSONSerialization.swift */; };
+		CB19C8CD2A5067A80042E33A /* JSONDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB19C8CC2A5067A80042E33A /* JSONDecoder.swift */; };
 		CB3C51A429D07F6400257E79 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3C51A329D07F6300257E79 /* PostTableViewCell.swift */; };
 		CB3C51AA29D3204000257E79 /* ExtationHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3C51A929D3204000257E79 /* ExtationHeader.swift */; };
 		CB3C51AD29D32A7A00257E79 /* DelimiterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3C51AC29D32A7A00257E79 /* DelimiterView.swift */; };
@@ -112,6 +114,8 @@
 		CB1924C429C987E8002EB421 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		CB1924C629CAF36A002EB421 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		CB19C8A22A49B1D30042E33A /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		CB19C8C92A5003730042E33A /* JSONSerialization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONSerialization.swift; sourceTree = "<group>"; };
+		CB19C8CC2A5067A80042E33A /* JSONDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONDecoder.swift; sourceTree = "<group>"; };
 		CB3C51A329D07F6300257E79 /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 		CB3C51A929D3204000257E79 /* ExtationHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtationHeader.swift; sourceTree = "<group>"; };
 		CB3C51AC29D32A7A00257E79 /* DelimiterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelimiterView.swift; sourceTree = "<group>"; };
@@ -243,9 +247,27 @@
 		CB19C8A12A49B1BA0042E33A /* DATA */ = {
 			isa = PBXGroup;
 			children = (
+				CB19C8CB2A5067930042E33A /* JSONDecoder */,
+				CB19C8C82A50034F0042E33A /* JSONSerialization */,
 				CB19C8A02A49B18E0042E33A /* URLSession. URLSessionDataTask */,
 			);
 			path = DATA;
+			sourceTree = "<group>";
+		};
+		CB19C8C82A50034F0042E33A /* JSONSerialization */ = {
+			isa = PBXGroup;
+			children = (
+				CB19C8C92A5003730042E33A /* JSONSerialization.swift */,
+			);
+			path = JSONSerialization;
+			sourceTree = "<group>";
+		};
+		CB19C8CB2A5067930042E33A /* JSONDecoder */ = {
+			isa = PBXGroup;
+			children = (
+				CB19C8CC2A5067A80042E33A /* JSONDecoder.swift */,
+			);
+			path = JSONDecoder;
 			sourceTree = "<group>";
 		};
 		CB3C51AB29D32A3F00257E79 /* delimiter */ = {
@@ -577,6 +599,8 @@
 				1214F42B29B9B75000E525F4 /* PostViewController.swift in Sources */,
 				CB4F95B629C0598200979B55 /* ProfileHeaderView.swift in Sources */,
 				CB1924C529C987E8002EB421 /* LogInViewController.swift in Sources */,
+				CB19C8CA2A5003730042E33A /* JSONSerialization.swift in Sources */,
+				CB19C8CD2A5067A80042E33A /* JSONDecoder.swift in Sources */,
 				CB3C51B729D5A99700257E79 /* PhotosCollectionViewCell.swift in Sources */,
 				CB50BBAB2A30B17E00E1158A /* BrutForce.swift in Sources */,
 				CB3C51B929D6235600257E79 /* PhotosViewCell.swift in Sources */,

@@ -79,11 +79,11 @@ class ProfileViewController: UIViewController {
     @objc func timerCancel() {
          
         seconds += 1
-        if seconds == 10 {
-            let alert = UIAlertController(title: "Вниманиe", message: "Вы бездействовали больше 10 секунд, вы вернетесь на начадьный экран", preferredStyle: .alert)
+        if seconds == 15 {
+            let alert = UIAlertController(title: "Вниманиe", message: "Вы бездействовали больше 15 секунд, вы вернетесь на начадьный экран", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Ok", style: .destructive))
             present(alert, animated: true)
-        } else if seconds >= 10 {
+        } else if seconds >= 15 {
             timer.invalidate()
             navigationController?.popToRootViewController(animated: true)
 
