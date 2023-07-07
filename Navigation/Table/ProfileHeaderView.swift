@@ -1,10 +1,16 @@
 import UIKit
 import SnapKit
+import FirebaseAuth
 
-class ProfileHeaderView: UIView {
+protocol CustomViewDelegate: AnyObject {
+    func backButtonPressed()
+}
+
+final class ProfileHeaderView: UIView {
     
     let neetworkJSONSerialization = NeetworkJSONSerialization()
     let networkJSONDecoder = NetworkJSONDecoder()
+    weak var delegate: CustomViewDelegate?
     
     static let id2  = "ProfileHeaderView"
     private var animatePhoto = CGPoint()
@@ -27,6 +33,7 @@ class ProfileHeaderView: UIView {
         
         return imageView
     }()
+    
      lazy var label: UILabel = {
         let label = UILabel()
         //label.text = myInfo                                       //"Old Castle"
@@ -80,6 +87,15 @@ class ProfileHeaderView: UIView {
         button.layer.shadowColor = UIColor.black.cgColor
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(buttonPress), for: .touchUpInside)
+        return button
+    }()
+    
+    private lazy var buttonLogOut: UIButton = {
+        let button = UIButton()
+        button.setTitleColor(.systemBlue, for: .normal)
+        button.setTitle("Logout", for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(backButtonPressed), for: .touchUpInside)
         return button
     }()
     
@@ -171,6 +187,16 @@ class ProfileHeaderView: UIView {
                }
            }
     }
+    
+    @objc func backButtonPressed() {
+        if Auth.auth().currentUser != nil {
+            delegate?.backButtonPressed()
+            try? Auth.auth().signOut()
+            print(Auth.auth().currentUser ?? "logout")
+            buttonLogOut.isEnabled = false
+            buttonLogOut.setTitleColor(.gray, for: .normal)
+        }
+    }
 
     private lazy var box: UIView = {
        let box = UIView()
@@ -183,6 +209,7 @@ class ProfileHeaderView: UIView {
         addSubview(box)
         addSubview(label)
         addSubview(buttonStatus)
+        
         addSubview(labelGrey)
         addSubview(labelGreyTwo)
         addSubview(textField)
@@ -190,7 +217,7 @@ class ProfileHeaderView: UIView {
         addSubview(uiview)
         addSubview(photo)
         addSubview(buttonX)
-        
+        addSubview(buttonLogOut)
      
         box.snp.makeConstraints{ make in
             make.height.equalToSuperview().inset(130)
@@ -200,6 +227,11 @@ class ProfileHeaderView: UIView {
             make.top.equalToSuperview().inset(16)
             make.left.equalToSuperview().inset(16)
             make.height.width.equalTo(150)
+        }
+        
+        buttonLogOut.snp.makeConstraints{ make in
+            make.top.equalToSuperview().inset(16)
+            make.right.equalToSuperview().inset(16)
         }
 
         buttonStatus.snp.makeConstraints{ make in
@@ -217,7 +249,7 @@ class ProfileHeaderView: UIView {
         label.snp.makeConstraints { make in
             make.top.equalTo(27)
             make.left.equalTo(photo.snp.right).inset(-20)
-            make.right.equalToSuperview().inset(20)
+            make.right.equalToSuperview().inset(90)
         }
 
         labelGrey.snp.makeConstraints{ make in

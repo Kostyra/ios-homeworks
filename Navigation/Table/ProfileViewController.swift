@@ -3,7 +3,7 @@
 import UIKit
 import StorageService
 
-class ProfileViewController: UIViewController {
+final class ProfileViewController: UIViewController {
 
     var seconds = 0
     var timer = Timer()
@@ -79,11 +79,11 @@ class ProfileViewController: UIViewController {
     @objc func timerCancel() {
          
         seconds += 1
-        if seconds == 15 {
-            let alert = UIAlertController(title: "Вниманиe", message: "Вы бездействовали больше 15 секунд, вы вернетесь на начадьный экран", preferredStyle: .alert)
+        if seconds == 20 {
+            let alert = UIAlertController(title: "Вниманиe", message: "Вы бездействовали больше 10 секунд, вы вернетесь на начадьный экран", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Ok", style: .destructive))
             present(alert, animated: true)
-        } else if seconds >= 15 {
+        } else if seconds >= 10 {
             timer.invalidate()
             navigationController?.popToRootViewController(animated: true)
 
@@ -91,7 +91,7 @@ class ProfileViewController: UIViewController {
     }
 
     @objc func resetTimer() {
-        navigationController?.pushViewController(PhotosViewController(), animated: true) //не совсем правильно работает
+  //      navigationController?.pushViewController(PhotosViewController(), animated: true) //не совсем правильно работает
         seconds = 0
     }
 }

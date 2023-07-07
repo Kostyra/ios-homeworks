@@ -1,13 +1,15 @@
 
 
 import UIKit
+import FirebaseAuth
 
-class LogInViewController: UIViewController  {
+
+final class LogInViewController: UIViewController ,CustomViewDelegate {
     
     var loginDelegate:LoginViewControllerDelegate?
     
     var networkManager = NetworkManager()
-    
+    var checkerService = CheckerService()
 //    private lazy var delimiter:DelimiterView = {
 //        let delimiter = DelimiterView()
 //        delimiter.translatesAutoresizingMaskIntoConstraints = false
@@ -110,6 +112,17 @@ class LogInViewController: UIViewController  {
         
     }()
     
+    private lazy var buttonSingUp: CustomButton = {
+        let button = CustomButton(title: "Sing up",
+                                  titleColor: .white,
+                                  backgroundColor: UIColor(named: "Color") ,
+                                  action: buttonActionSingUp)
+        button.layer.cornerRadius = 10
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+        
+    }()
+    
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.showsVerticalScrollIndicator = true
@@ -158,6 +171,7 @@ class LogInViewController: UIViewController  {
         contantView.addSubview(buttonBrutForce)
         contantView.addSubview(activityIndicator)
         contantView.addSubview(buttonLogResult)
+        contantView.addSubview(buttonSingUp)
         
         NSLayoutConstraint.activate([
             scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
@@ -176,7 +190,7 @@ class LogInViewController: UIViewController  {
             imageVK.widthAnchor.constraint(equalToConstant: 100),
             imageVK.centerXAnchor.constraint(equalTo: contantView.centerXAnchor),
             
-            stackViewLoginPass.topAnchor.constraint(equalTo: imageVK.bottomAnchor ,constant: 120),
+            stackViewLoginPass.topAnchor.constraint(equalTo: imageVK.bottomAnchor ,constant: 60),
             stackViewLoginPass.leftAnchor.constraint(equalTo: contantView.leftAnchor, constant: 16),
             stackViewLoginPass.rightAnchor.constraint(equalTo: contantView.rightAnchor , constant:-16),
             stackViewLoginPass.heightAnchor.constraint(equalToConstant: 100.5),
@@ -187,7 +201,12 @@ class LogInViewController: UIViewController  {
             buttonEnter.heightAnchor.constraint(equalToConstant: 50),
 //            buttonEnter.bottomAnchor.constraint(equalTo: contantView.safeAreaLayoutGuide.bottomAnchor),
             
-            buttonBrutForce.topAnchor.constraint(equalTo: buttonEnter.bottomAnchor, constant: 16),
+            buttonSingUp.topAnchor.constraint(equalTo: buttonEnter.bottomAnchor, constant: 16),
+            buttonSingUp.leftAnchor.constraint(equalTo: contantView.leftAnchor, constant: 16),
+            buttonSingUp.rightAnchor.constraint(equalTo: contantView.rightAnchor, constant: -16),
+            buttonSingUp.heightAnchor.constraint(equalToConstant: 50),
+            
+            buttonBrutForce.topAnchor.constraint(equalTo: buttonSingUp.bottomAnchor, constant: 16),
             buttonBrutForce.leftAnchor.constraint(equalTo: contantView.leftAnchor, constant: 16),
             buttonBrutForce.rightAnchor.constraint(equalTo: contantView.rightAnchor, constant: -16),
             buttonBrutForce.heightAnchor.constraint(equalToConstant: 50),
@@ -235,7 +254,7 @@ class LogInViewController: UIViewController  {
         let notificationCenter = NotificationCenter.default
         notificationCenter.removeObserver(self)
     }
-    
+        
     @objc func willShowKeyboard(_ notification: NSNotification) {
         guard let keyboardHeight = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue.height
         else { return }
@@ -252,31 +271,49 @@ class LogInViewController: UIViewController  {
     
      var textLogin:String { return login.text ?? ""}
     
+
+    
      @objc func buttonActionProfile() {
-        #if DEBUG
-         let myLogin = TestUserService(user: userInfo)
-        #else
-         let myLogin = CurrentUserService(user: userInfo)
-        #endif
-         
-         guard let userName = login.text , let password = pass.text else {return}
-         
+         guard let userName = login.text,  let password = pass.text else { return }
+         checkerService.checkCredentials(email: userName, pass: password) { [weak self] error in
+             if error != nil {
+                 let alert = UIAlertController(title: "Ошибка", message: "Проверьте введенный логин и пароль", preferredStyle: .alert)
+                 alert.addAction(UIAlertAction(title: "OK", style: .default))
+                 self?.present(alert, animated: true)
+             } else {
+                 print(Auth.auth().currentUser ?? "login")
+                let profileViewController = ProfileViewController()
+                 self?.navigationController?.pushViewController(profileViewController, animated: true)
+             }
+         }
+// PROD or DEV
+//        #if DEBUG
+//         let myLogin = TestUserService(user: userInfo)
+//        #else
+//         let myLogin = CurrentUserService(user: userInfo)
+//        #endif
+//
+//         guard let userName = login.text , let password = pass.text else {return}
+// LOGIN Inspector
 //         let inspector = LoginInspector()
 //         let valid = inspector.validate(userName: userName, password: password)
-
-         let valid = loginDelegate?.check(userName: userName, password: password)
-         if valid == true {
-            let profileViewController = ProfileViewController()
-            self.navigationController?.pushViewController(profileViewController, animated: true)
-         } else if let userIndefication =  myLogin.pass(login: textLogin), myLogin.pass(login: textLogin) != nil {
-            let profileViewController = ProfileViewController()
-            self.navigationController?.pushViewController(profileViewController, animated: true)
-             print(userIndefication.name)
-         } else {
-             let alert = UIAlertController(title: "Ошибка", message: "Проверьте введенный логин и пароль", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .default))
-            present(alert, animated: true)
-         }
+// LOGIN PASS
+//         let valid = loginDelegate?.check(userName: userName, password: password)
+//         if valid == true {
+//            let profileViewController = ProfileViewController()
+//            self.navigationController?.pushViewController(profileViewController, animated: true)
+//         } else if let userIndefication =  myLogin.pass(login: textLogin), myLogin.pass(login: textLogin) != nil {
+//            let profileViewController = ProfileViewController()
+//            self.navigationController?.pushViewController(profileViewController, animated: true)
+//             print(userIndefication.name)
+//         }
+//         else {
+//             let alert = UIAlertController(title: "Ошибка", message: "Проверьте введенный логин и пароль", preferredStyle: .alert)
+//            alert.addAction(UIAlertAction(title: "OK", style: .default))
+//            present(alert, animated: true)
+//         }
+         
+         
     }
     
     @objc private func  buttonActionLogResult() {
@@ -317,6 +354,17 @@ class LogInViewController: UIViewController  {
        }
     }
     
+    @objc func buttonActionSingUp() {
+        
+        TextPicker.defaultPicker.showSingUpPicker(in: self) {[weak self] login, pass, pass2 in
+            self?.checkerService.signUp(email: login, pass1: pass, pass2: pass2)
+        }
+    }
+    
+     func backButtonPressed() {
+         navigationController?.popViewController(animated: true)
+      }
+    
     private func succesHacking(stolenPassword: String){
          self.pass.text = stolenPassword
          self.pass.isSecureTextEntry = false
@@ -328,8 +376,11 @@ class LogInViewController: UIViewController  {
         super.viewDidLoad()
         viewLogin()
         setupView()
+        let customView = ProfileHeaderView()
+        customView.delegate = self
 //        delimitreFunk()
     }
+        
 
     override func viewWillAppear(_ animated: Bool)  {
         super.viewWillAppear(animated)

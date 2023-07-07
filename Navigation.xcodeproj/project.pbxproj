@@ -19,6 +19,10 @@
 		CB19C8A32A49B1D30042E33A /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB19C8A22A49B1D30042E33A /* NetworkManager.swift */; };
 		CB19C8CA2A5003730042E33A /* JSONSerialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB19C8C92A5003730042E33A /* JSONSerialization.swift */; };
 		CB19C8CD2A5067A80042E33A /* JSONDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB19C8CC2A5067A80042E33A /* JSONDecoder.swift */; };
+		CB19C8CF2A519E080042E33A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CB19C8CE2A519E080042E33A /* GoogleService-Info.plist */; };
+		CB19C8E62A5594EB0042E33A /* CheckerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB19C8E52A5594EB0042E33A /* CheckerService.swift */; };
+		CB19C8E82A55E4B30042E33A /* TextPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB19C8E72A55E4B30042E33A /* TextPicker.swift */; };
+		CB19C8EB2A57E0C00042E33A /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = CB19C8EA2A57E0C00042E33A /* FirebaseAuth */; };
 		CB3C51A429D07F6400257E79 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3C51A329D07F6300257E79 /* PostTableViewCell.swift */; };
 		CB3C51AA29D3204000257E79 /* ExtationHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3C51A929D3204000257E79 /* ExtationHeader.swift */; };
 		CB3C51AD29D32A7A00257E79 /* DelimiterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3C51AC29D32A7A00257E79 /* DelimiterView.swift */; };
@@ -116,6 +120,9 @@
 		CB19C8A22A49B1D30042E33A /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		CB19C8C92A5003730042E33A /* JSONSerialization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONSerialization.swift; sourceTree = "<group>"; };
 		CB19C8CC2A5067A80042E33A /* JSONDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONDecoder.swift; sourceTree = "<group>"; };
+		CB19C8CE2A519E080042E33A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		CB19C8E52A5594EB0042E33A /* CheckerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckerService.swift; sourceTree = "<group>"; };
+		CB19C8E72A55E4B30042E33A /* TextPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextPicker.swift; sourceTree = "<group>"; };
 		CB3C51A329D07F6300257E79 /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 		CB3C51A929D3204000257E79 /* ExtationHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtationHeader.swift; sourceTree = "<group>"; };
 		CB3C51AC29D32A7A00257E79 /* DelimiterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelimiterView.swift; sourceTree = "<group>"; };
@@ -164,6 +171,7 @@
 				CB50BBA62A277A0800E1158A /* iOSIntPackage in Frameworks */,
 				CB50BB792A06AC4A00E1158A /* SnapKit in Frameworks */,
 				CB725F4C29FBB487006334EB /* StorageService.framework in Frameworks */,
+				CB19C8EB2A57E0C00042E33A /* FirebaseAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -230,6 +238,7 @@
 				1214F42A29B9B75000E525F4 /* PostViewController.swift */,
 				CBCA919B29BB6DDB00D11098 /* InfoViewController.swift */,
 				1214F41B29B8B25E00E525F4 /* Assets.xcassets */,
+				CB19C8CE2A519E080042E33A /* GoogleService-Info.plist */,
 				1214F41D29B8B25E00E525F4 /* LaunchScreen.storyboard */,
 				1214F42029B8B25E00E525F4 /* Info.plist */,
 			);
@@ -247,6 +256,7 @@
 		CB19C8A12A49B1BA0042E33A /* DATA */ = {
 			isa = PBXGroup;
 			children = (
+				CB19C8E42A5594A10042E33A /* Firebase */,
 				CB19C8CB2A5067930042E33A /* JSONDecoder */,
 				CB19C8C82A50034F0042E33A /* JSONSerialization */,
 				CB19C8A02A49B18E0042E33A /* URLSession. URLSessionDataTask */,
@@ -268,6 +278,15 @@
 				CB19C8CC2A5067A80042E33A /* JSONDecoder.swift */,
 			);
 			path = JSONDecoder;
+			sourceTree = "<group>";
+		};
+		CB19C8E42A5594A10042E33A /* Firebase */ = {
+			isa = PBXGroup;
+			children = (
+				CB19C8E52A5594EB0042E33A /* CheckerService.swift */,
+				CB19C8E72A55E4B30042E33A /* TextPicker.swift */,
+			);
+			path = Firebase;
 			sourceTree = "<group>";
 		};
 		CB3C51AB29D32A3F00257E79 /* delimiter */ = {
@@ -475,6 +494,7 @@
 			packageProductDependencies = (
 				CB50BB782A06AC4A00E1158A /* SnapKit */,
 				CB50BBA52A277A0800E1158A /* iOSIntPackage */,
+				CB19C8EA2A57E0C00042E33A /* FirebaseAuth */,
 			);
 			productName = Navigation;
 			productReference = 1214F40F29B8B25A00E525F4 /* Navigation.app */;
@@ -551,6 +571,7 @@
 			packageReferences = (
 				CB50BB772A06AC4A00E1158A /* XCRemoteSwiftPackageReference "SnapKit" */,
 				CB50BBA42A277A0800E1158A /* XCRemoteSwiftPackageReference "iOSIntPackage" */,
+				CB19C8E92A57E0C00042E33A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 1214F41029B8B25A00E525F4 /* Products */;
 			projectDirPath = "";
@@ -570,6 +591,7 @@
 			files = (
 				1214F41F29B8B25E00E525F4 /* LaunchScreen.storyboard in Resources */,
 				1214F41C29B8B25E00E525F4 /* Assets.xcassets in Resources */,
+				CB19C8CF2A519E080042E33A /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -604,11 +626,13 @@
 				CB3C51B729D5A99700257E79 /* PhotosCollectionViewCell.swift in Sources */,
 				CB50BBAB2A30B17E00E1158A /* BrutForce.swift in Sources */,
 				CB3C51B929D6235600257E79 /* PhotosViewCell.swift in Sources */,
+				CB19C8E82A55E4B30042E33A /* TextPicker.swift in Sources */,
 				CB50BB6A2A0516DF00E1158A /* UserService.swift in Sources */,
 				CB50BB932A1F903200E1158A /* FeedViewModel.swift in Sources */,
 				CB50BB902A1A7C4800E1158A /* FeedModel.swift in Sources */,
 				CB50BB9F2A24EE0200E1158A /* FeedCoordinator.swift in Sources */,
 				CB19C8A32A49B1D30042E33A /* NetworkManager.swift in Sources */,
+				CB19C8E62A5594EB0042E33A /* CheckerService.swift in Sources */,
 				1214F41329B8B25A00E525F4 /* AppDelegate.swift in Sources */,
 				CB50BB712A06A1C200E1158A /* TestUserService.swift in Sources */,
 				1214F42929B91A8C00E525F4 /* ProfileViewController.swift in Sources */,
@@ -825,7 +849,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.exercise..Navigation;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Navigation;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -853,7 +877,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.exercise..Navigation;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Navigation;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -1003,6 +1027,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		CB19C8E92A57E0C00042E33A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 9.6.0;
+			};
+		};
 		CB50BB772A06AC4A00E1158A /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
@@ -1022,6 +1054,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		CB19C8EA2A57E0C00042E33A /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CB19C8E92A57E0C00042E33A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
 		CB50BB782A06AC4A00E1158A /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = CB50BB772A06AC4A00E1158A /* XCRemoteSwiftPackageReference "SnapKit" */;
