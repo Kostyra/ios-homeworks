@@ -1,6 +1,6 @@
 
 import StorageService
- 
+import UIKit
 
  var arrayTable = [
     PostView(author: "Jeck",
@@ -23,7 +23,7 @@ import StorageService
              view: 6_432_423)
 ]
 
-var arrayStark = [imageStark (imageStarks:"stark"),
+var arrayStark = [imageStark (imageStarks:"stark0"),
                   imageStark (imageStarks:"stark1"),
                   imageStark (imageStarks:"stark2"),
                   imageStark (imageStarks:"stark3"),
@@ -34,3 +34,44 @@ var arrayStark = [imageStark (imageStarks:"stark"),
                   imageStark (imageStarks:"stark8"),
                   imageStark (imageStarks:"stark9"),
 ]
+
+var photoStark: [UIImage] = [
+    UIImage(named: "stark0")!,
+    UIImage(named: "stark1")!,
+    UIImage(named: "stark2")!,
+    UIImage(named: "stark3")!,
+    UIImage(named: "stark4")!,
+    UIImage(named: "stark5")!,
+    UIImage(named: "stark6")!,
+    UIImage(named: "stark7")!,
+    UIImage(named: "stark8")!,
+    UIImage(named: "stark9")!
+]
+
+
+//extension imageStark {
+//    static func make() -> [imageStark] {
+//        [
+//        imageStark (imageStarks:"stark0"),
+//        imageStark (imageStarks:"stark1"),
+//        imageStark (imageStarks:"stark2"),
+//        imageStark (imageStarks:"stark3"),
+//        imageStark (imageStarks:"stark4"),
+//        imageStark (imageStarks:"stark5"),
+//        imageStark (imageStarks:"stark6"),
+//        imageStark (imageStarks:"stark7"),
+//        imageStark (imageStarks:"stark8"),
+//        imageStark (imageStarks:"stark9"),
+//        ]
+//    }
+//}
+//
+//
+//var newImageLibrary:[UIImage] = []
+//
+//func createArray() {
+//    newImageLibrary = (0...9).compactMap{UIImage(named: "stark\($0)")}
+//}
+
+
+

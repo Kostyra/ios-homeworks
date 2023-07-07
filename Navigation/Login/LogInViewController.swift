@@ -1,11 +1,15 @@
 
 
 import UIKit
+import FirebaseAuth
 
-class LogInViewController: UIViewController  {
+
+final class LogInViewController: UIViewController ,CustomViewDelegate {
     
     var loginDelegate:LoginViewControllerDelegate?
     
+    var networkManager = NetworkManager()
+    var checkerService = CheckerService()
 //    private lazy var delimiter:DelimiterView = {
 //        let delimiter = DelimiterView()
 //        delimiter.translatesAutoresizingMaskIntoConstraints = false
@@ -31,7 +35,7 @@ class LogInViewController: UIViewController  {
         textField.tintColor = UIColor(named: "Color")
         textField.autocapitalizationType = .none
         textField.backgroundColor = .systemGray6
-        textField.placeholder = "Email of phone"
+        textField.placeholder = "Pop"
         textField.borderStyle = UITextField.BorderStyle.roundedRect
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.clipsToBounds = true
@@ -56,7 +60,7 @@ class LogInViewController: UIViewController  {
         textField.autocapitalizationType = .none
         textField.isSecureTextEntry = true
         textField.backgroundColor = .systemGray6
-        textField.placeholder = "Password"
+        textField.placeholder = "123"
         textField.borderStyle = UITextField.BorderStyle.roundedRect
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.clipsToBounds = true
@@ -71,12 +75,50 @@ class LogInViewController: UIViewController  {
     
     
     private lazy var buttonEnter: CustomButton = {
-        let button = CustomButton()
-        button.setTitle("Log in", for: .normal)
+        let button = CustomButton(title: "Log in",
+                                  titleColor: .white,
+                                  backgroundColor: UIColor(named: "Color") ,
+                                  action: buttonActionProfile)
         button.layer.cornerRadius = 10
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.backgroundColor = UIColor(named: "Color")
-        button.addTarget(self, action: #selector(buttonActionProfile), for: .touchUpInside)
+        //button.setTitle("Log in", for: .normal)
+        //button.backgroundColor = UIColor(named: "Color")
+        //button.addTarget(self, action: #selector(buttonActionProfile), for: .touchUpInside)
+        return button
+        
+    }()
+    
+    private lazy var buttonBrutForce: CustomButton = {
+        let button = CustomButton(title: "Brut",
+                                  titleColor: .white,
+                                  backgroundColor: UIColor(named: "Color") ,
+                                  action: buttonActionBrutForce)
+        button.layer.cornerRadius = 10
+        button.translatesAutoresizingMaskIntoConstraints = false
+        //button.addTarget(self, action: #selector(buttonActionBrutForce), for: .touchUpInside)
+        return button
+        
+    }()
+    
+    private lazy var buttonLogResult: CustomButton = {
+        let button = CustomButton(title: "LogResult",
+                                  titleColor: .white,
+                                  backgroundColor: UIColor(named: "Color") ,
+                                  action: buttonActionLogResult)
+        button.layer.cornerRadius = 10
+        button.translatesAutoresizingMaskIntoConstraints = false
+        //button.addTarget(self, action: #selector(buttonActionBrutForce), for: .touchUpInside)
+        return button
+        
+    }()
+    
+    private lazy var buttonSingUp: CustomButton = {
+        let button = CustomButton(title: "Sing up",
+                                  titleColor: .white,
+                                  backgroundColor: UIColor(named: "Color") ,
+                                  action: buttonActionSingUp)
+        button.layer.cornerRadius = 10
+        button.translatesAutoresizingMaskIntoConstraints = false
         return button
         
     }()
@@ -104,13 +146,19 @@ class LogInViewController: UIViewController  {
         stackView.axis = .vertical
         stackView.distribution = .fillEqually
         stackView.alignment = .fill
-        stackView.spacing = 0.2
+//        stackView.spacing = 0.2
         
         stackView.addArrangedSubview(self.login)
 //        stackView.addArrangedSubview(delimiter)
         stackView.addArrangedSubview(self.pass)
         
         return stackView
+    }()
+    
+    private lazy var activityIndicator: UIActivityIndicatorView = {
+        let indicator = UIActivityIndicatorView(style: .medium)
+        indicator.translatesAutoresizingMaskIntoConstraints = false
+        return indicator
     }()
     
     
@@ -120,6 +168,10 @@ class LogInViewController: UIViewController  {
         contantView.addSubview(imageVK)
         contantView.addSubview(stackViewLoginPass)
         contantView.addSubview(buttonEnter)
+        contantView.addSubview(buttonBrutForce)
+        contantView.addSubview(activityIndicator)
+        contantView.addSubview(buttonLogResult)
+        contantView.addSubview(buttonSingUp)
         
         NSLayoutConstraint.activate([
             scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
@@ -138,7 +190,7 @@ class LogInViewController: UIViewController  {
             imageVK.widthAnchor.constraint(equalToConstant: 100),
             imageVK.centerXAnchor.constraint(equalTo: contantView.centerXAnchor),
             
-            stackViewLoginPass.topAnchor.constraint(equalTo: imageVK.bottomAnchor ,constant: 120),
+            stackViewLoginPass.topAnchor.constraint(equalTo: imageVK.bottomAnchor ,constant: 60),
             stackViewLoginPass.leftAnchor.constraint(equalTo: contantView.leftAnchor, constant: 16),
             stackViewLoginPass.rightAnchor.constraint(equalTo: contantView.rightAnchor , constant:-16),
             stackViewLoginPass.heightAnchor.constraint(equalToConstant: 100.5),
@@ -147,13 +199,33 @@ class LogInViewController: UIViewController  {
             buttonEnter.leftAnchor.constraint(equalTo: contantView.leftAnchor, constant: 16),
             buttonEnter.rightAnchor.constraint(equalTo: contantView.rightAnchor, constant: -16),
             buttonEnter.heightAnchor.constraint(equalToConstant: 50),
-            buttonEnter.bottomAnchor.constraint(equalTo: contantView.safeAreaLayoutGuide.bottomAnchor),
+//            buttonEnter.bottomAnchor.constraint(equalTo: contantView.safeAreaLayoutGuide.bottomAnchor),
+            
+            buttonSingUp.topAnchor.constraint(equalTo: buttonEnter.bottomAnchor, constant: 16),
+            buttonSingUp.leftAnchor.constraint(equalTo: contantView.leftAnchor, constant: 16),
+            buttonSingUp.rightAnchor.constraint(equalTo: contantView.rightAnchor, constant: -16),
+            buttonSingUp.heightAnchor.constraint(equalToConstant: 50),
+            
+            buttonBrutForce.topAnchor.constraint(equalTo: buttonSingUp.bottomAnchor, constant: 16),
+            buttonBrutForce.leftAnchor.constraint(equalTo: contantView.leftAnchor, constant: 16),
+            buttonBrutForce.rightAnchor.constraint(equalTo: contantView.rightAnchor, constant: -16),
+            buttonBrutForce.heightAnchor.constraint(equalToConstant: 50),
+//            buttonBrutForce.bottomAnchor.constraint(equalTo: contantView.safeAreaLayoutGuide.bottomAnchor),
+            
+            buttonLogResult.topAnchor.constraint(equalTo: buttonBrutForce.bottomAnchor, constant: 16),
+            buttonLogResult.leftAnchor.constraint(equalTo: contantView.leftAnchor, constant: 16),
+            buttonLogResult.rightAnchor.constraint(equalTo: contantView.rightAnchor, constant: -16),
+            buttonLogResult.heightAnchor.constraint(equalToConstant: 50),
+            buttonLogResult.bottomAnchor.constraint(equalTo: contantView.safeAreaLayoutGuide.bottomAnchor),
+            
+            activityIndicator.centerXAnchor.constraint(equalTo: contantView.centerXAnchor),
+            activityIndicator.bottomAnchor.constraint(equalTo: stackViewLoginPass.topAnchor,constant: -16)
         ])
         
     }
     
     private func setupView() {
-        view.backgroundColor = .systemPink
+        //view.backgroundColor = .systemPink
         navigationItem.title = ""
         navigationController?.navigationBar.prefersLargeTitles = false
         
@@ -182,7 +254,7 @@ class LogInViewController: UIViewController  {
         let notificationCenter = NotificationCenter.default
         notificationCenter.removeObserver(self)
     }
-    
+        
     @objc func willShowKeyboard(_ notification: NSNotification) {
         guard let keyboardHeight = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue.height
         else { return }
@@ -199,31 +271,104 @@ class LogInViewController: UIViewController  {
     
      var textLogin:String { return login.text ?? ""}
     
+
+    
      @objc func buttonActionProfile() {
-        #if DEBUG
-         let myLogin = TestUserService(user: userInfo)
-        #else
-         let myLogin = CurrentUserService(user: userInfo)
-        #endif
-         
-         guard let userName = login.text , let password = pass.text else {return}
-         
+         guard let userName = login.text,  let password = pass.text else { return }
+         checkerService.checkCredentials(email: userName, pass: password) { [weak self] error in
+             if error != nil {
+                 let alert = UIAlertController(title: "Ошибка", message: "Проверьте введенный логин и пароль", preferredStyle: .alert)
+                 alert.addAction(UIAlertAction(title: "OK", style: .default))
+                 self?.present(alert, animated: true)
+             } else {
+                 print(Auth.auth().currentUser ?? "login")
+                let profileViewController = ProfileViewController()
+                 self?.navigationController?.pushViewController(profileViewController, animated: true)
+             }
+         }
+// PROD or DEV
+//        #if DEBUG
+//         let myLogin = TestUserService(user: userInfo)
+//        #else
+//         let myLogin = CurrentUserService(user: userInfo)
+//        #endif
+//
+//         guard let userName = login.text , let password = pass.text else {return}
+// LOGIN Inspector
 //         let inspector = LoginInspector()
 //         let valid = inspector.validate(userName: userName, password: password)
-         let valid = loginDelegate?.check(userName: userName, password: password)
-         if valid == true {
-            let profileViewController = ProfileViewController()
-            self.navigationController?.pushViewController(profileViewController, animated: true)
-         } else if let userIndefication =  myLogin.pass(login: textLogin), myLogin.pass(login: textLogin) != nil {
-            let profileViewController = ProfileViewController()
-            self.navigationController?.pushViewController(profileViewController, animated: true)
-             print(userIndefication.name)
-         } else {
-             let alert = UIAlertController(title: "Ошибка", message: "Проверьте введенный логин и пароль", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .default))
-            present(alert, animated: true)
+// LOGIN PASS
+//         let valid = loginDelegate?.check(userName: userName, password: password)
+//         if valid == true {
+//            let profileViewController = ProfileViewController()
+//            self.navigationController?.pushViewController(profileViewController, animated: true)
+//         } else if let userIndefication =  myLogin.pass(login: textLogin), myLogin.pass(login: textLogin) != nil {
+//            let profileViewController = ProfileViewController()
+//            self.navigationController?.pushViewController(profileViewController, animated: true)
+//             print(userIndefication.name)
+//         }
+//         else {
+//             let alert = UIAlertController(title: "Ошибка", message: "Проверьте введенный логин и пароль", preferredStyle: .alert)
+//            alert.addAction(UIAlertAction(title: "OK", style: .default))
+//            present(alert, animated: true)
+//         }
+         
+         
+    }
+    
+    @objc private func  buttonActionLogResult() {
+        guard let userName = login.text , let password = pass.text else {return}
+        let inspector = LoginInspector()
+        _ = inspector.validate(userName: userName, password: password) { result in
+             switch result {
+             case .success(_):
+                 print("good")
+             case .failure(_):
+                 print("bad")
+             }
          }
     }
+    
+    
+   @objc private func buttonActionBrutForce(){
+       
+//       NetworkManager.request(for: AppConfiguration.randomConfig(), completion: { massegeText in
+//           DispatchQueue.main.async {
+//               print (massegeText as Any)
+//               
+//           }
+//       })
+           
+
+        self.activityIndicator.startAnimating()
+        let bruteForce = BruteForce()
+        let randomPassword = bruteForce.getRandomPassword(lenght: 4)
+       // let randomPassword = "123" //original pass
+       print(randomPassword)
+       DispatchQueue(label: "BrutForce", qos: .userInteractive).async {
+           let stolenPassword = bruteForce.bruteForce(passwordToUnlock: randomPassword)
+           DispatchQueue.main.async {
+               self.activityIndicator.stopAnimating()
+               self.succesHacking(stolenPassword: stolenPassword)
+           }
+       }
+    }
+    
+    @objc func buttonActionSingUp() {
+        
+        TextPicker.defaultPicker.showSingUpPicker(in: self) {[weak self] login, pass, pass2 in
+            self?.checkerService.signUp(email: login, pass1: pass, pass2: pass2)
+        }
+    }
+    
+     func backButtonPressed() {
+         navigationController?.popViewController(animated: true)
+      }
+    
+    private func succesHacking(stolenPassword: String){
+         self.pass.text = stolenPassword
+         self.pass.isSecureTextEntry = false
+     }
     
     
     
@@ -231,8 +376,11 @@ class LogInViewController: UIViewController  {
         super.viewDidLoad()
         viewLogin()
         setupView()
+        let customView = ProfileHeaderView()
+        customView.delegate = self
 //        delimitreFunk()
     }
+        
 
     override func viewWillAppear(_ animated: Bool)  {
         super.viewWillAppear(animated)

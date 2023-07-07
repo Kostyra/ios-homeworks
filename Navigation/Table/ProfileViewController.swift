@@ -3,9 +3,10 @@
 import UIKit
 import StorageService
 
-class ProfileViewController: UIViewController {
+final class ProfileViewController: UIViewController {
 
-   
+    var seconds = 0
+    var timer = Timer()
     
      private let tableView: UITableView = {
         let tableView = UITableView.init(
@@ -63,11 +64,35 @@ class ProfileViewController: UIViewController {
         #else
         view.backgroundColor = .green
         #endif
+        
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(timerCancel), userInfo: nil, repeats: true)
+
+        let tap = UITapGestureRecognizer(target: self, action: #selector(resetTimer))
+        view.addGestureRecognizer(tap)
     }
     override func viewWillAppear(_ animated: Bool)  {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = true
         
+    }
+    
+    @objc func timerCancel() {
+         
+        seconds += 1
+        if seconds == 20 {
+            let alert = UIAlertController(title: "Вниманиe", message: "Вы бездействовали больше 10 секунд, вы вернетесь на начадьный экран", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .destructive))
+            present(alert, animated: true)
+        } else if seconds >= 10 {
+            timer.invalidate()
+            navigationController?.popToRootViewController(animated: true)
+
+        }
+    }
+
+    @objc func resetTimer() {
+  //      navigationController?.pushViewController(PhotosViewController(), animated: true) //не совсем правильно работает
+        seconds = 0
     }
 }
 
@@ -128,17 +153,15 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         
     }
     
+    
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 
         return UITableView.automaticDimension
     }
     
-    func tableView(
-        _ tableView: UITableView,
-        didSelectRowAt indexPath: IndexPath
-    )
-    
-    {
+    func tableView(_ tableView: UITableView,didSelectRowAt indexPath: IndexPath) {
+
         if indexPath.section == 0 {
             print("Did select cell at \(indexPath)")
             let photosViewController = PhotosViewController()
@@ -146,27 +169,5 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
            
         }
     }
-  
-//     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-//        if section == 0 {
-//            return 20
-//        } else if section == 1 {
-//            return 0
-//        } else {
-//            return 40
-//        }
-//    }
-//
-//     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        nil
-//    }
-//
-//     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-//        nil
-//    }
-
-//     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-//        500
-//    }
-    
+      
 }
