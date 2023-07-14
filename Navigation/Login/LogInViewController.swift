@@ -7,9 +7,11 @@ import FirebaseAuth
 final class LogInViewController: UIViewController ,CustomViewDelegate {
     
     var loginDelegate:LoginViewControllerDelegate?
-    
     var networkManager = NetworkManager()
     var checkerService = CheckerService()
+    
+    var loginsModel: [LoginModel] = []
+    var realmSevice: IRealmSevice = RealmSevice()
 //    private lazy var delimiter:DelimiterView = {
 //        let delimiter = DelimiterView()
 //        delimiter.translatesAutoresizingMaskIntoConstraints = false
@@ -45,6 +47,7 @@ final class LogInViewController: UIViewController ,CustomViewDelegate {
         textField.clearButtonMode = UITextField.ViewMode.whileEditing
         textField.contentVerticalAlignment = UIControl.ContentVerticalAlignment.center
         textField.delegate = self
+        textField.keyboardType = .emailAddress
         return textField
     }()
     
@@ -123,6 +126,17 @@ final class LogInViewController: UIViewController ,CustomViewDelegate {
         
     }()
     
+    private lazy var buttonSingUpRealm: CustomButton = {
+        let button = CustomButton(title: "Sing up Realm",
+                                  titleColor: .white,
+                                  backgroundColor: UIColor(named: "Color") ,
+                                  action: buttonActionSingUpRealm)
+        button.layer.cornerRadius = 10
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+        
+    }()
+    
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.showsVerticalScrollIndicator = true
@@ -172,6 +186,7 @@ final class LogInViewController: UIViewController ,CustomViewDelegate {
         contantView.addSubview(activityIndicator)
         contantView.addSubview(buttonLogResult)
         contantView.addSubview(buttonSingUp)
+        contantView.addSubview(buttonSingUpRealm)
         
         NSLayoutConstraint.activate([
             scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
@@ -185,7 +200,7 @@ final class LogInViewController: UIViewController ,CustomViewDelegate {
             contantView.rightAnchor.constraint(equalTo: scrollView.rightAnchor),
             contantView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
             
-            imageVK.topAnchor.constraint(equalTo: contantView.topAnchor, constant: 120),
+            imageVK.topAnchor.constraint(equalTo: contantView.topAnchor, constant: 80),
             imageVK.heightAnchor.constraint(equalToConstant: 100),
             imageVK.widthAnchor.constraint(equalToConstant: 100),
             imageVK.centerXAnchor.constraint(equalTo: contantView.centerXAnchor),
@@ -216,7 +231,13 @@ final class LogInViewController: UIViewController ,CustomViewDelegate {
             buttonLogResult.leftAnchor.constraint(equalTo: contantView.leftAnchor, constant: 16),
             buttonLogResult.rightAnchor.constraint(equalTo: contantView.rightAnchor, constant: -16),
             buttonLogResult.heightAnchor.constraint(equalToConstant: 50),
-            buttonLogResult.bottomAnchor.constraint(equalTo: contantView.safeAreaLayoutGuide.bottomAnchor),
+//            buttonLogResult.bottomAnchor.constraint(equalTo: contantView.safeAreaLayoutGuide.bottomAnchor),
+            
+            buttonSingUpRealm.topAnchor.constraint(equalTo: buttonLogResult.bottomAnchor, constant: 16),
+            buttonSingUpRealm.leftAnchor.constraint(equalTo: contantView.leftAnchor, constant: 16),
+            buttonSingUpRealm.rightAnchor.constraint(equalTo: contantView.rightAnchor, constant: -16),
+            buttonSingUpRealm.heightAnchor.constraint(equalToConstant: 50),
+            buttonSingUpRealm.bottomAnchor.constraint(equalTo: contantView.safeAreaLayoutGuide.bottomAnchor),
             
             activityIndicator.centerXAnchor.constraint(equalTo: contantView.centerXAnchor),
             activityIndicator.bottomAnchor.constraint(equalTo: stackViewLoginPass.topAnchor,constant: -16)
@@ -361,6 +382,24 @@ final class LogInViewController: UIViewController ,CustomViewDelegate {
         }
     }
     
+    @objc func buttonActionSingUpRealm() {
+        let username = login.text
+        let password = pass.text
+        let newLogins = LoginModel(
+            id:UUID().uuidString,
+            username:username ?? "",
+            password:password ?? ""
+        )
+        let success = self.realmSevice.saveCredentials(loginUser: newLogins)
+        if success {
+            let realmViewController = RealmViewController()
+            realmViewController.modalTransitionStyle = .crossDissolve
+            realmViewController.modalPresentationStyle = .fullScreen
+            present(realmViewController, animated: true)
+//            navigationController?.pushViewController(realmViewController, animated: true)
+        }
+    }
+    
      func backButtonPressed() {
          navigationController?.popViewController(animated: true)
       }
@@ -386,6 +425,14 @@ final class LogInViewController: UIViewController ,CustomViewDelegate {
         super.viewWillAppear(animated)
         setupKeyboardObservers()
         self.navigationController?.navigationBar.isHidden = true
+        let userAuth = self.realmSevice.isLoggedIn()
+        if userAuth {
+            let realmViewController = RealmViewController()
+            realmViewController.modalTransitionStyle = .crossDissolve
+            realmViewController.modalPresentationStyle = .fullScreen
+            present(realmViewController, animated: true)
+            //navigationController?.pushViewController(realmViewController, animated: true)
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
