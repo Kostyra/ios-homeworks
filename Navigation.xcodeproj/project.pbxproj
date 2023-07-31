@@ -29,6 +29,10 @@
 		CB19C92A2A5FF8500042E33A /* RealmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB19C9292A5FF8500042E33A /* RealmModel.swift */; };
 		CB19C92C2A608D870042E33A /* RealmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB19C92B2A608D860042E33A /* RealmViewController.swift */; };
 		CB19C92E2A61803A0042E33A /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB19C92D2A61803A0042E33A /* LoginModel.swift */; };
+		CB19C9482A70086E0042E33A /* LikePostCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB19C9472A70086E0042E33A /* LikePostCoordinator.swift */; };
+		CB19C94B2A70090F0042E33A /* LikePostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB19C94A2A70090E0042E33A /* LikePostViewController.swift */; };
+		CB19C94D2A728A4C0042E33A /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB19C94C2A728A4C0042E33A /* CoreDataService.swift */; };
+		CB19C9502A728E2E0042E33A /* CoreDataProject.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CB19C94E2A728E2E0042E33A /* CoreDataProject.xcdatamodeld */; };
 		CB3C51A429D07F6400257E79 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3C51A329D07F6300257E79 /* PostTableViewCell.swift */; };
 		CB3C51AA29D3204000257E79 /* ExtationHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3C51A929D3204000257E79 /* ExtationHeader.swift */; };
 		CB3C51AD29D32A7A00257E79 /* DelimiterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3C51AC29D32A7A00257E79 /* DelimiterView.swift */; };
@@ -133,6 +137,10 @@
 		CB19C9292A5FF8500042E33A /* RealmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmModel.swift; sourceTree = "<group>"; };
 		CB19C92B2A608D860042E33A /* RealmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmViewController.swift; sourceTree = "<group>"; };
 		CB19C92D2A61803A0042E33A /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
+		CB19C9472A70086E0042E33A /* LikePostCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikePostCoordinator.swift; sourceTree = "<group>"; };
+		CB19C94A2A70090E0042E33A /* LikePostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikePostViewController.swift; sourceTree = "<group>"; };
+		CB19C94C2A728A4C0042E33A /* CoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
+		CB19C94F2A728E2E0042E33A /* CoreDataProject.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataProject.xcdatamodel; sourceTree = "<group>"; };
 		CB3C51A329D07F6300257E79 /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 		CB3C51A929D3204000257E79 /* ExtationHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtationHeader.swift; sourceTree = "<group>"; };
 		CB3C51AC29D32A7A00257E79 /* DelimiterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelimiterView.swift; sourceTree = "<group>"; };
@@ -228,6 +236,7 @@
 		1214F41129B8B25A00E525F4 /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
+				CB19C9492A7008E90042E33A /* LikePost */,
 				CB19C8A12A49B1BA0042E33A /* DATA */,
 				CB50BBAC2A3B7A3A00E1158A /* Work with error */,
 				CB50BBA92A30B15D00E1158A /* Brut Force */,
@@ -268,6 +277,7 @@
 		CB19C8A12A49B1BA0042E33A /* DATA */ = {
 			isa = PBXGroup;
 			children = (
+				CB19C9462A70062D0042E33A /* CoreData */,
 				CB19C9262A5FF18C0042E33A /* Realm */,
 				CB19C8E42A5594A10042E33A /* Firebase */,
 				CB19C8CB2A5067930042E33A /* JSONDecoder */,
@@ -311,6 +321,23 @@
 				CB19C92D2A61803A0042E33A /* LoginModel.swift */,
 			);
 			path = Realm;
+			sourceTree = "<group>";
+		};
+		CB19C9462A70062D0042E33A /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				CB19C94C2A728A4C0042E33A /* CoreDataService.swift */,
+				CB19C94E2A728E2E0042E33A /* CoreDataProject.xcdatamodeld */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		CB19C9492A7008E90042E33A /* LikePost */ = {
+			isa = PBXGroup;
+			children = (
+				CB19C94A2A70090E0042E33A /* LikePostViewController.swift */,
+			);
+			path = LikePost;
 			sourceTree = "<group>";
 		};
 		CB3C51AB29D32A3F00257E79 /* delimiter */ = {
@@ -420,6 +447,7 @@
 				CB50BB962A24C18200E1158A /* MainCoordinator.swift */,
 				CB50BB9E2A24EE0200E1158A /* FeedCoordinator.swift */,
 				CB50BBA02A24F0A500E1158A /* PostCoordinator.swift */,
+				CB19C9472A70086E0042E33A /* LikePostCoordinator.swift */,
 				CB50BBA22A264A6F00E1158A /* CoordinatorProtocol.swift */,
 			);
 			path = Coordinator;
@@ -654,6 +682,7 @@
 				CB3C51B729D5A99700257E79 /* PhotosCollectionViewCell.swift in Sources */,
 				CB50BBAB2A30B17E00E1158A /* BrutForce.swift in Sources */,
 				CB3C51B929D6235600257E79 /* PhotosViewCell.swift in Sources */,
+				CB19C94B2A70090F0042E33A /* LikePostViewController.swift in Sources */,
 				CB19C8E82A55E4B30042E33A /* TextPicker.swift in Sources */,
 				CB50BB6A2A0516DF00E1158A /* UserService.swift in Sources */,
 				CB50BB932A1F903200E1158A /* FeedViewModel.swift in Sources */,
@@ -676,6 +705,7 @@
 				CB725F6B29FD65CB006334EB /* Data.swift in Sources */,
 				CB50BBA32A264A7000E1158A /* CoordinatorProtocol.swift in Sources */,
 				CB50BB802A11292F00E1158A /* LoginInspector.swift in Sources */,
+				CB19C94D2A728A4C0042E33A /* CoreDataService.swift in Sources */,
 				1214F42729B91A7300E525F4 /* FeedViewController.swift in Sources */,
 				CB50BB842A12125E00E1158A /* MyLoginFactory.swift in Sources */,
 				CB50BBA12A24F0A500E1158A /* PostCoordinator.swift in Sources */,
@@ -689,7 +719,9 @@
 				CB725F6529FD6560006334EB /* Post.swift in Sources */,
 				1214F41529B8B25A00E525F4 /* SceneDelegate.swift in Sources */,
 				CB50BB682A05162000E1158A /* User.swift in Sources */,
+				CB19C9482A70086E0042E33A /* LikePostCoordinator.swift in Sources */,
 				CB19C92A2A5FF8500042E33A /* RealmModel.swift in Sources */,
+				CB19C9502A728E2E0042E33A /* CoreDataProject.xcdatamodeld in Sources */,
 				CB19C92C2A608D870042E33A /* RealmViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1119,6 +1151,19 @@
 			productName = iOSIntPackage;
 		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		CB19C94E2A728E2E0042E33A /* CoreDataProject.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				CB19C94F2A728E2E0042E33A /* CoreDataProject.xcdatamodel */,
+			);
+			currentVersion = CB19C94F2A728E2E0042E33A /* CoreDataProject.xcdatamodel */;
+			path = CoreDataProject.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 1214F40729B8B25A00E525F4 /* Project object */;
 }

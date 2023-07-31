@@ -65,10 +65,10 @@ final class ProfileViewController: UIViewController {
         view.backgroundColor = .green
         #endif
         
-        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(timerCancel), userInfo: nil, repeats: true)
-
-        let tap = UITapGestureRecognizer(target: self, action: #selector(resetTimer))
-        view.addGestureRecognizer(tap)
+//        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(timerCancel), userInfo: nil, repeats: true)
+//
+//        let tap = UITapGestureRecognizer(target: self, action: #selector(resetTimer))
+//        view.addGestureRecognizer(tap)
     }
     override func viewWillAppear(_ animated: Bool)  {
         super.viewWillAppear(animated)
@@ -78,21 +78,21 @@ final class ProfileViewController: UIViewController {
     
     @objc func timerCancel() {
          
-        seconds += 1
-        if seconds == 20 {
-            let alert = UIAlertController(title: "Вниманиe", message: "Вы бездействовали больше 10 секунд, вы вернетесь на начадьный экран", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: .destructive))
-            present(alert, animated: true)
-        } else if seconds >= 10 {
-            timer.invalidate()
-            navigationController?.popToRootViewController(animated: true)
-
-        }
+//        seconds += 1
+//        if seconds == 20 {
+//            let alert = UIAlertController(title: "Вниманиe", message: "Вы бездействовали больше 10 секунд, вы вернетесь на начадьный экран", preferredStyle: .alert)
+//            alert.addAction(UIAlertAction(title: "Ok", style: .destructive))
+//            present(alert, animated: true)
+//        } else if seconds >= 10 {
+//            timer.invalidate()
+//            navigationController?.popToRootViewController(animated: true)
+//
+//        }
     }
 
     @objc func resetTimer() {
   //      navigationController?.pushViewController(PhotosViewController(), animated: true) //не совсем правильно работает
-        seconds = 0
+//        seconds = 0
     }
 }
 
@@ -107,7 +107,7 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         if section == 0 {
             return 1
         } else {
-            return arrayTable.count
+            return  arrayTable.count
         }
     }
         
@@ -170,4 +170,15 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
       
+}
+
+
+protocol DidMoveToLikeDelegate: AnyObject {
+    func didMoveToLike(post: PostView)
+}
+
+extension ProfileViewController: DidMoveToLikeDelegate {
+    func didMoveToLike(post: PostView) {
+//       viewModel.didMoveToLike(post: PostView)
+    }
 }

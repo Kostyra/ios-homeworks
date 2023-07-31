@@ -295,18 +295,23 @@ final class LogInViewController: UIViewController ,CustomViewDelegate {
 
     
      @objc func buttonActionProfile() {
-         guard let userName = login.text,  let password = pass.text else { return }
-         checkerService.checkCredentials(email: userName, pass: password) { [weak self] error in
-             if error != nil {
-                 let alert = UIAlertController(title: "Ошибка", message: "Проверьте введенный логин и пароль", preferredStyle: .alert)
-                 alert.addAction(UIAlertAction(title: "OK", style: .default))
-                 self?.present(alert, animated: true)
-             } else {
-                 print(Auth.auth().currentUser ?? "login")
-                let profileViewController = ProfileViewController()
-                 self?.navigationController?.pushViewController(profileViewController, animated: true)
-             }
-         }
+         
+        let profileViewController = ProfileViewController()
+        self.navigationController?.pushViewController(profileViewController, animated: true)
+         //MARK: checkerService firebase
+//         guard let userName = login.text,  let password = pass.text else { return }
+//         checkerService.checkCredentials(email: userName, pass: password) { [weak self] error in
+//             if error != nil {
+//                 let alert = UIAlertController(title: "Ошибка", message: "Проверьте введенный логин и пароль", preferredStyle: .alert)
+//                 alert.addAction(UIAlertAction(title: "OK", style: .default))
+//                 self?.present(alert, animated: true)
+//             } else {
+//                 print(Auth.auth().currentUser ?? "login")
+//                let profileViewController = ProfileViewController()
+//                 self?.navigationController?.pushViewController(profileViewController, animated: true)
+//             }
+//         }
+         //MARK: OLD
 // PROD or DEV
 //        #if DEBUG
 //         let myLogin = TestUserService(user: userInfo)

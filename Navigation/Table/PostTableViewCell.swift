@@ -9,6 +9,7 @@ class PostTableViewCell: UITableViewCell {
      let filterImage = ImageProcessor()
  //   filterImage.processImage(sourceImage: T##UIImage, filter: T##ColorFilter, completion: T##(UIImage?) -> Void)
 //    filterImage.processImage(sourceImage: UIImage, filter: ColorFilter, completion: (UIImage?) -> Void)
+    var currentPost:PostView?
     
     var profileHeaderView: ProfileHeaderView = {
          let profileHeaderView = ProfileHeaderView()
@@ -98,6 +99,7 @@ class PostTableViewCell: UITableViewCell {
     }
     
     func tableItem(with news: PostView)  {
+        self.currentPost = news
         authorLabel.text = news.author
         imageEvil.image = UIImage(named: news.image)
         let images  = imageEvil.image
@@ -115,11 +117,24 @@ class PostTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: .subtitle, reuseIdentifier: reuseIdentifier)
         tableViewCell()
+        setupGestureRecognizer()
 
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    
+    private func setupGestureRecognizer() {
+        let doubleTapOnViewCell = UITapGestureRecognizer(target: self, action: #selector(doubleTap))
+        doubleTapOnViewCell.numberOfTapsRequired = 2
+        self.addGestureRecognizer(doubleTapOnViewCell)
+    }
+
+    @objc private func doubleTap() {
+        guard let currentPost else {return}
+        CoreDataService.shared.addLikePost(postOrigin: currentPost)
     }
 }
 

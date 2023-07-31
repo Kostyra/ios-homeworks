@@ -6,6 +6,7 @@ class FactoryTabBar {
     enum Flow {
         case feed
         case post
+        case likePost
     }
     
     //MARK: - Proportis
@@ -48,6 +49,16 @@ class FactoryTabBar {
                                                                   image: UIImage(systemName: "brain.head.profile"),
                                                                   tag: 1)
             navigationControllerFactory.setViewControllers([logInViewController], animated: true)
+            
+        case .likePost:
+            let likePostCoordinator = LikePostCoordinator()
+            likePostCoordinator.navigationController = navigationControllerFactory
+            let likePostViewController = LikePostViewController()
+            navigationControllerFactory.view.backgroundColor = .white
+            navigationControllerFactory.tabBarItem = UITabBarItem(title: "Log",
+                                                                  image: UIImage(systemName: "hand.thumbsup"),
+                                                                  tag: 1)
+            navigationControllerFactory.setViewControllers([likePostViewController], animated: true)
         }
     }
 }

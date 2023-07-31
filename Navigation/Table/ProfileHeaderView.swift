@@ -216,8 +216,9 @@ final class ProfileHeaderView: UIView {
         
         addSubview(uiview)
         addSubview(photo)
-        addSubview(buttonX)
+        
         addSubview(buttonLogOut)
+        addSubview(buttonX)
      
         box.snp.makeConstraints{ make in
             make.height.equalToSuperview().inset(130)

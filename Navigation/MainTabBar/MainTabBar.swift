@@ -7,6 +7,7 @@ final class MainTabBar:UITabBarController {
     //MARK: - private Proportis
     private var feedVC = FactoryTabBar(flow: .feed)
     private var postVC = FactoryTabBar(flow: .post)
+    private var likeVC = FactoryTabBar(flow: .likePost)
 //    private let viewControlers: [UIViewController]
     
     //MARK: - Lifecycle
@@ -29,7 +30,8 @@ final class MainTabBar:UITabBarController {
     private func setController() {
         viewControllers = [
             postVC.navigationControllerFactory,
-            feedVC.navigationControllerFactory
+            feedVC.navigationControllerFactory,
+            likeVC.navigationControllerFactory
         ]
     }
 }
