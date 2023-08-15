@@ -33,6 +33,8 @@
 		CB19C94B2A70090F0042E33A /* LikePostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB19C94A2A70090E0042E33A /* LikePostViewController.swift */; };
 		CB19C94D2A728A4C0042E33A /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB19C94C2A728A4C0042E33A /* CoreDataService.swift */; };
 		CB19C9502A728E2E0042E33A /* CoreDataProject.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CB19C94E2A728E2E0042E33A /* CoreDataProject.xcdatamodeld */; };
+		CB1C502D2A8A57DC0044210A /* MapCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1C502C2A8A57DC0044210A /* MapCoordinator.swift */; };
+		CB1C50302A8A66A00044210A /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1C502F2A8A669F0044210A /* MapViewController.swift */; };
 		CB3C51A429D07F6400257E79 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3C51A329D07F6300257E79 /* PostTableViewCell.swift */; };
 		CB3C51AA29D3204000257E79 /* ExtationHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3C51A929D3204000257E79 /* ExtationHeader.swift */; };
 		CB3C51AD29D32A7A00257E79 /* DelimiterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3C51AC29D32A7A00257E79 /* DelimiterView.swift */; };
@@ -141,6 +143,8 @@
 		CB19C94A2A70090E0042E33A /* LikePostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikePostViewController.swift; sourceTree = "<group>"; };
 		CB19C94C2A728A4C0042E33A /* CoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
 		CB19C94F2A728E2E0042E33A /* CoreDataProject.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataProject.xcdatamodel; sourceTree = "<group>"; };
+		CB1C502C2A8A57DC0044210A /* MapCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCoordinator.swift; sourceTree = "<group>"; };
+		CB1C502F2A8A669F0044210A /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		CB3C51A329D07F6300257E79 /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 		CB3C51A929D3204000257E79 /* ExtationHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtationHeader.swift; sourceTree = "<group>"; };
 		CB3C51AC29D32A7A00257E79 /* DelimiterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelimiterView.swift; sourceTree = "<group>"; };
@@ -236,6 +240,7 @@
 		1214F41129B8B25A00E525F4 /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
+				CB1C502E2A8A66810044210A /* Map */,
 				CB19C9492A7008E90042E33A /* LikePost */,
 				CB19C8A12A49B1BA0042E33A /* DATA */,
 				CB50BBAC2A3B7A3A00E1158A /* Work with error */,
@@ -338,6 +343,14 @@
 				CB19C94A2A70090E0042E33A /* LikePostViewController.swift */,
 			);
 			path = LikePost;
+			sourceTree = "<group>";
+		};
+		CB1C502E2A8A66810044210A /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				CB1C502F2A8A669F0044210A /* MapViewController.swift */,
+			);
+			path = Map;
 			sourceTree = "<group>";
 		};
 		CB3C51AB29D32A3F00257E79 /* delimiter */ = {
@@ -449,6 +462,7 @@
 				CB50BBA02A24F0A500E1158A /* PostCoordinator.swift */,
 				CB19C9472A70086E0042E33A /* LikePostCoordinator.swift */,
 				CB50BBA22A264A6F00E1158A /* CoordinatorProtocol.swift */,
+				CB1C502C2A8A57DC0044210A /* MapCoordinator.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -697,6 +711,7 @@
 				CB50BBAE2A3B7A6800E1158A /* Error.swift in Sources */,
 				CB50BB7C2A10B7A600E1158A /* Checker.swift in Sources */,
 				CBCA919C29BB6DDB00D11098 /* InfoViewController.swift in Sources */,
+				CB1C50302A8A66A00044210A /* MapViewController.swift in Sources */,
 				CB50BB992A24C2C300E1158A /* MainTabBar.swift in Sources */,
 				CB725F6929FD658C006334EB /* imageStark.swift in Sources */,
 				CB3C51AF29D4603C00257E79 /* PhotosTableViewCell.swift in Sources */,
@@ -705,6 +720,7 @@
 				CB725F6B29FD65CB006334EB /* Data.swift in Sources */,
 				CB50BBA32A264A7000E1158A /* CoordinatorProtocol.swift in Sources */,
 				CB50BB802A11292F00E1158A /* LoginInspector.swift in Sources */,
+				CB1C502D2A8A57DC0044210A /* MapCoordinator.swift in Sources */,
 				CB19C94D2A728A4C0042E33A /* CoreDataService.swift in Sources */,
 				1214F42729B91A7300E525F4 /* FeedViewController.swift in Sources */,
 				CB50BB842A12125E00E1158A /* MyLoginFactory.swift in Sources */,
@@ -902,6 +918,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Navigation/Info.plist;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = Please;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
@@ -930,6 +947,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Navigation/Info.plist;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = Please;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";

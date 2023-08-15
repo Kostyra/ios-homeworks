@@ -8,6 +8,7 @@ final class MainTabBar:UITabBarController {
     private var feedVC = FactoryTabBar(flow: .feed)
     private var postVC = FactoryTabBar(flow: .post)
     private var likeVC = FactoryTabBar(flow: .likePost)
+    private var mapVC = FactoryTabBar(flow: .map)
 //    private let viewControlers: [UIViewController]
     
     //MARK: - Lifecycle
@@ -31,7 +32,8 @@ final class MainTabBar:UITabBarController {
         viewControllers = [
             postVC.navigationControllerFactory,
             feedVC.navigationControllerFactory,
-            likeVC.navigationControllerFactory
+            likeVC.navigationControllerFactory,
+            mapVC.navigationControllerFactory
         ]
     }
 }

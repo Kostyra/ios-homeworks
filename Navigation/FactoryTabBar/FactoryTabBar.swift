@@ -7,6 +7,7 @@ class FactoryTabBar {
         case feed
         case post
         case likePost
+        case map
     }
     
     //MARK: - Proportis
@@ -55,10 +56,20 @@ class FactoryTabBar {
             likePostCoordinator.navigationController = navigationControllerFactory
             let likePostViewController = LikePostViewController()
             navigationControllerFactory.view.backgroundColor = .white
-            navigationControllerFactory.tabBarItem = UITabBarItem(title: "Log",
+            navigationControllerFactory.tabBarItem = UITabBarItem(title: "likePost",
                                                                   image: UIImage(systemName: "hand.thumbsup"),
-                                                                  tag: 1)
+                                                                  tag: 2)
             navigationControllerFactory.setViewControllers([likePostViewController], animated: true)
+            
+        case .map:
+            let mapCoordinator = MapCoordinator()
+            mapCoordinator.navigationController = navigationControllerFactory
+            let mapViewController = MapViewController()
+            navigationControllerFactory.view.backgroundColor = .white
+            navigationControllerFactory.tabBarItem = UITabBarItem(title: "Map",
+                                                                  image: UIImage(systemName: "map"),
+                                                                  tag: 3)
+            navigationControllerFactory.setViewControllers([mapViewController], animated: true)
         }
     }
 }
