@@ -26,6 +26,7 @@ final class MapViewController:UIViewController,CLLocationManagerDelegate {
         setupMapView()
         checkUserLocation()
         mapView.addGestureRecognizer(gestureRecognizer)
+        
     }
     
     //MARK: - Method
@@ -72,6 +73,9 @@ final class MapViewController:UIViewController,CLLocationManagerDelegate {
     @objc func handleTap(_ gestureRecognizer: UITapGestureRecognizer) {
         let location = gestureRecognizer.location(in: mapView)
         let coordinate = mapView.convert(location, toCoordinateFrom: mapView)
+//        Если хотим один пин на карте
+//        mapView.removeAnnotations(mapView.annotations)
+//        mapView.removeOverlays(mapView.overlays)
         
         let annotation = MKPointAnnotation()
         annotation.coordinate = coordinate

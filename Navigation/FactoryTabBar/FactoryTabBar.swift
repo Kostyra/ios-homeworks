@@ -33,7 +33,8 @@ class FactoryTabBar {
             let feedViewController = FeedViewController(feedViewModel: feedViewModel)
             feedCoordinator.navigationController = navigationControllerFactory
             navigationControllerFactory.view.backgroundColor = .systemOrange
-            navigationControllerFactory.tabBarItem = UITabBarItem(title: "Feed",
+            let localize = NSLocalizedString("FeedTabBar", comment: "")
+            navigationControllerFactory.tabBarItem = UITabBarItem(title: localize,
                                                                   image: UIImage(systemName: "figure.walk"),
                                                                   tag: 0)
             navigationControllerFactory.setViewControllers([feedViewController], animated: true)
@@ -46,7 +47,8 @@ class FactoryTabBar {
             let loginInspector = loginFactory.makeLoginInspector()
             logInViewController.loginDelegate = loginInspector
             navigationControllerFactory.view.backgroundColor = .white
-            navigationControllerFactory.tabBarItem = UITabBarItem(title: "Log",
+            let localize = NSLocalizedString("LogTabBar", comment: "")
+            navigationControllerFactory.tabBarItem = UITabBarItem(title: localize,
                                                                   image: UIImage(systemName: "brain.head.profile"),
                                                                   tag: 1)
             navigationControllerFactory.setViewControllers([logInViewController], animated: true)
@@ -56,7 +58,8 @@ class FactoryTabBar {
             likePostCoordinator.navigationController = navigationControllerFactory
             let likePostViewController = LikePostViewController()
             navigationControllerFactory.view.backgroundColor = .white
-            navigationControllerFactory.tabBarItem = UITabBarItem(title: "likePost",
+            let localize = NSLocalizedString("likePostTabBar", comment: "")
+            navigationControllerFactory.tabBarItem = UITabBarItem(title: localize,
                                                                   image: UIImage(systemName: "hand.thumbsup"),
                                                                   tag: 2)
             navigationControllerFactory.setViewControllers([likePostViewController], animated: true)
@@ -66,7 +69,8 @@ class FactoryTabBar {
             mapCoordinator.navigationController = navigationControllerFactory
             let mapViewController = MapViewController()
             navigationControllerFactory.view.backgroundColor = .white
-            navigationControllerFactory.tabBarItem = UITabBarItem(title: "Map",
+            let localize = NSLocalizedString("MapTabBar", comment: "")
+            navigationControllerFactory.tabBarItem = UITabBarItem(title: localize,
                                                                   image: UIImage(systemName: "map"),
                                                                   tag: 3)
             navigationControllerFactory.setViewControllers([mapViewController], animated: true)

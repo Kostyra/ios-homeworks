@@ -110,7 +110,10 @@ class PostTableViewCell: UITableViewCell {
         }
         //filterImage.processImage(sourceImage: test!, filter: .colorInvert, completion: (UIImage?) -> Void) in
         descriptionText.text = news.description
-        likesLabel.text = "Likes: " + String(news.likes)
+        
+        let likesFormater = NSLocalizedString("LikesKey", comment: "")
+        let finalFormat = String(format: likesFormater, news.likes)
+        likesLabel.text = "Likes: " + finalFormat
         viewsLabel.text = "Views: " + String(news.view)
     }
     

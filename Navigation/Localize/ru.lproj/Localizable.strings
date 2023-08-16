@@ -1,0 +1,15 @@
+
+
+LogIn = "Авторизаваться";
+LogInBrut = "Брут";
+LogInResult = "Резалт";
+SingUp = "Зарегаться:)";
+LogInRealm = "Реалм";
+FeedTabBar  = "Подача";
+LogTabBar  = "Логин";
+likePostTabBar  = "Любимый пост";
+MapTabBar  = "Карта";
+Error = "Ошибка";
+Ok = "Хорошо";
+DoNotWord = "Нету слова";
+NotGoodPass = "Не тот пароль";

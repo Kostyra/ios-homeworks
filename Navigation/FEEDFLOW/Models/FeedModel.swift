@@ -9,9 +9,11 @@ enum FeedModelError:Error {
     var errorDescription: String {
         switch self {
         case .notWorld:
-            return "Нету слова"
+            let localize = NSLocalizedString("DoNotWord", comment: "")
+            return localize
         case .unnCorrect:
-            return "Не правильный пароль"
+            let localize = NSLocalizedString("NotGoodPass", comment: "")
+            return localize
         }
     }
 }

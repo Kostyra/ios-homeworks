@@ -109,8 +109,10 @@ class FeedViewController: UIViewController {
             switch state {
 
             case .wrong(let text):
-                let alert = UIAlertController(title: "Ошибка", message: "\(text)", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "Ok", style: .default))
+                let localize = NSLocalizedString("Error", comment: "")
+                let localizeAction = NSLocalizedString("Ok", comment: "")
+                let alert = UIAlertController(title: localize, message: "\(text)", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: localizeAction, style: .default))
                 self!.present(alert, animated: true)
                 print(1)
                 self?.labelCheck.backgroundColor = .red

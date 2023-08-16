@@ -78,7 +78,8 @@ final class LogInViewController: UIViewController ,CustomViewDelegate {
     
     
     private lazy var buttonEnter: CustomButton = {
-        let button = CustomButton(title: "Log in",
+        let localizeButton = NSLocalizedString("LogIn", comment: "")
+        let button = CustomButton(title: localizeButton,
                                   titleColor: .white,
                                   backgroundColor: UIColor(named: "Color") ,
                                   action: buttonActionProfile)
@@ -92,7 +93,8 @@ final class LogInViewController: UIViewController ,CustomViewDelegate {
     }()
     
     private lazy var buttonBrutForce: CustomButton = {
-        let button = CustomButton(title: "Brut",
+        let localizeButton = NSLocalizedString("LogInBrut", comment: "")
+        let button = CustomButton(title: localizeButton,
                                   titleColor: .white,
                                   backgroundColor: UIColor(named: "Color") ,
                                   action: buttonActionBrutForce)
@@ -104,7 +106,8 @@ final class LogInViewController: UIViewController ,CustomViewDelegate {
     }()
     
     private lazy var buttonLogResult: CustomButton = {
-        let button = CustomButton(title: "LogResult",
+        let localizeButton = NSLocalizedString("LogInResult", comment: "")
+        let button = CustomButton(title: localizeButton,
                                   titleColor: .white,
                                   backgroundColor: UIColor(named: "Color") ,
                                   action: buttonActionLogResult)
@@ -116,7 +119,8 @@ final class LogInViewController: UIViewController ,CustomViewDelegate {
     }()
     
     private lazy var buttonSingUp: CustomButton = {
-        let button = CustomButton(title: "Sing up",
+        let localizeButton = NSLocalizedString("SingUp", comment: "")
+        let button = CustomButton(title: localizeButton,
                                   titleColor: .white,
                                   backgroundColor: UIColor(named: "Color") ,
                                   action: buttonActionSingUp)
@@ -127,7 +131,8 @@ final class LogInViewController: UIViewController ,CustomViewDelegate {
     }()
     
     private lazy var buttonSingUpRealm: CustomButton = {
-        let button = CustomButton(title: "Sing up Realm",
+        let localizeButton = NSLocalizedString("LogInRealm", comment: "")
+        let button = CustomButton(title: localizeButton,
                                   titleColor: .white,
                                   backgroundColor: UIColor(named: "Color") ,
                                   action: buttonActionSingUpRealm)
