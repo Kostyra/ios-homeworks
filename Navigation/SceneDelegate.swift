@@ -18,7 +18,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let scene = (scene as? UIWindowScene) else { return }
         
-        
+        //КУДА Лучше поместить UITabBar.appearance() ???)
+        UITabBar.appearance().tintColor = UIColor.createColor(lightMode: .blue, darkMode: .purple)
+        UITabBar.appearance().unselectedItemTintColor = UIColor.createColor(lightMode: .darkGray, darkMode: .white)
         
         window = UIWindow(windowScene: scene)
         window?.makeKeyAndVisible()

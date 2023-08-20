@@ -10,7 +10,7 @@ class PhotosCollectionViewCell: UICollectionViewCell {
     private var imagePeople: UIImageView = {
     let image = UIImageView()
     image.translatesAutoresizingMaskIntoConstraints = false
-        image.backgroundColor = UIColor(named: "TabBar")
+        image.backgroundColor =  UIColor.createColor(lightMode: UIColor(named: "TabBar")!, darkMode: .black)
         image.contentMode = .scaleAspectFit //Больше нравится fit
         //image.contentMode = .scaleToFill //Растянутся, но будет не красиво
     return image
@@ -27,7 +27,7 @@ class PhotosCollectionViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: .zero)
         imageCell()
-        contentView.backgroundColor = .green
+        contentView.backgroundColor = UIColor.createColor(lightMode: .green, darkMode: .blue)
     }
     
 

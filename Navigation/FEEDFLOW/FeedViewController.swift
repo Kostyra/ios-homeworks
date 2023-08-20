@@ -25,7 +25,7 @@ class FeedViewController: UIViewController {
             
     private lazy var buttonGreen: CustomButton = {
         let button = CustomButton(title: "Button Green",
-                                  titleColor: .white,
+                                  titleColor: UIColor.createColor(lightMode: .white, darkMode: .black),
                                   backgroundColor: .green,
                                   action: buttonAction)
         return button
@@ -33,7 +33,7 @@ class FeedViewController: UIViewController {
     
     private lazy var buttonPink: CustomButton = {
         let button = CustomButton(title: "Button Pink",
-                                  titleColor: .white,
+                                  titleColor: UIColor.createColor(lightMode: .white, darkMode: .black),
                                   backgroundColor: .systemPink,
                                   action: buttonAction)
         return button
@@ -41,7 +41,7 @@ class FeedViewController: UIViewController {
     
     private lazy var checkGuessButton: CustomButton = {
         let button = CustomButton(title: "checkGuessButton",
-                                  titleColor: .white,
+                                  titleColor: UIColor.createColor(lightMode: .white, darkMode: .black),
                                   backgroundColor: .systemBlue,
                                   action: buttonFieldText)
         return button

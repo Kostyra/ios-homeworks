@@ -32,8 +32,8 @@ class FactoryTabBar {
                                               feedCoordinator: feedCoordinator)
             let feedViewController = FeedViewController(feedViewModel: feedViewModel)
             feedCoordinator.navigationController = navigationControllerFactory
-            navigationControllerFactory.view.backgroundColor = .systemOrange
-            let localize = NSLocalizedString("FeedTabBar", comment: "")
+            navigationControllerFactory.view.backgroundColor = UIColor.createColor(lightMode: .systemOrange, darkMode: .systemBrown)
+            let localize = "FeedTabBar".localized
             navigationControllerFactory.tabBarItem = UITabBarItem(title: localize,
                                                                   image: UIImage(systemName: "figure.walk"),
                                                                   tag: 0)
@@ -46,8 +46,8 @@ class FactoryTabBar {
             let loginFactory = MyLoginFactory()
             let loginInspector = loginFactory.makeLoginInspector()
             logInViewController.loginDelegate = loginInspector
-            navigationControllerFactory.view.backgroundColor = .white
-            let localize = NSLocalizedString("LogTabBar", comment: "")
+            navigationControllerFactory.view.backgroundColor = UIColor.createColor(lightMode: .white, darkMode: .black)
+            let localize = "LogTabBar".localized
             navigationControllerFactory.tabBarItem = UITabBarItem(title: localize,
                                                                   image: UIImage(systemName: "brain.head.profile"),
                                                                   tag: 1)
@@ -57,8 +57,8 @@ class FactoryTabBar {
             let likePostCoordinator = LikePostCoordinator()
             likePostCoordinator.navigationController = navigationControllerFactory
             let likePostViewController = LikePostViewController()
-            navigationControllerFactory.view.backgroundColor = .white
-            let localize = NSLocalizedString("likePostTabBar", comment: "")
+            navigationControllerFactory.view.backgroundColor = UIColor.createColor(lightMode: .white, darkMode: .black)
+            let localize = "likePostTabBar".localized
             navigationControllerFactory.tabBarItem = UITabBarItem(title: localize,
                                                                   image: UIImage(systemName: "hand.thumbsup"),
                                                                   tag: 2)
@@ -68,8 +68,8 @@ class FactoryTabBar {
             let mapCoordinator = MapCoordinator()
             mapCoordinator.navigationController = navigationControllerFactory
             let mapViewController = MapViewController()
-            navigationControllerFactory.view.backgroundColor = .white
-            let localize = NSLocalizedString("MapTabBar", comment: "")
+            navigationControllerFactory.view.backgroundColor = UIColor.createColor(lightMode: .white, darkMode: .black)
+            let localize = "MapTabBar".localized
             navigationControllerFactory.tabBarItem = UITabBarItem(title: localize,
                                                                   image: UIImage(systemName: "map"),
                                                                   tag: 3)

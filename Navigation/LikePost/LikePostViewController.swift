@@ -23,7 +23,7 @@ class LikePostViewController:UIViewController {
        override func viewDidLoad() {
            super.viewDidLoad()
            title = "Favorites"
-           view.backgroundColor = .white
+           view.backgroundColor = UIColor.createColor(lightMode: .white, darkMode: .black)
            view.addSubview(tableView)
            
            NSLayoutConstraint.activate([

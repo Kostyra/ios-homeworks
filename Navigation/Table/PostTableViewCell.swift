@@ -13,7 +13,7 @@ class PostTableViewCell: UITableViewCell {
     
     var profileHeaderView: ProfileHeaderView = {
          let profileHeaderView = ProfileHeaderView()
-         profileHeaderView.backgroundColor = .lightGray
+        profileHeaderView.backgroundColor = UIColor.createColor(lightMode: .lightGray, darkMode: .darkGray)
          profileHeaderView.translatesAutoresizingMaskIntoConstraints = false
          return profileHeaderView
      }()
@@ -21,7 +21,7 @@ class PostTableViewCell: UITableViewCell {
     private let authorLabel: UILabel = {
        let author = UILabel()
         author.font = UIFont.systemFont(ofSize: 20, weight: .bold)
-        author.textColor = .black
+        author.textColor = UIColor.createColor(lightMode: .black, darkMode: .white)
         author.numberOfLines = 2
         author.translatesAutoresizingMaskIntoConstraints = false
         return author
@@ -40,7 +40,7 @@ class PostTableViewCell: UITableViewCell {
        let author = UILabel()
         author.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         //author.text = "Likes: "
-        author.textColor = .black
+        author.textColor = UIColor.createColor(lightMode: .black, darkMode: .white)
         author.translatesAutoresizingMaskIntoConstraints = false
         return author
     }()
@@ -48,7 +48,7 @@ class PostTableViewCell: UITableViewCell {
     private let viewsLabel: UILabel = {
        let views = UILabel()
         views.font = UIFont.systemFont(ofSize: 16, weight: .regular)
-        views.textColor = .black
+        views.textColor = UIColor.createColor(lightMode: .black, darkMode: .white)
         views.translatesAutoresizingMaskIntoConstraints = false
         return views
     }()
@@ -56,7 +56,7 @@ class PostTableViewCell: UITableViewCell {
     private let imageEvil: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
-        imageView.backgroundColor = .black
+        imageView.backgroundColor = .black//UIColor.createColor(lightMode: .black, darkMode: .white)
         imageView.translatesAutoresizingMaskIntoConstraints = false
         
         return imageView

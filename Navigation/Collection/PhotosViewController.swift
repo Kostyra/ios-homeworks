@@ -49,7 +49,8 @@ class PhotosViewController:  UIViewController {
         setupCollectionView()
         applyImageFilter()
         title = "Photos Gallery"
-       view.backgroundColor = UIColor(named: "TabBar")
+        collectionView.backgroundColor = UIColor.createColor(lightMode: .white, darkMode: .black)
+        view.backgroundColor = UIColor.createColor(lightMode: UIColor(named: "TabBar")!, darkMode: .black)
         navigationController?.navigationBar.isHidden = false
 //        imagePublisherFacade.subscribe(self)
 //        imagePublisherFacade.addImagesWithTimer(time: 0.5, repeat: 10, userImages: newImageLibrary)

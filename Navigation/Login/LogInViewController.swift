@@ -12,6 +12,7 @@ final class LogInViewController: UIViewController ,CustomViewDelegate {
     
     var loginsModel: [LoginModel] = []
     var realmSevice: IRealmSevice = RealmSevice()
+    var buttomTextColorLite = UIColor(named: "Color")!
 //    private lazy var delimiter:DelimiterView = {
 //        let delimiter = DelimiterView()
 //        delimiter.translatesAutoresizingMaskIntoConstraints = false
@@ -80,8 +81,8 @@ final class LogInViewController: UIViewController ,CustomViewDelegate {
     private lazy var buttonEnter: CustomButton = {
         let localizeButton = NSLocalizedString("LogIn", comment: "")
         let button = CustomButton(title: localizeButton,
-                                  titleColor: .white,
-                                  backgroundColor: UIColor(named: "Color") ,
+                                  titleColor: UIColor.createColor(lightMode: .white, darkMode: .black),
+                                  backgroundColor: UIColor.createColor(lightMode: buttomTextColorLite, darkMode: .white),
                                   action: buttonActionProfile)
         button.layer.cornerRadius = 10
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -95,8 +96,8 @@ final class LogInViewController: UIViewController ,CustomViewDelegate {
     private lazy var buttonBrutForce: CustomButton = {
         let localizeButton = NSLocalizedString("LogInBrut", comment: "")
         let button = CustomButton(title: localizeButton,
-                                  titleColor: .white,
-                                  backgroundColor: UIColor(named: "Color") ,
+                                  titleColor: UIColor.createColor(lightMode: .white, darkMode: .black),
+                                  backgroundColor: UIColor.createColor(lightMode: buttomTextColorLite, darkMode: .white),
                                   action: buttonActionBrutForce)
         button.layer.cornerRadius = 10
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -108,8 +109,8 @@ final class LogInViewController: UIViewController ,CustomViewDelegate {
     private lazy var buttonLogResult: CustomButton = {
         let localizeButton = NSLocalizedString("LogInResult", comment: "")
         let button = CustomButton(title: localizeButton,
-                                  titleColor: .white,
-                                  backgroundColor: UIColor(named: "Color") ,
+                                  titleColor: UIColor.createColor(lightMode: .white, darkMode: .black),
+                                  backgroundColor: UIColor.createColor(lightMode: buttomTextColorLite, darkMode: .white),
                                   action: buttonActionLogResult)
         button.layer.cornerRadius = 10
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -121,8 +122,8 @@ final class LogInViewController: UIViewController ,CustomViewDelegate {
     private lazy var buttonSingUp: CustomButton = {
         let localizeButton = NSLocalizedString("SingUp", comment: "")
         let button = CustomButton(title: localizeButton,
-                                  titleColor: .white,
-                                  backgroundColor: UIColor(named: "Color") ,
+                                  titleColor: UIColor.createColor(lightMode: .white, darkMode: .black),
+                                  backgroundColor: UIColor.createColor(lightMode: buttomTextColorLite, darkMode: .white),
                                   action: buttonActionSingUp)
         button.layer.cornerRadius = 10
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -133,8 +134,8 @@ final class LogInViewController: UIViewController ,CustomViewDelegate {
     private lazy var buttonSingUpRealm: CustomButton = {
         let localizeButton = NSLocalizedString("LogInRealm", comment: "")
         let button = CustomButton(title: localizeButton,
-                                  titleColor: .white,
-                                  backgroundColor: UIColor(named: "Color") ,
+                                  titleColor: UIColor.createColor(lightMode: .white, darkMode: .black),
+                                  backgroundColor: UIColor.createColor(lightMode: buttomTextColorLite, darkMode: .white),
                                   action: buttonActionSingUpRealm)
         button.layer.cornerRadius = 10
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -425,6 +426,7 @@ final class LogInViewController: UIViewController ,CustomViewDelegate {
         super.viewDidLoad()
         viewLogin()
         setupView()
+        
         let customView = ProfileHeaderView()
         customView.delegate = self
 //        delimitreFunk()

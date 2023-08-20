@@ -77,8 +77,10 @@
 		CB725F6B29FD65CB006334EB /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB725F6A29FD65CB006334EB /* Data.swift */; };
 		CB725F9829FDBBB3006334EB /* PostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB725F9729FDBBB3006334EB /* PostView.swift */; };
 		CB725F9A29FDBDB2006334EB /* PostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB725F9729FDBBB3006334EB /* PostView.swift */; };
+		CB784B9E2A92232A00EA3DEC /* ExtesionTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB784B9D2A92232A00EA3DEC /* ExtesionTheme.swift */; };
 		CB825EB22A8D0CFA00F1CC20 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CB825EB42A8D0CFA00F1CC20 /* Localizable.strings */; };
 		CB825EB82A8D399200F1CC20 /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = CB825EBA2A8D399200F1CC20 /* Localizable.stringsdict */; };
+		CB825EBD2A8DF9DD00F1CC20 /* ExtensionString.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB825EBC2A8DF9DD00F1CC20 /* ExtensionString.swift */; };
 		CBCA919C29BB6DDB00D11098 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCA919B29BB6DDB00D11098 /* InfoViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -188,10 +190,12 @@
 		CB725F6829FD658C006334EB /* imageStark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = imageStark.swift; sourceTree = "<group>"; };
 		CB725F6A29FD65CB006334EB /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		CB725F9729FDBBB3006334EB /* PostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PostView.swift; path = StorageServiceTests/PostView.swift; sourceTree = SOURCE_ROOT; };
+		CB784B9D2A92232A00EA3DEC /* ExtesionTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtesionTheme.swift; sourceTree = "<group>"; };
 		CB825EB32A8D0CFA00F1CC20 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		CB825EB52A8D0CFF00F1CC20 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		CB825EB92A8D399200F1CC20 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = en; path = en.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
 		CB825EBB2A8D399300F1CC20 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = ru; path = ru.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
+		CB825EBC2A8DF9DD00F1CC20 /* ExtensionString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionString.swift; sourceTree = "<group>"; };
 		CBCA919B29BB6DDB00D11098 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -250,6 +254,7 @@
 		1214F41129B8B25A00E525F4 /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
+				CB784B9C2A92230C00EA3DEC /* Theme */,
 				CB02BCBF2A8CC45500C776C1 /* Localize */,
 				CB1C502E2A8A66810044210A /* Map */,
 				CB19C9492A7008E90042E33A /* LikePost */,
@@ -288,6 +293,7 @@
 				CB02BCC42A8CC50200C776C1 /* InfoPlist.strings */,
 				CB825EB42A8D0CFA00F1CC20 /* Localizable.strings */,
 				CB825EBA2A8D399200F1CC20 /* Localizable.stringsdict */,
+				CB825EBC2A8DF9DD00F1CC20 /* ExtensionString.swift */,
 			);
 			path = Localize;
 			sourceTree = "<group>";
@@ -549,6 +555,14 @@
 			path = "Struct and Data";
 			sourceTree = "<group>";
 		};
+		CB784B9C2A92230C00EA3DEC /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				CB784B9D2A92232A00EA3DEC /* ExtesionTheme.swift */,
+			);
+			path = Theme;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -758,12 +772,14 @@
 				CB50BB7E2A10B9DD00E1158A /* LoginViewControllerDelegate.swift in Sources */,
 				CB3C51AD29D32A7A00257E79 /* DelimiterView.swift in Sources */,
 				CB725F6529FD6560006334EB /* Post.swift in Sources */,
+				CB784B9E2A92232A00EA3DEC /* ExtesionTheme.swift in Sources */,
 				1214F41529B8B25A00E525F4 /* SceneDelegate.swift in Sources */,
 				CB50BB682A05162000E1158A /* User.swift in Sources */,
 				CB19C9482A70086E0042E33A /* LikePostCoordinator.swift in Sources */,
 				CB19C92A2A5FF8500042E33A /* RealmModel.swift in Sources */,
 				CB19C9502A728E2E0042E33A /* CoreDataProject.xcdatamodeld in Sources */,
 				CB19C92C2A608D870042E33A /* RealmViewController.swift in Sources */,
+				CB825EBD2A8DF9DD00F1CC20 /* ExtensionString.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -22,7 +22,7 @@ final class ProfileHeaderView: UIView {
 //        let imageView = UIImageView(image: image)
         let imageView = UIImageView()
         imageView.layer.borderWidth = 3.0
-        imageView.layer.borderColor = UIColor.white.cgColor
+        imageView.layer.borderColor = CGColor.createColor(lightMode: UIColor.white.cgColor, darkMode: UIColor.black.cgColor)
         imageView.layer.cornerRadius = 75
         imageView.clipsToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -38,7 +38,7 @@ final class ProfileHeaderView: UIView {
         let label = UILabel()
         //label.text = myInfo                                       //"Old Castle"
         label.font = UIFont.systemFont(ofSize: 18, weight: .bold)
-        label.textColor = .black
+        label.textColor = UIColor.createColor(lightMode: .black, darkMode: .white)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -47,7 +47,7 @@ final class ProfileHeaderView: UIView {
         let labelGrey = UILabel()
         //labelGrey.text = "The Castle was buld in 1898. First owner"
         labelGrey.font = UIFont.systemFont(ofSize: 14, weight: .regular)
-        labelGrey.textColor = .gray
+        labelGrey.textColor = UIColor.createColor(lightMode: .gray, darkMode: .white)
         labelGrey.translatesAutoresizingMaskIntoConstraints = false
         return labelGrey
     }()
@@ -56,7 +56,7 @@ final class ProfileHeaderView: UIView {
         let labelGrey = UILabel()
 //        labelGrey.text = "The Castle was buld in 1898. First owner"
         labelGrey.font = UIFont.systemFont(ofSize: 14, weight: .regular)
-        labelGrey.textColor = .gray
+        labelGrey.textColor = UIColor.createColor(lightMode: .gray, darkMode: .white)
         labelGrey.translatesAutoresizingMaskIntoConstraints = false
         
         return labelGrey
@@ -64,11 +64,12 @@ final class ProfileHeaderView: UIView {
     
     private lazy var textField: UITextField = {
         let textField = UITextField()
-        textField.backgroundColor = .white
+        textField.backgroundColor = UIColor.createColor(lightMode: .white, darkMode: .black)
+        textField.textColor = UIColor.createColor(lightMode: .white, darkMode: .black)
         textField.layer.cornerRadius = 12
         textField.font = UIFont.systemFont(ofSize: 15, weight: .regular)
         textField.layer.borderWidth = 1
-        textField.layer.borderColor = UIColor.black.cgColor
+        textField.layer.borderColor = CGColor.createColor(lightMode: UIColor.black.cgColor, darkMode: UIColor.white.cgColor)
         textField.placeholder = "Write Status"
         textField.textAlignment  = .center
         textField.translatesAutoresizingMaskIntoConstraints = false
@@ -78,13 +79,14 @@ final class ProfileHeaderView: UIView {
     
     private lazy var buttonStatus: UIButton = {
         let button = UIButton()
-        button.backgroundColor = .systemBlue
+        button.backgroundColor = UIColor.createColor(lightMode: .systemBlue, darkMode: .white)
+        button.setTitleColor(UIColor.createColor(lightMode: .white, darkMode: .black), for: .normal)
         button.setTitle("Show status", for: .normal)
         button.layer.cornerRadius = 4
         button.layer.shadowOffset = CGSize(width: 4, height: 4)
         button.layer.shadowRadius = 4
         button.layer.shadowOpacity = 0.7
-        button.layer.shadowColor = UIColor.black.cgColor
+        button.layer.shadowColor = CGColor.createColor(lightMode: UIColor.black.cgColor, darkMode: UIColor.white.cgColor)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(buttonPress), for: .touchUpInside)
         return button
@@ -92,7 +94,7 @@ final class ProfileHeaderView: UIView {
     
     private lazy var buttonLogOut: UIButton = {
         let button = UIButton()
-        button.setTitleColor(.systemBlue, for: .normal)
+        button.setTitleColor(UIColor.createColor(lightMode: .systemBlue, darkMode: .white), for: .normal)
         button.setTitle("Logout", for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(backButtonPressed), for: .touchUpInside)
@@ -103,7 +105,7 @@ final class ProfileHeaderView: UIView {
         let uiview = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
         uiview.alpha = 0
         uiview.isHidden = true
-        uiview.backgroundColor = .systemGray
+        uiview.backgroundColor = UIColor.createColor(lightMode: .systemGray, darkMode: .black)
         return uiview
     }()
     
@@ -159,7 +161,7 @@ final class ProfileHeaderView: UIView {
         UIImageView.animate(withDuration: 0.5, delay: 0.3, options: .curveLinear){
             self.photo.transform = CGAffineTransform(scaleX: screen, y: screen)
             self.photo.layer.cornerRadius = 0
-            self.photo.layer.borderColor = UIColor.green.cgColor
+            self.photo.layer.borderColor = CGColor.createColor(lightMode: UIColor.green.cgColor, darkMode: UIColor.blue.cgColor)
             self.photo.center =  CGPoint(x: UIScreen.main.bounds.midX, y: UIScreen.main.bounds.midY )
             self.uiview.isHidden = false
             self.uiview.alpha = 0.7
@@ -178,7 +180,7 @@ final class ProfileHeaderView: UIView {
                    self.photo.center = self.animatePhoto
                    self.photo.transform = CGAffineTransform(scaleX: 1, y: 1)
                    self.photo.layer.cornerRadius = 75
-                   self.photo.layer.borderColor = UIColor.white.cgColor
+                   self.photo.layer.borderColor = CGColor.createColor(lightMode: UIColor.white.cgColor, darkMode: UIColor.black.cgColor)
                    self.uiview.isHidden = true
                    self.uiview.alpha = 0
                    self.buttonX.alpha = 0
@@ -309,7 +311,7 @@ final class ProfileHeaderView: UIView {
         size()
         urlSession()
         urlSessionDecoder()
-        
+        backgroundColor = UIColor.createColor(lightMode: .white, darkMode: .black)
     }
     
     required init?(coder: NSCoder) {

@@ -62,7 +62,7 @@ final class ProfileViewController: UIViewController {
         #if DEBUG
         view.backgroundColor = UIColor(named: "TabBar")
         #else
-        view.backgroundColor = .green
+        view.backgroundColor = UIColor(named: "TabBar")//.green
         #endif
         
 //        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(timerCancel), userInfo: nil, repeats: true)
