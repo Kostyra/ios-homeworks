@@ -9,12 +9,14 @@ import UIKit
 import FirebaseCore
 
 @main
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
 
-
+    let localNS = LocalNotificationsService()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        LocalNotificationsService().registeForLatestUpdatesIfPossible()
+        localNS.registeForLatestUpdatesIfPossible()
+        localNS.center.delegate = self
+        
         
         
 //        FirebaseApp.configure()

@@ -82,6 +82,7 @@
 		CB825EB22A8D0CFA00F1CC20 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CB825EB42A8D0CFA00F1CC20 /* Localizable.strings */; };
 		CB825EB82A8D399200F1CC20 /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = CB825EBA2A8D399200F1CC20 /* Localizable.stringsdict */; };
 		CB825EBD2A8DF9DD00F1CC20 /* ExtensionString.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB825EBC2A8DF9DD00F1CC20 /* ExtensionString.swift */; };
+		CB9212C22A9DF31100B5A286 /* LocalAuthorizationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9212C12A9DF31100B5A286 /* LocalAuthorizationService.swift */; };
 		CBCA919C29BB6DDB00D11098 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCA919B29BB6DDB00D11098 /* InfoViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -198,6 +199,7 @@
 		CB825EB92A8D399200F1CC20 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = en; path = en.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
 		CB825EBB2A8D399300F1CC20 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = ru; path = ru.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
 		CB825EBC2A8DF9DD00F1CC20 /* ExtensionString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionString.swift; sourceTree = "<group>"; };
+		CB9212C12A9DF31100B5A286 /* LocalAuthorizationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalAuthorizationService.swift; sourceTree = "<group>"; };
 		CBCA919B29BB6DDB00D11098 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -256,6 +258,7 @@
 		1214F41129B8B25A00E525F4 /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
+				CB9212C02A9DF2EF00B5A286 /* FaceID */,
 				CB487D292A9A473700441585 /* Notification */,
 				CB784B9C2A92230C00EA3DEC /* Theme */,
 				CB02BCBF2A8CC45500C776C1 /* Localize */,
@@ -574,6 +577,14 @@
 			path = Theme;
 			sourceTree = "<group>";
 		};
+		CB9212C02A9DF2EF00B5A286 /* FaceID */ = {
+			isa = PBXGroup;
+			children = (
+				CB9212C12A9DF31100B5A286 /* LocalAuthorizationService.swift */,
+			);
+			path = FaceID;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -740,6 +751,7 @@
 				1214F42B29B9B75000E525F4 /* PostViewController.swift in Sources */,
 				CB4F95B629C0598200979B55 /* ProfileHeaderView.swift in Sources */,
 				CB19C9282A5FF1B20042E33A /* RealmService.swift in Sources */,
+				CB9212C22A9DF31100B5A286 /* LocalAuthorizationService.swift in Sources */,
 				CB1924C529C987E8002EB421 /* LogInViewController.swift in Sources */,
 				CB19C8CA2A5003730042E33A /* JSONSerialization.swift in Sources */,
 				CB19C8CD2A5067A80042E33A /* JSONDecoder.swift in Sources */,
@@ -1001,6 +1013,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Navigation/Info.plist;
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "Please give your face";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Please check the probability of your choice";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -1030,6 +1043,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Navigation/Info.plist;
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "Please give your face";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Please check the probability of your choice";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;

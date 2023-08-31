@@ -6,6 +6,7 @@ import FirebaseAuth
 
 final class LogInViewController: UIViewController ,CustomViewDelegate {
     
+    let localAuth = LocalAuthorizationService()
     var loginDelegate:LoginViewControllerDelegate?
     var networkManager = NetworkManager()
     var checkerService = CheckerService()
@@ -301,9 +302,22 @@ final class LogInViewController: UIViewController ,CustomViewDelegate {
 
     
      @objc func buttonActionProfile() {
+         localAuth.authorizeIfPossible { (success, error)  in
+             if   success == true {
+                 let profileViewController = ProfileViewController()
+                 self.navigationController?.pushViewController(profileViewController, animated: true)
+                 print("вход успешный")
+             } else {
+                 print(error!)
+             }
+//             if localAuth.biometricType == "Face ID" {
+//                 self.buttonEnter.setTitle("123", for: .normal)
+//             } else {
+//                 self.buttonEnter.setTitle("243", for: .normal)
+//             }
+         }
          
-        let profileViewController = ProfileViewController()
-        self.navigationController?.pushViewController(profileViewController, animated: true)
+   
          //MARK: checkerService firebase
 //         guard let userName = login.text,  let password = pass.text else { return }
 //         checkerService.checkCredentials(email: userName, pass: password) { [weak self] error in
@@ -426,7 +440,7 @@ final class LogInViewController: UIViewController ,CustomViewDelegate {
         super.viewDidLoad()
         viewLogin()
         setupView()
-        
+                
         let customView = ProfileHeaderView()
         customView.delegate = self
 //        delimitreFunk()
