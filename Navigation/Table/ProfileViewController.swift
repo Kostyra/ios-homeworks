@@ -7,6 +7,8 @@ final class ProfileViewController: UIViewController {
 
     var seconds = 0
     var timer = Timer()
+    var posts:[Posts] = []
+    
     
      private let tableView: UITableView = {
         let tableView = UITableView.init(
@@ -56,6 +58,9 @@ final class ProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.dragInteractionEnabled = true
+//        tableView.dragDelegate = self
+//        tableView.dropDelegate = self
         table()
         tableViewCell()
         headerView()
@@ -182,3 +187,20 @@ extension ProfileViewController: DidMoveToLikeDelegate {
 //       viewModel.didMoveToLike(post: PostView)
     }
 }
+
+
+//extension ProfileViewController: UITableViewDragDelegate {
+//    func tableView(_ tableView: UITableView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
+//        let post = posts[indexPath.row]
+//        let imageItem = NSItemProvider(object: post.image!)
+//
+//    }
+//}
+//
+//extension ProfileViewController: UITableViewDropDelegate {
+//    func tableView(_ tableView: UITableView, performDropWith coordinator: UITableViewDropCoordinator) {
+//        return
+//    }
+//
+//
+//}

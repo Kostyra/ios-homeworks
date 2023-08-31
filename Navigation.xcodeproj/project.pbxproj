@@ -69,8 +69,8 @@
 		CB725F3B29FBB486006334EB /* StorageService.docc in Sources */ = {isa = PBXBuildFile; fileRef = CB725F3A29FBB486006334EB /* StorageService.docc */; };
 		CB725F4129FBB486006334EB /* StorageService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB725F3729FBB486006334EB /* StorageService.framework */; };
 		CB725F4829FBB487006334EB /* StorageServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB725F4729FBB487006334EB /* StorageServiceTests.swift */; };
-		CB725F4C29FBB487006334EB /* StorageService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB725F3729FBB486006334EB /* StorageService.framework */; };
-		CB725F4D29FBB487006334EB /* StorageService.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CB725F3729FBB486006334EB /* StorageService.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		CB725F4C29FBB487006334EB /* StorageService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB725F3729FBB486006334EB /* StorageService.framework */; platformFilter = ios; };
+		CB725F4D29FBB487006334EB /* StorageService.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CB725F3729FBB486006334EB /* StorageService.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CB725F5E29FD5EC9006334EB /* StorageService.h in Headers */ = {isa = PBXBuildFile; fileRef = CB725F3929FBB486006334EB /* StorageService.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CB725F6529FD6560006334EB /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB725F6429FD6560006334EB /* Post.swift */; };
 		CB725F6729FD6572006334EB /* LikesViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB725F6629FD6572006334EB /* LikesViews.swift */; };
@@ -840,6 +840,7 @@
 		};
 		CB725F4B29FBB487006334EB /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
+			platformFilter = ios;
 			target = CB725F3629FBB486006334EB /* StorageService */;
 			targetProxy = CB725F4A29FBB487006334EB /* PBXContainerItemProxy */;
 		};
@@ -1027,9 +1028,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Navigation;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -1057,9 +1061,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Navigation;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

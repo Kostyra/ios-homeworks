@@ -6,7 +6,7 @@ import FirebaseAuth
 
 final class LogInViewController: UIViewController ,CustomViewDelegate {
     
-    let localAuth = LocalAuthorizationService()
+    let localAuth = LocalAuthorizationService(policy: .deviceOwnerAuthenticationWithBiometrics)
     var loginDelegate:LoginViewControllerDelegate?
     var networkManager = NetworkManager()
     var checkerService = CheckerService()
@@ -14,6 +14,8 @@ final class LogInViewController: UIViewController ,CustomViewDelegate {
     var loginsModel: [LoginModel] = []
     var realmSevice: IRealmSevice = RealmSevice()
     var buttomTextColorLite = UIColor(named: "Color")!
+    var face = UIImage(systemName: "faceid")
+    var touth = UIImage(systemName: "touchid")
 //    private lazy var delimiter:DelimiterView = {
 //        let delimiter = DelimiterView()
 //        delimiter.translatesAutoresizingMaskIntoConstraints = false
@@ -438,9 +440,20 @@ final class LogInViewController: UIViewController ,CustomViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        localAuth.canEvaluate(completion: { _,_ in
+            if localAuth.biometricType == "Face ID" {
+                buttonEnter.setImage(face, for: .normal)
+                buttonEnter.tintColor = .cyan
+            } else {
+                buttonEnter.setImage(touth, for: .normal)
+                buttonEnter.tintColor = .cyan
+            }
+            buttonEnter.setTitle(localAuth.biometricType, for: .normal)
+        })
+ 
+        
         viewLogin()
         setupView()
-                
         let customView = ProfileHeaderView()
         customView.delegate = self
 //        delimitreFunk()
