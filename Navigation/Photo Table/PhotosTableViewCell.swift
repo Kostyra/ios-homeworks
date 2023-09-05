@@ -7,7 +7,7 @@ class PhotosTableViewCell: UITableViewCell {
     
     var photosViewCell: PhotosViewCell = {
          let photosViewCell = PhotosViewCell()
-        photosViewCell.backgroundColor = .white
+        photosViewCell.backgroundColor = UIColor.createColor(lightMode: .white, darkMode: .black)
         photosViewCell.translatesAutoresizingMaskIntoConstraints = false
          return photosViewCell
      }()
@@ -15,7 +15,7 @@ class PhotosTableViewCell: UITableViewCell {
         private var imagePeople: UIImageView = {
         let image = UIImageView()
         image.translatesAutoresizingMaskIntoConstraints = false
-        image.backgroundColor = .blue
+        image.backgroundColor = UIColor.createColor(lightMode: .blue, darkMode: .green)
         image.contentMode = .scaleAspectFit
         return image
     }()
@@ -39,6 +39,7 @@ class PhotosTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: .subtitle, reuseIdentifier: reuseIdentifier)
         imageCell()
+        
     }
     
     required init?(coder: NSCoder) {

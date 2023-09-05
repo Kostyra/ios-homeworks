@@ -1,12 +1,14 @@
 
 import UIKit
+import iOSIntPackage
 
 
 
 class PhotosViewController:  UIViewController {
 
-    
-    
+    let imagePublisherFacade = ImagePublisherFacade()
+//    lazy var arrayOfImages = [UIImage]()
+
     
     private let collectionView: UICollectionView = {
        let viewLayOut = UICollectionViewFlowLayout()
@@ -45,25 +47,38 @@ class PhotosViewController:  UIViewController {
         super.viewDidLoad()
         collectionViewLayOut()
         setupCollectionView()
+        applyImageFilter()
         title = "Photos Gallery"
-       view.backgroundColor = UIColor(named: "TabBar")
+        collectionView.backgroundColor = UIColor.createColor(lightMode: .white, darkMode: .black)
+        view.backgroundColor = UIColor.createColor(lightMode: UIColor(named: "TabBar")!, darkMode: .black)
         navigationController?.navigationBar.isHidden = false
+//        imagePublisherFacade.subscribe(self)
+//        imagePublisherFacade.addImagesWithTimer(time: 0.5, repeat: 10, userImages: newImageLibrary)
     }
        
+//    override func viewWillDisappear(_ animated: Bool) {
+//            super.viewWillDisappear(true)
+//            imagePublisherFacade.rechargeImageLibrary()
+//            imagePublisherFacade.removeSubscription(for: self)
+//        }
+    
     private enum LayoutConstant {
         static let spacing: CGFloat = 8.0
         static let itemHeight: CGFloat = 100.0
     }
 }
 
+//MARK: - extension
 extension PhotosViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        arrayStark.count
+ //       arrayOfImages.count
+        photoStark.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotosCollectionViewCell.id1, for: indexPath) as! PhotosCollectionViewCell
-        let arrayCollection = arrayStark[indexPath.row]
+        let arrayCollection = photoStark[indexPath.row]
+//        let arrayCollection = arrayOfImages[indexPath.item]
         cell.tableCell(with: arrayCollection)
         return cell
     }
@@ -119,5 +134,35 @@ extension PhotosViewController:UICollectionViewDelegateFlowLayout {
     ) {
         cell.contentView.backgroundColor = .green
     }
-        
+}
+
+//extension PhotosViewController: ImageLibrarySubscriber {
+//    func receive(images: [UIImage]) {
+//        arrayOfImages = images
+//        collectionView.reloadData()
+//    }
+//}
+//MARK: - extention
+
+extension PhotosViewController {
+    private func applyImageFilter() {
+        let startDefault = CFAbsoluteTimeGetCurrent()
+        ImageProcessor().processImagesOnThread(sourceImages: photoStark,
+                                               filter: .noir,
+                                               qos: .utility) { result in
+            photoStark = result.compactMap { UIImage(cgImage: $0!) }
+            let end = CFAbsoluteTimeGetCurrent()
+            let time = end - startDefault
+            print("userInteractive time evaluated: \(time)")
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
+        }
+    }
+    // 0.18758296966552734 qos: .default
+    // 0.17167294025421143 qos: .userInitiated
+    // 0.44238603115081787 qos: .background
+    // 0.15764105319976807 qos: .userInteractive
+    // 0.16431808471679688 qos: .utility
+
 }

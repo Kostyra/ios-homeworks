@@ -1,0 +1,8 @@
+/* 
+  InfoPlist.strings
+  Navigation
+
+
+  
+*/
+NSLocationWhenInUseUsageDescription = "Please check the probability of your choice";

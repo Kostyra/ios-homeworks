@@ -1,0 +1,9 @@
+/* 
+  InfoPlist.strings
+  Navigation
+
+
+  
+*/
+NSLocationWhenInUseUsageDescription = "Пожалуйста дайте доступ к лоакиции";
+

@@ -1,0 +1,15 @@
+
+
+LogIn = "Log In";
+LogInBrut = "Log In Brut";
+LogInResult = "Log In Result";
+SingUp = "Sing Up";
+LogInRealm = "Log In Realm";
+FeedTabBar = "Feed";
+LogTabBar  = "Log";
+likePostTabBar  = "LikePost";
+MapTabBar  = "Map";
+Error = "Error";
+Ok = "Ok";
+DoNotWord = "Do Not Word";
+NotGoodPass = "Not Good Pass";
