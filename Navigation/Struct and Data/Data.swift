@@ -2,26 +2,38 @@
 import StorageService
 import UIKit
 
+
+public struct Posts {
+    public var author:String
+    public var description: String
+    public var image: UIImage
+    public var likes: Int
+    public var view: Int
+    public var id: String
+    
+
+}
+
  var arrayTable = [
-    PostView(author: "Jeck",
+    Posts(author: "Jeck",
              description: "All tasks are required to complete to receive credit, except for tasks with an asterisk. You can send each detection mask or all tasks together for verification. During the Partial Review, your homework will have the status In Progress. ",
-             image: "veidor",
+          image: UIImage(named: "veidor")!,
              likes: 1,
              view: 1_044_000,
              id: UUID().uuidString),
-    PostView(author: "Sindi",
+    Posts(author: "Sindi",
              description: "Ask any questions about the tasks in the study group chat. Homework to be completed in the same project where you are doing part of the first task. Task number 1 Your application must be fully compliant with the samples. Do not do anything extra, it will complicate the verification of your work.",
-             image:  "doctor",
+             image: UIImage(named: "doctor")! ,
              likes: 2,
              view: 2_439_534,
              id: UUID().uuidString),
-    PostView(author: "Anton", description: "Three Beer more text more text more text more text more text more text more text more text",
-             image:  "joker",
+    Posts(author: "Anton", description: "Three Beer more text more text more text more text more text more text more text more text",
+             image:  UIImage(named: "joker")!,
              likes: 3000,
              view: 4_436_785,
              id: UUID().uuidString),
-    PostView(author: "Nina", description: "Ork Ork Ork Ork Ork OrkOrk Ork OrkOrk Ork OrkOrk Ork OrkOrk Ork OrkOrk Ork OrkOrk Ork OrkOrk Ork OrkOrk Ork OrkOrk Ork OrkOrk Ork OrkOrk Ork OrkOrk Ork Ork",
-             image:  "mega",
+    Posts(author: "Nina", description: "Ork Ork Ork Ork Ork OrkOrk Ork OrkOrk Ork OrkOrk Ork OrkOrk Ork OrkOrk Ork OrkOrk Ork OrkOrk Ork OrkOrk Ork OrkOrk Ork OrkOrk Ork OrkOrk Ork OrkOrk Ork Ork",
+             image:  UIImage(named: "mega")!,
              likes: 400,
              view: 6_432_423,
              id: UUID().uuidString)

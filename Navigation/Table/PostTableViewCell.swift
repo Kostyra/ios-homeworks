@@ -99,11 +99,11 @@ class PostTableViewCell: UITableViewCell {
         ])
     }
     
-    func tableItem(with news: PostView)  {
-        self.currentPost = news
+    func tableItem(with news: Posts)  {
+//        self.currentPost = news
         authorLabel.text = news.author
-        imageEvil.image = UIImage(named: news.image)
-        let images  = imageEvil.image 
+        imageEvil.image = news.image
+//        let images  = imageEvil.image
 //        filterImage.processImage(sourceImage:images, filter: .noir) {(processedImage) in
 //            if let images = processedImage {
 //                imageEvil.image = images

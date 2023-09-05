@@ -203,7 +203,7 @@ extension ProfileViewController: UITableViewDragDelegate, UITableViewDropDelegat
     func dragItems(for indexPath: IndexPath) -> [UIDragItem] {
         let post = arrayTable[indexPath.row]
         let titleProvider = NSItemProvider(object: post.author as NSString)
-        let imageProvider = NSItemProvider(object: post.image as NSString)
+        let imageProvider = NSItemProvider(object: post.image)
         return [UIDragItem(itemProvider: titleProvider), UIDragItem(itemProvider: imageProvider)]
     }
     
@@ -237,10 +237,10 @@ extension ProfileViewController: UITableViewDragDelegate, UITableViewDropDelegat
                    group.leave()
                }
                
-               var postImage = String()
+               var postImage = UIImage()
                group.enter()
-               coordinator.session.loadObjects(ofClass: NSString.self) { objects in
-                   let uImages = objects as! [String]
+               coordinator.session.loadObjects(ofClass: UIImage.self) { objects in
+                   let uImages = objects as! [UIImage]
                    for uImage in uImages {
                        postImage = uImage
                        break
@@ -253,7 +253,7 @@ extension ProfileViewController: UITableViewDragDelegate, UITableViewDropDelegat
                    if coordinator.proposal.operation == .move {
                        arrayTable.remove(at: self.originIndex)
                    }
-                   let newPost = PostView(author: postDescription, description: "new", image: postImage, likes: 0, view: 0, id: UUID().uuidString)
+                   let newPost = Posts(author: postDescription, description: "new", image: postImage, likes: 0, view: 0, id: UUID().uuidString)
                    
                    arrayTable.insert(newPost, at: rowInd - 1)
                    

@@ -79,7 +79,7 @@ extension LikePostViewController: UITableViewDataSource {
         doubleTapDeleteGesture.numberOfTapsRequired = 2
         cell.addGestureRecognizer(doubleTapDeleteGesture)
         
-        cell.tableItem(with: modelForCell)
+//        cell.tableItem(with: modelForCell)
         return cell
     }
     
