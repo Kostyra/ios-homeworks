@@ -83,7 +83,8 @@ class PostTableViewCell: UITableViewCell {
             imageEvil.topAnchor.constraint(equalTo: authorLabel.bottomAnchor, constant: 16),
             imageEvil.leadingAnchor.constraint(equalTo: leadingAnchor),
             imageEvil.trailingAnchor.constraint(equalTo: trailingAnchor),
-            imageEvil.heightAnchor.constraint(equalTo: imageEvil.widthAnchor),
+//            imageEvil.heightAnchor.constraint(equalTo: imageEvil.widthAnchor),
+            imageEvil.heightAnchor.constraint(equalToConstant: 100),
             
             descriptionText.topAnchor.constraint(equalTo: imageEvil.bottomAnchor, constant: 16),
             descriptionText.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
@@ -102,15 +103,15 @@ class PostTableViewCell: UITableViewCell {
         self.currentPost = news
         authorLabel.text = news.author
         imageEvil.image = UIImage(named: news.image)
-        let images  = imageEvil.image
-        filterImage.processImage(sourceImage:images!, filter: .noir) {(processedImage) in
-            if let images = processedImage {
-                imageEvil.image = images
-            }
-        }
+        let images  = imageEvil.image 
+//        filterImage.processImage(sourceImage:images, filter: .noir) {(processedImage) in
+//            if let images = processedImage {
+//                imageEvil.image = images
+//            }
+//        }
         //filterImage.processImage(sourceImage: test!, filter: .colorInvert, completion: (UIImage?) -> Void) in
         descriptionText.text = news.description
-        
+
         let likesFormater = NSLocalizedString("LikesKey", comment: "")
         let finalFormat = String(format: likesFormater, news.likes)
         likesLabel.text = "Likes: " + finalFormat

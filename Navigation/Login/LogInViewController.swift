@@ -303,21 +303,27 @@ final class LogInViewController: UIViewController ,CustomViewDelegate {
     
 
     
-     @objc func buttonActionProfile() {
-         localAuth.authorizeIfPossible { (success, error)  in
-             if   success == true {
-                 let profileViewController = ProfileViewController()
-                 self.navigationController?.pushViewController(profileViewController, animated: true)
-                 print("вход успешный")
-             } else {
-                 print(error!)
-             }
+    @objc func buttonActionProfile() {
+        let profileViewController = ProfileViewController()
+        self.navigationController?.pushViewController(profileViewController, animated: true)
+        print("вход успешный")
+    }
+         //MARK: - FACE
+//         localAuth.authorizeIfPossible { (success, error)  in
+//             if   success == true {
+//                 let profileViewController = ProfileViewController()
+//                 self.navigationController?.pushViewController(profileViewController, animated: true)
+//                 print("вход успешный")
+//             } else {
+//                 print(error!)
+//             }
+         
 //             if localAuth.biometricType == "Face ID" {
 //                 self.buttonEnter.setTitle("123", for: .normal)
 //             } else {
 //                 self.buttonEnter.setTitle("243", for: .normal)
 //             }
-         }
+//         }
          
    
          //MARK: checkerService firebase
@@ -360,9 +366,7 @@ final class LogInViewController: UIViewController ,CustomViewDelegate {
 //            alert.addAction(UIAlertAction(title: "OK", style: .default))
 //            present(alert, animated: true)
 //         }
-         
-         
-    }
+//    }
     
     @objc private func  buttonActionLogResult() {
         guard let userName = login.text , let password = pass.text else {return}

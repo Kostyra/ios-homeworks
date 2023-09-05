@@ -4,13 +4,13 @@ import UIKit
 
  var arrayTable = [
     PostView(author: "Jeck",
-             description: "All tasks are required to complete to receive credit, except for tasks with an asterisk. You can send each detection mask or all tasks together for verification. During the Partial Review, your homework will have the status In Progress. Ask any questions about the tasks in the study group chat. Homework to be completed in the same project where you are doing part of the first task. Task number 1 Your application must be fully compliant with the samples. Do not do anything extra, it will complicate the verification of your work.",
+             description: "All tasks are required to complete to receive credit, except for tasks with an asterisk. You can send each detection mask or all tasks together for verification. During the Partial Review, your homework will have the status In Progress. ",
              image: "veidor",
              likes: 1,
              view: 1_044_000,
              id: UUID().uuidString),
     PostView(author: "Sindi",
-             description: "All tasks are required to complete to receive credit, except for tasks with an asterisk. You can send each detection mask or all tasks together for verification. During the Partial Review, your homework will have the status In Progress. Ask any questions about the tasks in the study group chat. Homework to be completed in the same project where you are doing part of the first task. Task number 1 Your application must be fully compliant with the samples. Do not do anything extra, it will complicate the verification of your work.",
+             description: "Ask any questions about the tasks in the study group chat. Homework to be completed in the same project where you are doing part of the first task. Task number 1 Your application must be fully compliant with the samples. Do not do anything extra, it will complicate the verification of your work.",
              image:  "doctor",
              likes: 2,
              view: 2_439_534,

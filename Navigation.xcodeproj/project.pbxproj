@@ -83,6 +83,7 @@
 		CB825EB82A8D399200F1CC20 /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = CB825EBA2A8D399200F1CC20 /* Localizable.stringsdict */; };
 		CB825EBD2A8DF9DD00F1CC20 /* ExtensionString.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB825EBC2A8DF9DD00F1CC20 /* ExtensionString.swift */; };
 		CB9212C22A9DF31100B5A286 /* LocalAuthorizationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9212C12A9DF31100B5A286 /* LocalAuthorizationService.swift */; };
+		CB9212C42AA1CD2300B5A286 /* old.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9212C32AA1CD2300B5A286 /* old.swift */; };
 		CBCA919C29BB6DDB00D11098 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCA919B29BB6DDB00D11098 /* InfoViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -200,6 +201,7 @@
 		CB825EBB2A8D399300F1CC20 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = ru; path = ru.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
 		CB825EBC2A8DF9DD00F1CC20 /* ExtensionString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionString.swift; sourceTree = "<group>"; };
 		CB9212C12A9DF31100B5A286 /* LocalAuthorizationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalAuthorizationService.swift; sourceTree = "<group>"; };
+		CB9212C32AA1CD2300B5A286 /* old.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = old.swift; sourceTree = "<group>"; };
 		CBCA919B29BB6DDB00D11098 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -401,6 +403,7 @@
 				CB3C51A329D07F6300257E79 /* PostTableViewCell.swift */,
 				CB4F95B529C0598100979B55 /* ProfileHeaderView.swift */,
 				CB3C51A929D3204000257E79 /* ExtationHeader.swift */,
+				CB9212C32AA1CD2300B5A286 /* old.swift */,
 			);
 			path = Table;
 			sourceTree = "<group>";
@@ -772,6 +775,7 @@
 				CB1924C729CAF36A002EB421 /* CustomButton.swift in Sources */,
 				CB50BBAE2A3B7A6800E1158A /* Error.swift in Sources */,
 				CB50BB7C2A10B7A600E1158A /* Checker.swift in Sources */,
+				CB9212C42AA1CD2300B5A286 /* old.swift in Sources */,
 				CB487D2B2A9A47F700441585 /* LocalNotificationsService.swift in Sources */,
 				CBCA919C29BB6DDB00D11098 /* InfoViewController.swift in Sources */,
 				CB1C50302A8A66A00044210A /* MapViewController.swift in Sources */,

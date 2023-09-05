@@ -7,8 +7,7 @@ final class ProfileViewController: UIViewController {
 
     var seconds = 0
     var timer = Timer()
-    var posts:[Posts] = []
-    
+    var originIndex = Int()
     
      private let tableView: UITableView = {
         let tableView = UITableView.init(
@@ -44,7 +43,6 @@ final class ProfileViewController: UIViewController {
         
     }
     
-    
     private func table() {
         view.addSubview(tableView)
         NSLayoutConstraint.activate([
@@ -59,8 +57,8 @@ final class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dragInteractionEnabled = true
-//        tableView.dragDelegate = self
-//        tableView.dropDelegate = self
+        tableView.dragDelegate = self
+        tableView.dropDelegate = self
         table()
         tableViewCell()
         headerView()
@@ -188,19 +186,79 @@ extension ProfileViewController: DidMoveToLikeDelegate {
     }
 }
 
+extension ProfileViewController: UITableViewDragDelegate, UITableViewDropDelegate {
+    
+    func tableView(_ tableView: UITableView, canHandle session: UIDropSession) -> Bool {
+        return session.canLoadObjects(ofClass: NSString.self) && session.canLoadObjects(ofClass: NSString.self)
+    }
+    
+    func tableView(_ tableView: UITableView, dropSessionDidUpdate session: UIDropSession, withDestinationIndexPath destinationIndexPath: IndexPath?) -> UITableViewDropProposal {
+        if tableView.hasActiveDrag {
+                    return UITableViewDropProposal(operation: .move, intent: .insertAtDestinationIndexPath)
+                } else {
+                    return UITableViewDropProposal(operation: .copy, intent: .insertAtDestinationIndexPath)
+                }
+    }
+   
+    func dragItems(for indexPath: IndexPath) -> [UIDragItem] {
+        let post = arrayTable[indexPath.row]
+        let titleProvider = NSItemProvider(object: post.author as NSString)
+        let imageProvider = NSItemProvider(object: post.image as NSString)
+        return [UIDragItem(itemProvider: titleProvider), UIDragItem(itemProvider: imageProvider)]
+    }
+    
+    func tableView(_ tableView: UITableView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
+        originIndex = indexPath.row
+        return dragItems(for: indexPath)
+    }
+    
+    func tableView(_ tableView: UITableView, performDropWith coordinator: UITableViewDropCoordinator) {
+       
+        let destinationIndexPath: IndexPath
+               if let indexPath = coordinator.destinationIndexPath {
+                   destinationIndexPath = indexPath
+               } else {
+                   let section = tableView.numberOfSections - 1
+                   let row = tableView.numberOfRows(inSection: section)
+                   destinationIndexPath = IndexPath(row: row, section: section)
+               }
+                       
+               let rowInd = destinationIndexPath.row
+               let group = DispatchGroup()
+               
+               var postDescription = String()
+               group.enter()
+               coordinator.session.loadObjects(ofClass: NSString.self) { objects in
+                   let uStrings = objects as! [String]
+                   for uString in uStrings {
+                       postDescription = uString
+                       break
+                   }
+                   group.leave()
+               }
+               
+               var postImage = String()
+               group.enter()
+               coordinator.session.loadObjects(ofClass: NSString.self) { objects in
+                   let uImages = objects as! [String]
+                   for uImage in uImages {
+                       postImage = uImage
+                       break
+                   }
+                   group.leave()
+               }
+               
+               group.notify(queue: .main) {
 
-//extension ProfileViewController: UITableViewDragDelegate {
-//    func tableView(_ tableView: UITableView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
-//        let post = posts[indexPath.row]
-//        let imageItem = NSItemProvider(object: post.image!)
-//
-//    }
-//}
-//
-//extension ProfileViewController: UITableViewDropDelegate {
-//    func tableView(_ tableView: UITableView, performDropWith coordinator: UITableViewDropCoordinator) {
-//        return
-//    }
-//
-//
-//}
+                   if coordinator.proposal.operation == .move {
+                       arrayTable.remove(at: self.originIndex)
+                   }
+                   let newPost = PostView(author: postDescription, description: "new", image: postImage, likes: 0, view: 0, id: UUID().uuidString)
+                   
+                   arrayTable.insert(newPost, at: rowInd - 1)
+                   
+                   tableView.reloadData()
+               }
+        
+    }
+}
